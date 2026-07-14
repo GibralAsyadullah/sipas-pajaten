@@ -21,6 +21,20 @@
     <button class="filter-chip" data-k="anorganik" onclick="setKlasFilter(this)">🧴 Anorganik <span class="cnt" id="cntAno"></span></button>
     <button class="filter-chip" data-k="b3" onclick="setKlasFilter(this)">☢️ B3 <span class="cnt" id="cntB3"></span></button>
   </div>
+  <div class="filter-row filter-sumber">
+    <span class="filter-label">Sumber:</span>
+    <button class="filter-chip active" data-s="semua" onclick="setSumberFilter(this)">Semua</button>
+    <button class="filter-chip" data-s="rumah" onclick="setSumberFilter(this)">🏠 Rumah Tangga</button>
+    <button class="filter-chip" data-s="kebun" onclick="setSumberFilter(this)">🌿 Kebun &amp; Halaman</button>
+    <button class="filter-chip" data-s="tani" onclick="setSumberFilter(this)">🌾 Sawah &amp; Ternak</button>
+    <button class="filter-chip" data-s="usaha" onclick="setSumberFilter(this)">🏪 Warung &amp; Pasar</button>
+    <button class="filter-chip" data-s="bengkel" onclick="setSumberFilter(this)">🔧 Elektronik &amp; Bengkel</button>
+    <select id="klasSort" class="klas-sort" onchange="renderKlas()" aria-label="Urutkan daftar">
+      <option value="default">↕️ Urutan bawaan</option>
+      <option value="az">🔤 Nama A–Z</option>
+      <option value="za">🔤 Nama Z–A</option>
+    </select>
+  </div>
 
   <div class="klas-grid" id="klasGrid">
     <div class="klas-col o" id="colOrganik">

@@ -1,6 +1,13 @@
 /* klasifikasi.js */
 /* ===== KLASIFIKASI ===== */
 let klasFilter='semua';
+let klasSumber='semua';
+function setSumberFilter(btn){
+  document.querySelectorAll('.filter-sumber .filter-chip[data-s]').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  klasSumber=btn.dataset.s;
+  renderKlas();
+}
 function setKlasFilter(btn){
   document.querySelectorAll('.filter-row .filter-chip[data-k]').forEach(c=>c.classList.remove('active'));
   btn.classList.add('active');
@@ -12,7 +19,10 @@ function renderKlas(){
   const lo=$('listOrganik'),la=$('listAnorganik'),lb=$('listB3');
   const grid=$('klasGrid'),colO=$('colOrganik'),colA=$('colAnorganik'),colB=$('colB3');
   lo.innerHTML='';la.innerHTML='';lb.innerHTML='';
-  const match=ITEMS.filter(it=>it.n.toLowerCase().includes(q));
+  let match=ITEMS.filter(it=>it.n.toLowerCase().includes(q)&&(klasSumber==='semua'||(it.r||'rumah')===klasSumber));
+  const sortEl=$('klasSort');const mode=sortEl?sortEl.value:'default';
+  if(mode==='az')match=match.slice().sort((a,b)=>a.n.localeCompare(b.n,'id'));
+  else if(mode==='za')match=match.slice().sort((a,b)=>b.n.localeCompare(a.n,'id'));
   $('cntSemua').textContent=match.length;
   $('cntOrg').textContent=match.filter(it=>it.t==='organik').length;
   $('cntAno').textContent=match.filter(it=>it.t==='anorganik').length;

@@ -50,11 +50,6 @@
         <button data-fs="lg" onclick="setFont('lg',this)">A</button>
       </div>
     </div>
-    <div class="set-row">
-      <span class="set-ic">🔑</span>
-      <span class="set-lbl"><b>Mode Admin</b><small id="adminState">Terkunci — khusus pengurus</small></span>
-      <button class="admin-btn" id="adminBtn" onclick="toggleAdmin()">Buka</button>
-    </div>
     <div class="set-links">
       <a class="btn-link ig-btn" href="https://www.instagram.com/kkncibuaya2026_" target="_blank" rel="noopener">📷 Instagram</a>
       <a class="btn-link drive-btn" href="https://drive.google.com/drive/folders/1rPKo7NtkP8UnnkeLtajiRxPkfGhHwrb9" target="_blank" rel="noopener">🗂️ Drive</a>

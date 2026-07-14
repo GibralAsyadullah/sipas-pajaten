@@ -89,7 +89,7 @@
           <li>Masukkan potongan kulit buah, sisakan ruang udara ± 1/5 wadah.</li>
           <li>Tutup rapat. Minggu pertama, buka sebentar tiap hari untuk buang gas.</li>
           <li>Fermentasi 3 bulan di tempat teduh, aduk sesekali.</li>
-          <li>Saring — cairannya jadi pembersih lantai &amp; pupuk alami; ampasnya untuk kompos.</li>
+          <li>Saring — cairannya jadi <b>pembersih lantai alami pengganti pembersih kimia</b> &amp; pupuk; ampasnya untuk kompos.</li>
         </ol>
       </div>
     </details>
@@ -116,6 +116,32 @@
           <li>Haluskan tepi bekas potongan agar tidak tajam.</li>
           <li>Hias dengan cat, tali, atau kertas warna.</li>
           <li>Manfaatkan sebagai pot tanaman gantung atau wadah di rumah/sekolah.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="diy">
+      <summary><span class="diy-ic">🫧</span> Beralih ke Detergen Ramah Lingkungan</summary>
+      <div class="diy-body">
+        <div class="diy-mat">Kenapa: fosfat &amp; busa berlebih merusak ekosistem air dan membuat got menjadi bau.</div>
+        <ol>
+          <li>Pilih detergen berlabel <b>bebas fosfat (phosphate-free)</b> dan <b>minim busa</b>.</li>
+          <li>Gunakan takaran secukupnya — busa banyak bukan berarti lebih bersih.</li>
+          <li>Jangan buang air cucian langsung ke saluran terbuka/sungai; alirkan ke resapan.</li>
+          <li>Untuk noda ringan, coba pembersih alami: eco-enzyme, cuka, atau baking soda.</li>
+          <li>Ajak tetangga beralih bersama — got yang sehat dimulai dari satu RT.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="diy">
+      <summary><span class="diy-ic">🧱</span> Membuat Ecobrick dari Sampah Plastik</summary>
+      <div class="diy-body">
+        <div class="diy-mat">Bahan: botol plastik ukuran seragam, plastik bekas bersih &amp; kering, tongkat pemadat.</div>
+        <ol>
+          <li>Cuci dan keringkan semua plastik bekas (bungkus, kresek, sachet) — wajib kering agar tidak berjamur.</li>
+          <li>Gunting kecil-kecil, lalu masukkan ke botol sedikit demi sedikit.</li>
+          <li>Padatkan dengan tongkat sampai botol keras (± 0,3 gram per ml — botol 600 ml ≈ 200 gram).</li>
+          <li>Tutup rapat. Ecobrick siap dirangkai jadi kursi, meja, atau bahan bangunan sederhana.</li>
+          <li>Satu ecobrick "mengunci" ratusan plastik agar tidak berakhir dibakar atau ke sungai.</li>
         </ol>
       </div>
     </details>

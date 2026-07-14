@@ -172,23 +172,45 @@
     <h2 class="section-title">Laporkan Tumpukan Sampah</h2>
   </div>
   <p class="muted lead">Menemukan tumpukan sampah liar atau pembuangan sembarangan? Laporkan ke tim agar bisa segera ditindaklanjuti.</p>
-  <div class="report-form">
-    <input id="repLoc" type="text" placeholder="📍 Lokasi (RT/RW atau patokan terdekat)" aria-label="Lokasi laporan">
-    <textarea id="repDesc" placeholder="📝 Keterangan singkat (jenis & kondisi sampah)…" aria-label="Keterangan laporan"></textarea>
+  <form class="report-form" id="lapor" method="POST" action="{{ route('lapor.store') }}">
+    @csrf
+    <input name="lokasi" type="text" value="{{ old('lokasi') }}" placeholder="📍 Lokasi (RT/RW atau patokan terdekat)" aria-label="Lokasi laporan">
+    <textarea name="deskripsi" placeholder="📝 Keterangan singkat (jenis & kondisi sampah)…" aria-label="Keterangan laporan">{{ old('deskripsi') }}</textarea>
     <div class="rep-actions">
-      <button class="btn-main" onclick="sendReport('wa')">📲 Kirim via WhatsApp</button>
-      <button class="btn-ghost" onclick="sendReport('save')">📥 Simpan ke Tim</button>
+      <button class="btn-main" type="submit" name="mode" value="wa">📲 Kirim via WhatsApp</button>
+      <button class="btn-ghost" type="submit" name="mode" value="save">📥 Simpan ke Tim</button>
     </div>
-    <div class="rep-msg" id="repMsg"></div>
-  </div>
+    <div class="rep-msg">
+      @error('lokasi')<span class="flash-err">⚠️ {{ $message }}</span>@enderror
+      @if (session('success'))<span class="flash-ok">{{ session('success') }}</span>@endif
+    </div>
+    @if (session('wa_url'))
+      <a class="btn-main" style="text-align:center" href="{{ session('wa_url') }}" target="_blank" rel="noopener">📲 Lanjutkan kirim via WhatsApp</a>
+    @endif
+  </form>
 
   <div class="admin-only">
     <div class="section-head">
       <span class="eyebrow">Kelola laporan</span>
       <h2 class="section-title">Laporan Masuk <span class="admin-tag">🔑 Admin</span></h2>
     </div>
-    <p class="muted">Daftar laporan warga yang tersimpan di perangkat ini. Ubah status atau hapus setelah ditindaklanjuti.</p>
-    <div class="rep-list" id="repList"></div>
+    <p class="muted">Ringkasan laporan warga — ubah status & hapus lewat Panel Pengurus. Ubah status atau hapus setelah ditindaklanjuti.</p>
+    <div class="rep-list" id="kelola">
+      @forelse ($reports as $r)
+        @php $lbl = ['baru' => 'Baru', 'diproses' => 'Diproses', 'selesai' => 'Selesai'][$r->status]; @endphp
+        <div class="rep-item {{ $r->status }}">
+          <span class="ri-loc">📍 {{ $r->lokasi }}</span>
+          @if ($r->deskripsi)<span class="ri-desc">{{ $r->deskripsi }}</span>@endif
+          <div class="ri-meta">
+            <span class="ri-status">{{ $lbl }}</span><span>🗓️ {{ $r->created_at->translatedFormat('j M Y') }}</span>
+
+          </div>
+        </div>
+      @empty
+        <div class="rep-empty">Belum ada laporan masuk.</div>
+      @endforelse
+      <a class="btn-main" href="/admin" style="text-align:center;margin-top:10px;text-decoration:none;display:block">🛠️ Kelola di Panel Pengurus</a>
+    </div>
   </div>
 
   <div class="section-head">

@@ -175,48 +175,7 @@ async function shareApp(){
 }
 
 
-/* ===== MODE ADMIN ===== */
-const ADMIN_PIN='pajaten2026';
-function updateAdminUI(){
-  const on=document.documentElement.getAttribute('data-admin')==='1';
-  const s=$('adminState'),b=$('adminBtn');
-  if(s)s.textContent=on?'Terbuka — fitur pengurus aktif':'Terkunci — khusus pengurus';
-  if(b)b.textContent=on?'Kunci':'Buka';
-}
-function toggleAdmin(){
-  if(document.documentElement.getAttribute('data-admin')==='1'){
-    document.documentElement.removeAttribute('data-admin');saveP('sipas-admin','0');updateAdminUI();return;
-  }
-  const pin=prompt('Masukkan PIN admin:');
-  if(pin===null)return;
-  if(pin.trim()===ADMIN_PIN){
-    document.documentElement.setAttribute('data-admin','1');saveP('sipas-admin','1');
-    updateAdminUI();(typeof renderReportsAdmin==='function'&&renderReportsAdmin());
-  }else{alert('PIN salah. Hubungi koordinator KKN untuk akses.');}
-}
-if(loadP('sipas-admin')==='1')document.documentElement.setAttribute('data-admin','1');
-updateAdminUI();(typeof renderReportsAdmin==='function'&&renderReportsAdmin());
-
-
-function applyDark(on){
-  document.documentElement.setAttribute('data-theme',on?'dark':'');
-  const m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',on?'#0B2E1E':'#0F3D28');
-  const t=$('darkToggle');if(t)t.checked=on;
-}
-function toggleDark(){const on=$('darkToggle').checked;applyDark(on);saveP('sipas-dark',on?'1':'0')}
-function setFont(fs,btn){
-  if(fs)document.documentElement.setAttribute('data-fs',fs);else document.documentElement.removeAttribute('data-fs');
-  document.querySelectorAll('#fsBtns button').forEach(b=>b.classList.remove('active'));
-  if(btn)btn.classList.add('active');
-  saveP('sipas-fs',fs||'');
-}
-(function(){
-  if(loadP('sipas-dark')==='1')applyDark(true);
-  const fs=loadP('sipas-fs');
-  if(fs){document.documentElement.setAttribute('data-fs',fs);
-    document.querySelectorAll('#fsBtns button').forEach(b=>b.classList.toggle('active',b.dataset.fs===fs));}
-})();
-
+/* MODE ADMIN dihapus — kini pakai login Laravel (atribut data-admin dipasang server) */
 
 /* ===== TOMBOL KE ATAS ===== */
 window.addEventListener('scroll',()=>{$('toTop').classList.toggle('show',window.scrollY>440)},{passive:true});

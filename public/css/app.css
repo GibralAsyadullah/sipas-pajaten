@@ -842,3 +842,103 @@ footer .div{width:40px;height:2px;background:var(--gold);border-radius:2px;margi
 
 /* ===== TAMBAHAN MIGRASI LARAVEL: tab sebagai link ===== */
 .tabbar a.tab{text-decoration:none;color:inherit;cursor:pointer}
+
+
+/* ===== REVISI: navigasi slider manual (tanpa auto-geser) ===== */
+.slide-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:34px;height:34px;border-radius:50%;border:none;cursor:pointer;
+  background:rgba(255,255,255,.28);color:#fff;
+  font-size:1.5rem;line-height:1;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(4px);transition:background .2s;
+}
+.slide-nav:hover{background:rgba(255,255,255,.5)}
+.slide-nav.prev{left:10px}
+.slide-nav.next{right:10px}
+
+/* ===== REVISI: galeri foto profil KKN ===== */
+.profil-galeri{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 4px;
+}
+.profil-galeri figure{margin:0}
+.profil-galeri img{
+  width:100%;height:190px;object-fit:cover;
+  border-radius:var(--radius);border:1px solid var(--line);
+  display:block;transition:transform .25s;
+}
+.profil-galeri figure:hover img{transform:scale(1.02)}
+.profil-galeri figcaption{
+  font-size:.74rem;color:var(--ink-soft);font-weight:600;
+  text-align:center;margin-top:6px;
+}
+@media(max-width:700px){
+  .profil-galeri{grid-template-columns:1fr}
+  .profil-galeri img{height:220px}
+}
+
+
+/* ===== REVISI 2: NAVBAR — selector diperbaiki (a.tab) + desain desktop baru ===== */
+/* Dasar (mobile, bottom bar) — samakan tampilan <a> dengan <button> lama */
+.tabbar .tab{
+  background:none;border:none;color:var(--ink-soft);
+  font-size:.57rem;font-weight:700;
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  padding:5px 3px;border-radius:12px;min-width:40px;position:relative;
+  transition:color .2s;flex:1 1 0;
+  text-decoration:none;cursor:pointer;
+}
+.tabbar .tab .ic{font-size:1.18rem;line-height:1;transition:transform .2s}
+.tabbar .tab.active{color:var(--pine)}
+.tabbar .tab.active .ic{transform:translateY(-2px) scale(1.08)}
+.tabbar .tab.active::after{
+  content:"";position:absolute;bottom:1px;width:5px;height:5px;
+  border-radius:50%;background:var(--gold);
+}
+
+/* Desktop: bar penuh menyatu dengan header, menu gaya pil yang jelas */
+@media(min-width:860px){
+  .tabbar{
+    max-width:none;margin:0;border-radius:0;
+    border-left:none;border-right:none;
+    border-bottom:1px solid var(--line);
+    box-shadow:0 4px 14px rgba(15,61,40,.06);
+    justify-content:center;gap:8px;padding:10px 16px;
+  }
+  .tabbar .tab{
+    flex:0 0 auto;flex-direction:row;gap:9px;
+    font-size:.95rem;font-weight:700;letter-spacing:.01em;
+    padding:10px 20px;border-radius:999px;
+    transition:background .2s,color .2s,transform .15s;
+  }
+  .tabbar .tab .ic{font-size:1.2rem}
+  .tabbar .tab:hover{background:var(--leaf-soft);color:var(--pine);transform:translateY(-1px)}
+  .tabbar .tab.active{background:var(--pine);color:#fff}
+  .tabbar .tab.active .ic{transform:none}
+  .tabbar .tab.active::after{display:none}
+}
+
+
+/* ===== REVISI 3: splash hanya sekali per sesi — sembunyikan sebelum render ===== */
+html.no-splash #splash{display:none !important}
+
+
+/* ===== REVISI 4: filter sumber di halaman klasifikasi ===== */
+.filter-sumber{margin-top:2px}
+.filter-label{
+  font-size:.72rem;font-weight:800;color:var(--ink-soft);
+  text-transform:uppercase;letter-spacing:.06em;
+  align-self:center;margin-right:2px;
+}
+
+
+/* ===== REVISI 5: dropdown urutkan klasifikasi ===== */
+.klas-sort{
+  margin-left:auto;
+  border:1px solid var(--line);border-radius:99px;
+  background:var(--paper-2);color:var(--ink);
+  font:inherit;font-size:.78rem;font-weight:700;
+  padding:7px 12px;cursor:pointer;
+}
+.klas-sort:focus{outline:2px solid var(--pine);outline-offset:1px}
+@media(max-width:700px){.klas-sort{margin-left:0;width:100%}}

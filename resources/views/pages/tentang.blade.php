@@ -49,12 +49,17 @@
     <h2 class="section-title">Anggota Kelompok</h2>
   </div>
   <p class="muted">Susunan mahasiswa KKN di Desa Pajaten. <span class="admin-only" style="display:inline">Tambahkan lewat form di bawah (mode admin).</span></p>
-  <div class="team-grid" id="teamGrid"></div>
-  <div class="team-form admin-only">
-    <input id="tmName" type="text" maxlength="30" placeholder="Nama anggota">
-    <input id="tmRole" type="text" maxlength="34" placeholder="Peran / Program studi (mis. Ketua · Teknik Informatika)">
-    <button class="btn-main" style="width:100%" onclick="addMember()">➕ Tambah Anggota</button>
+  <div class="team-grid" id="anggota">
+    @forelse ($members as $m)
+      <div class="team-card">
+        <div class="team-av">{{ strtoupper(mb_substr(trim($m->nama) ?: '?', 0, 1)) }}</div>
+        <div class="tc-name">{{ $m->nama }}</div><div class="tc-role">{{ $m->peran }}</div>
+      </div>
+    @empty
+      <div class="team-empty">Belum ada data anggota. Tambahkan lewat mode admin.</div>
+    @endforelse
   </div>
+<p class="hint admin-only">👥 Kelola anggota lewat <a href="/admin">Panel Pengurus</a>.</p>
 
   <div class="section-head reveal" id="sec-proker">
     <span class="eyebrow">Program bersama</span>
@@ -102,12 +107,17 @@
     <h2 class="section-title">UMKM &amp; Potensi Desa</h2>
   </div>
   <p class="muted">Usaha &amp; produk unggulan warga Desa Pajaten. <span class="admin-only" style="display:inline">Tambahkan lewat form di bawah (mode admin).</span></p>
-  <div class="umkm-list" id="umkmList"></div>
-  <div class="team-form admin-only">
-    <input id="umName" type="text" maxlength="40" placeholder="Nama UMKM / produk">
-    <input id="umDesc" type="text" maxlength="120" placeholder="Keterangan singkat">
-    <button class="btn-main" style="width:100%" onclick="addUmkm()">➕ Tambah UMKM</button>
+  <div class="umkm-list" id="umkm">
+    @forelse ($umkms as $u)
+      <div class="umkm-item {{ $u->tag ? 'hl' : '' }}">
+        <span class="um-ic">{{ $u->emoji }}</span>
+        <div><b>{{ $u->nama }}</b>@if ($u->deskripsi)<p>{{ $u->deskripsi }}</p>@endif @if ($u->tag)<span class="um-tag">{{ $u->tag }}</span>@endif</div>
+      </div>
+    @empty
+      <div class="team-empty">Belum ada data UMKM.</div>
+    @endforelse
   </div>
+<p class="hint admin-only">🏪 Kelola UMKM lewat <a href="/admin">Panel Pengurus</a>.</p>
 
   <div class="section-head reveal" id="sec-dok">
     <span class="eyebrow">Arsip</span>
@@ -122,6 +132,3 @@
   </div>
 @endsection
 
-@push('scripts')
-<script src="{{ asset('js/tentang.js') }}"></script>
-@endpush

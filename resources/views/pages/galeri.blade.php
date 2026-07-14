@@ -13,17 +13,22 @@
     <button class="filter-chip" data-f="Juli" onclick="setFilter(this)">Juli 2026</button>
   </div>
 
-  <div class="galeri-grid" id="galeriGrid"></div>
+  <div class="galeri-grid" id="galeriGrid">
+    @forelse ($photos as $f)
+      <div class="foto-card" data-f="{{ $f->bulan }}">
+        <img src="{{ $f->url }}" alt="{{ $f->caption }}" loading="lazy">
+        <div class="cap">{{ $f->caption }}<small>{{ $f->label }}</small></div>
+      </div>
+    @empty
+      <div class="card muted" style="grid-column:1/-1">Belum ada foto.</div>
+    @endforelse
+  </div>
 
   <div class="section-head">
     <span class="eyebrow">Tambah arsip</span>
-    <h2 class="section-title" style="font-size:1.15rem">Tambah Foto <span class="badge-proto">prototype: via link, reset saat reload</span></h2>
+    <h2 class="section-title" style="font-size:1.15rem">Tambah Foto</h2>
   </div>
-  <div class="input-row">
-    <input type="url" id="fotoUrl" placeholder="Tempel link gambar (https://…)" aria-label="Link gambar">
-    <input type="text" id="fotoCap" placeholder="Keterangan singkat" aria-label="Keterangan foto">
-    <button class="btn-main" onclick="addFoto()">Tambah</button>
-  </div>
+  <p class="hint admin-only">🖼️ Unggah / hapus foto lewat <a href="/admin">Panel Pengurus</a>.</p>
 
   <div class="btn-row">
     <a class="btn-link drive-btn" href="https://drive.google.com/drive/folders/1rPKo7NtkP8UnnkeLtajiRxPkfGhHwrb9" target="_blank" rel="noopener">🗂️ Buka Arsip Google Drive</a>

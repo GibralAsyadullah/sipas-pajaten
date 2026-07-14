@@ -14,7 +14,8 @@ function goSlide(i){
   dotsEl.querySelectorAll('button').forEach((d,j)=>d.classList.toggle('active',j===i));
 }
 goSlide(0);
-setInterval(()=>goSlide((cur+1)%total),5000);
+function nextSlide(){goSlide((cur+1)%total)}
+function prevSlide(){goSlide((cur-1+total)%total)}
 
 /* ===== TANTANGAN HARIAN ===== */
 const CHALLENGES=[
