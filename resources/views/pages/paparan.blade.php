@@ -1,67 +1,200 @@
 @extends('layouts.app')
-@section('title', 'Video & Poster Edukasi')
+@section('title', 'Edukasi & Alur Program')
 @section('content')
+  <div class="section-head" id="alur-bank-sampah">
+    <span class="eyebrow">Program utama</span>
+    <h2 class="section-title">Alur Bank Sampah Desa Pajaten</h2>
+  </div>
+  <p class="muted lead">Bank Sampah adalah kolaborasi warga, perangkat desa, kecamatan, dan mahasiswa KKN: menanamkan disiplin memilah sampah sekaligus memberi <b>nilai ekonomi</b> bagi warga. Program dimulai sebagai <b>uji coba skala kecil</b> dulu — setelah berhasil, pengembangannya dilanjutkan oleh pihak desa.</p>
+
+  <div class="stat-row">
+    <div class="stat"><b>5</b><span>Dusun peserta uji coba</span></div>
+    <div class="stat"><b>±10</b><span>Warga perwakilan tiap dusun</span></div>
+    <div class="stat"><b>5 kg</b><span>Target setoran plastik per kelompok / minggu</span></div>
+  </div>
+
+  <div class="flow-list">
+    <div class="flow-step">
+      <span class="fs-num">1</span>
+      <div class="fs-body">
+        <b>🏠 Kumpulkan &amp; pilah dari rumah</b>
+        <p>Kumpulkan sampah plastik — terutama <b>botol</b> dan <b>gelas/cup kemasan</b>. Pastikan <b>bersih, kering, dan labelnya dilepas</b> agar nilai jualnya lebih tinggi. Sisa makanan &amp; sampah organik dipisahkan (lihat alur organik di bawah).</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <span class="fs-num">2</span>
+      <div class="fs-body">
+        <b>👥 Setor lewat kelompok dusun</b>
+        <p>Penyetoran dilakukan <b>per kelompok dusun</b> (bukan perorangan), kira-kira <b>seminggu sekali</b>. Untuk dusun yang jauh, pengangkutan kolektif dibantu Kepala Dusun / Linmas agar warga tidak terbebani ongkos.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <span class="fs-num">3</span>
+      <div class="fs-body">
+        <b>⚖️ Timbang di Bank Sampah Kantor Desa</b>
+        <p>Sampah ditimbang di unit Bank Sampah yang dipusatkan di Kantor Desa. Penimbangan <b>disaksikan langsung oleh pemilik sampah</b> demi transparansi. Setelah ditimbang, sampah dipilah ke rak/sekat botol dan gelas.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <span class="fs-num">4</span>
+      <div class="fs-body">
+        <b>📒 Dicatat ganda: buku &amp; digital</b>
+        <p>Hasil timbangan dicatat di <b>buku tabungan fisik</b> milik warga dan <b>pencatatan digital berbasis web</b> yang dipegang pihak desa sebagai data cadangan. Pencatatan dikoordinasikan lewat ketua kelompok tiap dusun.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <span class="fs-num">5</span>
+      <div class="fs-body">
+        <b>🐷 Menabung &amp; akumulasi</b>
+        <p>Penukaran dihitung <b>per 5 kg</b>. Kalau minggu ini belum sampai target (misal baru 3 kg), tidak hangus — otomatis <b>diakumulasikan ke minggu berikutnya</b>.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <span class="fs-num">6</span>
+      <div class="fs-body">
+        <b>💵 Cairkan tabungan</b>
+        <p>Setelah tabungan mencapai target minimal, nilainya bisa <b>dicairkan menjadi uang atau sembako</b>. Sampah lalu disalurkan desa ke pengepul besar.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <span class="eyebrow">Biar makin untung</span>
+    <h2 class="section-title">Aturan Harga Sampah</h2>
+  </div>
+  <p class="muted">Harga ditentukan dari cara menyetor. Makin rapi memilah, makin tinggi nilainya.</p>
+  <div class="harga-grid">
+    <div class="harga-card best">
+      <span class="hc-ic">🥇</span>
+      <b>Dipilah sendiri dari rumah</b>
+      <p>Botol dan gelas/cup dipisahkan, bersih &amp; tanpa label → dihargai <b>lebih tinggi</b>.</p>
+    </div>
+    <div class="harga-card">
+      <span class="hc-ic">🥈</span>
+      <b>Disetor campur</b>
+      <p>Boleh, tapi dihitung dengan <b>patokan harga terendah</b> (± Rp2.000–3.000/kg) karena harus dipilah ulang oleh pihak desa.</p>
+    </div>
+    <div class="harga-card zero">
+      <span class="hc-ic">🤝</span>
+      <b>Plastik tanpa nilai jual</b>
+      <p>Tetap <b>diterima</b> supaya lingkungan bersih, namun tidak ada pembayaran (Rp0). Jangan dibakar atau dibuang ke sungai!</p>
+    </div>
+  </div>
+
+  <div class="section-head" id="alur-organik">
+    <span class="eyebrow">Sampah organik</span>
+    <h2 class="section-title">Alur Sampah Organik → Maggot &amp; Kompos</h2>
+  </div>
+  <p class="muted">Sampah organik tidak ditabung ke Bank Sampah, tapi diolah agar tidak berakhir di sungai.</p>
+  <div class="flow-list">
+    <div class="flow-step">
+      <span class="fs-num">1</span>
+      <div class="fs-body">
+        <b>🥬 Pisahkan sisa dapur</b>
+        <p>Sisa makanan, sayur, dan kulit buah dikumpulkan terpisah dari plastik.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <span class="fs-num">2</span>
+      <div class="fs-body">
+        <b>🪱 Jadikan pakan maggot (BSF)</b>
+        <p>Sampah organik menjadi pakan budidaya maggot. Media awalnya cukup <b>galon/botol bekas</b> secara swadaya di tiap dusun — tidak perlu kandang mahal. Maggot yang dipanen bernilai jual sebagai pakan ternak.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <span class="fs-num">3</span>
+      <div class="fs-body">
+        <b>🌱 Atau olah sendiri di rumah</b>
+        <p>Bisa juga dijadikan <b>kompos, eco-enzyme, atau POC</b> — ikuti panduan langkah demi langkah di bagian <b>Panduan DIY</b> di bawah halaman ini.</p>
+      </div>
+    </div>
+  </div>
+  <div class="info-block fact" style="margin-top:12px">
+    <span class="bic">🚫</span>
+    <div><b>Ingat</b><span>Membuang sampah ke sungai/irigasi dilarang — menyumbat aliran dan memicu banjir. Edukasi dasar hukumnya disampaikan tim mahasiswa saat sosialisasi.</span></div>
+  </div>
+
+  <div class="section-head">
+    <span class="eyebrow">Waspada di rumah</span>
+    <h2 class="section-title">Bahaya Limbah Rumah Tangga</h2>
+  </div>
+  <p class="muted lead">Limbah rumah tangga yang salah kelola bukan cuma bikin kotor — ia meracuni air, tanah, dan tubuh kita pelan-pelan. Materi ini disusun bersama rekan-rekan <b>Farmasi/Kesehatan</b> dan prodi lain di tim KKN.</p>
+  <div class="bahaya-grid">
+    <div class="bahaya-card">
+      <span class="bc-ic">💊</span>
+      <b>Obat kadaluarsa &amp; sisa obat</b>
+      <p>Dibuang ke got/tempat sampah begitu saja, zat aktifnya mencemari air dan berisiko <b>disalahgunakan atau termakan anak</b>. Rusak dulu kemasannya, keluarkan isinya, lalu serahkan ke apotek/puskesmas.</p>
+    </div>
+    <div class="bahaya-card">
+      <span class="bc-ic">🛢️</span>
+      <b>Minyak jelantah</b>
+      <p>Satu liter jelantah bisa mencemari <b>ribuan liter air bersih</b> dan menyumbat saluran. Dipakai menggoreng berulang juga memicu kolesterol &amp; radikal bebas. Tampung di botol tertutup, setor/jual ke pengepul.</p>
+    </div>
+    <div class="bahaya-card">
+      <span class="bc-ic">🔋</span>
+      <b>Baterai, lampu, &amp; elektronik bekas</b>
+      <p>Mengandung logam berat (merkuri, kadmium, timbal) yang meresap ke tanah &amp; air sumur — memicu <b>gangguan saraf dan ginjal</b>. Kumpulkan terpisah sebagai sampah B3, jangan dibakar atau ditimbun.</p>
+    </div>
+    <div class="bahaya-card">
+      <span class="bc-ic">🫧</span>
+      <b>Detergen &amp; pembersih kimia</b>
+      <p>Fosfat dan busa berlebih membuat got bau, mematikan ikan, dan menyuburkan gulma air (eutrofikasi). Pilih detergen <b>bebas fosfat</b>, pakai secukupnya, dan jangan buang air cucian langsung ke sungai.</p>
+    </div>
+    <div class="bahaya-card">
+      <span class="bc-ic">🔥</span>
+      <b>Membakar sampah plastik</b>
+      <p>Asapnya mengandung <b>dioksin</b> — pemicu ISPA, gangguan hormon, hingga kanker — dan justru paling banyak terhirup keluarga sendiri di pekarangan. Kumpulkan plastik untuk ditabung, bukan dibakar.</p>
+    </div>
+    <div class="bahaya-card">
+      <span class="bc-ic">🦟</span>
+      <b>Sampah menumpuk &amp; air tergenang</b>
+      <p>Jadi sarang nyamuk, lalat, dan tikus — sumber <b>DBD, diare, tifus, dan leptospirosis</b>. Genangan di irigasi yang tersumbat sampah juga memicu banjir. Pilah &amp; setor rutin agar tidak menumpuk.</p>
+    </div>
+  </div>
+  <div class="info-block fact" style="margin-top:12px">
+    <span class="bic">⚖️</span>
+    <div><b>Dasar hukum</b><span>UU No. 18 Tahun 2008 tentang Pengelolaan Sampah melarang membuang sampah sembarangan dan membakar sampah yang tidak sesuai persyaratan teknis. Edukasi hukumnya disampaikan rekan prodi Hukum; dampak kesehatan oleh Farmasi; motivasi kebiasaan baru oleh Psikologi; dan nilai ekonominya oleh Manajemen.</span></div>
+  </div>
+
   <div class="section-head">
     <span class="eyebrow">Tonton &amp; pelajari</span>
     <h2 class="section-title">Video Edukasi</h2>
   </div>
-  <p class="muted">Tonton video cara memilah sampah dan dokumentasi kegiatan. Tempel link YouTube untuk menambah video <span class="badge-proto">prototype: reset saat reload</span></p>
-
-  <div class="input-row">
-    <input type="url" id="videoUrl" placeholder="Tempel link YouTube… (contoh: https://youtu.be/xxxx)" aria-label="Link video YouTube">
-    <button class="btn-main" onclick="addVideo()">＋ Tambah</button>
+  <p class="muted">Video cara memilah sampah, sosialisasi, dan dokumentasi kegiatan. Video dikelola pengurus lewat panel admin.</p>
+  <div class="video-grid">
+    @forelse($videos as $v)
+      @if($v->youtube_id)
+        <div class="video-card">
+          <div class="frame"><iframe src="https://www.youtube.com/embed/{{ $v->youtube_id }}" title="{{ $v->judul }}" allowfullscreen loading="lazy"></iframe></div>
+          <div class="cap">🎬 {{ $v->judul }}</div>
+        </div>
+      @endif
+    @empty
+      <div class="card muted" style="grid-column:1/-1">Belum ada video edukasi. Pengurus dapat menambahkannya lewat panel admin → Video Edukasi.</div>
+    @endforelse
   </div>
-  <div class="video-grid" id="videoGrid"></div>
 
   <div class="section-head">
     <span class="eyebrow">Cetak &amp; sebarkan</span>
     <h2 class="section-title">Poster Kampanye</h2>
   </div>
-  <p class="muted">Poster ajakan memilah sampah, siap diunduh sebagai PNG untuk dicetak atau dibagikan ke grup WhatsApp warga.</p>
-  <div class="poster-flex">
-    <canvas id="posterCanvas" width="600" height="850" aria-label="Pratinjau poster"></canvas>
-    <div>
-      <button class="btn-main" onclick="downloadPoster()">⬇️ Unduh Poster (PNG)</button>
-      <p class="hint" style="max-width:320px">Poster dibuat otomatis oleh sistem. Versi final nanti bisa diganti dengan desain tim dokumentasi.</p>
-    </div>
+  <p class="muted">Poster ajakan memilah sampah karya tim dokumentasi — siap diunduh untuk dicetak atau dibagikan ke grup WhatsApp warga.</p>
+  <div class="poster-grid">
+    @forelse($posters as $p)
+      <figure class="poster-card">
+        <img src="{{ $p->url }}" alt="{{ $p->judul }}" loading="lazy">
+        <figcaption>
+          <b>{{ $p->judul }}</b>
+          @if($p->keterangan)<span>{{ $p->keterangan }}</span>@endif
+          <a class="btn-ghost pc-dl" href="{{ $p->url }}" download>⬇️ Unduh</a>
+        </figcaption>
+      </figure>
+    @empty
+      <div class="card muted" style="grid-column:1/-1">Belum ada poster. Pengurus dapat mengunggahnya lewat panel admin → Poster Kampanye.</div>
+    @endforelse
   </div>
 
-  <div class="section-head">
-    <span class="eyebrow">Hitung tabunganmu</span>
-    <h2 class="section-title">Kalkulator Tabungan Sampah</h2>
-  </div>
-  <p class="muted lead">Masukkan perkiraan berat (kg) tiap jenis sampah anorganik, lalu lihat perkiraan rupiah yang bisa kamu tabung di Bank Sampah Desa Pajaten.</p>
-  <div class="calc-list" id="calcList"></div>
-  <div class="calc-total">
-    <span class="ct-lbl">Perkiraan tabungan<b id="calcKg">0 kg total</b></span>
-    <span class="ct-val" id="calcTotal">Rp 0</span>
-  </div>
-  <div class="calc-impact">
-    <span class="ci-ic">🌍</span>
-    <div><b id="calcCo2">± 0 kg CO₂ dicegah</b><span id="calcTree">Isi beratnya untuk lihat dampak lingkunganmu.</span></div>
-  </div>
-  <div class="calc-actions">
-    <button class="btn-ghost" onclick="resetCalc()">↺ Reset</button>
-  </div>
-  <p class="calc-note">* Harga &amp; dampak hanya perkiraan edukatif. Nilai sebenarnya ditentukan saat penimbangan di Bank Sampah.</p>
-
-  <div class="admin-only">
-  <div class="section-head">
-    <span class="eyebrow">Penghargaan</span>
-    <h2 class="section-title">Terbitkan Sertifikat <span class="admin-tag">🔑 Admin</span></h2>
-  </div>
-  <p class="muted lead">Fitur pengurus: masukkan nama peserta untuk menerbitkan sertifikat digital <b>Sahabat Lingkungan Desa Pajaten</b> — bisa diunduh &amp; dibagikan.</p>
-  <div class="input-row">
-    <input id="certName" type="text" maxlength="28" placeholder="Nama peserta…" aria-label="Nama untuk sertifikat">
-    <button class="btn-main" onclick="makeCert()">🏅 Buat Sertifikat</button>
-  </div>
-  <canvas id="certCanvas" width="900" height="640" aria-label="Pratinjau sertifikat"></canvas>
-  <div class="calc-actions">
-    <button class="btn-ghost" id="certDownload" onclick="downloadCert()" disabled>⬇️ Unduh Sertifikat (PNG)</button>
-  </div>
-  </div>
-
-  <div class="section-head">
+  <div class="section-head" id="diy">
     <span class="eyebrow">Praktik di rumah</span>
     <h2 class="section-title">Panduan DIY Olah Sampah</h2>
   </div>
@@ -152,14 +285,13 @@
     <h2 class="section-title">Pertanyaan Umum (FAQ)</h2>
   </div>
   <div class="diy-list">
-    <details class="diy"><summary><span class="diy-ic">❓</span> Apa itu Bank Sampah?</summary><div class="diy-body"><p>Tempat menabung sampah anorganik. Sampahmu ditimbang, dicatat, lalu nilainya masuk ke buku tabungan yang bisa dicairkan menjadi uang.</p></div></details>
-    <details class="diy"><summary><span class="diy-ic">♻️</span> Sampah apa saja yang diterima?</summary><div class="diy-body"><p>Sampah anorganik dalam kondisi bersih &amp; kering: botol plastik, kardus, kaleng, kertas, dan logam. Lihat daftar lengkapnya di menu Pilah.</p></div></details>
-    <details class="diy"><summary><span class="diy-ic">🧺</span> Apakah harus memilah dulu di rumah?</summary><div class="diy-body"><p>Ya. Pisahkan organik &amp; anorganik dari rumah agar prosesnya cepat dan sampah anorganik lebih bernilai jual.</p></div></details>
-    <details class="diy"><summary><span class="diy-ic">📅</span> Kapan Bank Sampah beroperasi penuh?</summary><div class="diy-body"><p>Ditargetkan mulai Agustus 2026, bertahap sesuai kesiapan warga & sarana.</p></div></details>
-    <details class="diy"><summary><span class="diy-ic">🙋</span> Bagaimana cara ikut serta?</summary><div class="diy-body"><p>Datang ke Kantor Kepala Desa Pajaten, atau hubungi mahasiswa KKN saat sosialisasi &amp; kunjungan (sowan) ke rumah warga.</p></div></details>
+    <details class="diy"><summary><span class="diy-ic">❓</span> Apa itu Bank Sampah?</summary><div class="diy-body"><p>Tempat menabung sampah anorganik yang dipusatkan di Kantor Desa. Sampahmu ditimbang (disaksikan langsung olehmu), dicatat di buku tabungan fisik dan pencatatan digital, lalu nilainya bisa dicairkan menjadi uang atau sembako.</p></div></details>
+    <details class="diy"><summary><span class="diy-ic">♻️</span> Sampah apa saja yang diterima?</summary><div class="diy-body"><p>Fokus utama: plastik <b>botol</b> dan <b>gelas/cup kemasan</b> dalam kondisi bersih, kering, dan tanpa label. Plastik yang tidak bernilai jual pun tetap diterima agar lingkungan bersih (tapi tidak dibayar). Lihat daftar lengkap jenis sampah di menu Pilah.</p></div></details>
+    <details class="diy"><summary><span class="diy-ic">🧺</span> Apakah harus memilah dulu di rumah?</summary><div class="diy-body"><p>Boleh menyetor campur, tapi dihargai dengan patokan terendah. Kalau botol dan gelas sudah dipilah sendiri dari rumah, harganya <b>lebih tinggi</b> — jadi sangat dianjurkan memilah.</p></div></details>
+    <details class="diy"><summary><span class="diy-ic">👥</span> Bagaimana sistem setorannya?</summary><div class="diy-body"><p>Per kelompok dusun (5 dusun, ±10 warga perwakilan tiap dusun pada tahap uji coba), dengan target minimal 5 kg plastik per kelompok tiap minggu. Pembagian kuota di dalam kelompok disepakati bersama anggota dusun masing-masing.</p></div></details>
+    <details class="diy"><summary><span class="diy-ic">⚖️</span> Kalau setoran belum sampai 5 kg?</summary><div class="diy-body"><p>Tidak hangus. Beratnya tercatat dan diakumulasikan ke minggu berikutnya sampai mencapai target penukaran.</p></div></details>
+    <details class="diy"><summary><span class="diy-ic">🚚</span> Dusun saya jauh dari Kantor Desa, bagaimana?</summary><div class="diy-body"><p>Pengangkutan kolektif seminggu sekali akan dibantu Kepala Dusun / Linmas, jadi warga tidak terbebani ongkos bensin.</p></div></details>
+    <details class="diy"><summary><span class="diy-ic">📅</span> Kapan Bank Sampah beroperasi penuh?</summary><div class="diy-body"><p>Uji coba dimulai Juli 2026 diawali sosialisasi &amp; praktik pemilahan. Setelah uji coba berhasil, pengembangan skala penuh dilanjutkan oleh pihak desa.</p></div></details>
+    <details class="diy"><summary><span class="diy-ic">🙋</span> Bagaimana cara ikut serta?</summary><div class="diy-body"><p>Hubungi ketua kelompok / kepala dusun masing-masing, datang ke Kantor Kepala Desa Pajaten, atau temui mahasiswa KKN saat sosialisasi &amp; kunjungan ke rumah warga.</p></div></details>
   </div>
 @endsection
-
-@push('scripts')
-<script src="{{ asset('js/paparan.js') }}"></script>
-@endpush

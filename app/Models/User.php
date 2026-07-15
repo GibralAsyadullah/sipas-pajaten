@@ -16,6 +16,7 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
+        'is_admin',
     ];
 
     protected $hidden = [
@@ -28,15 +29,16 @@ class User extends Authenticatable implements FilamentUser
         return [
             'email_verified_at' => 'datetime',
             'password'          => 'hashed',
+            'is_admin'          => 'boolean',
         ];
     }
 
     /**
      * Siapa yang boleh membuka panel Filament (/admin).
-     * Sesuaikan aturan ini dengan kebutuhan tim.
+     * Cukup tandai user sebagai admin — tidak terikat domain email tertentu.
      */
     public function canAccessPanel(Panel $panel): bool
     {
-        return str_ends_with($this->email, '@sipas.test');
+        return $this->is_admin;
     }
 }

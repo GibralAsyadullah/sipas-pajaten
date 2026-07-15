@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
             MemberSeeder::class,
             UmkmSeeder::class,
             PhotoSeeder::class,
+            WasteItemSeeder::class,
+            QuizQuestionSeeder::class,
         ]);
     }
 }

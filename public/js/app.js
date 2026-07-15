@@ -107,7 +107,7 @@ const SEARCH_INDEX=(function(){
   ].forEach(j=>idx.push({cat:'Jadwal',ic:'🗓️',title:j[0],sub:j[1],key:(j[0]+' '+j[1]).toLowerCase(),go:()=>activateTab('jadwal')}));
 
   idx.push({cat:'Lokasi',ic:'🏛️',title:'Kantor Kepala Desa Pajaten',sub:'Titik Bank Sampah · -6.0511, 107.3447',key:'kantor kepala desa pajaten bank sampah lokasi peta titik kumpul cibuaya',go:()=>activateTab('lokasi')});
-  idx.push({cat:'Lokasi',ic:'🏕️',title:'Posko KKN Cibuaya',sub:'Basecamp mahasiswa · Dusun 1',key:'posko kkn cibuaya basecamp mahasiswa dusun lokasi',go:()=>activateTab('lokasi')});
+  idx.push({cat:'Lokasi',ic:'🏕️',title:'Posko KKN Cibuaya',sub:'Basecamp mahasiswa · Dusun 3',key:'posko kkn cibuaya basecamp mahasiswa dusun lokasi',go:()=>activateTab('lokasi')});
   return idx;
 })();
 const SUGGEST=['Botol plastik','Maggot','Bank Sampah','Eceng gondok','Jadwal','Posko'];

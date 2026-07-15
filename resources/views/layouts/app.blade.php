@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0F3D28">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <title>@yield('title', 'SIPAS Pajaten') — Sistem Edukasi Pengelolaan Sampah · KKN Cibuaya 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +27,11 @@ try{if(sessionStorage.getItem('sipas-splash')==='1'){document.documentElement.cl
 
 @include('partials.modals')
 
-<script>window.SIPAS_ITEMS = @json($sipasItems ?? []);</script>
+<script>
+window.SIPAS_ITEMS = @json($sipasItems ?? []);
+window.SIPAS_QUIZ  = @json($sipasQuiz ?? []);
+window.SIPAS_URLS  = { paparan: @json(route('paparan')) };
+</script>
 <script src="{{ asset('js/data.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 @stack('scripts')

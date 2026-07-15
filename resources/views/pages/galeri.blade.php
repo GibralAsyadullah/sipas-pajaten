@@ -3,38 +3,74 @@
 @section('content')
   <div class="section-head">
     <span class="eyebrow">Rekam jejak</span>
-    <h2 class="section-title">Galeri Dokumentasi</h2>
+    <h2 class="section-title">Jurnal Kegiatan KKN</h2>
   </div>
-  <p class="muted">Perjalanan KKN Cibuaya 2026 dari pembekalan sampai pelaksanaan di desa. Arsip lengkap tersimpan di Google Drive tim.</p>
+  <p class="muted">Perjalanan KKN Cibuaya 2026 di Desa Pajaten, hari demi hari. Ketuk foto untuk memperbesar.</p>
 
+  @if($months->count() > 1)
   <div class="filter-row" id="filterRow">
     <button class="filter-chip active" data-f="semua" onclick="setFilter(this)">Semua</button>
-    <button class="filter-chip" data-f="Juni" onclick="setFilter(this)">Juni 2026</button>
-    <button class="filter-chip" data-f="Juli" onclick="setFilter(this)">Juli 2026</button>
+    @foreach($months as $m)
+      <button class="filter-chip" data-f="{{ $m }}" onclick="setFilter(this)">{{ $m }}</button>
+    @endforeach
   </div>
+  @endif
 
-  <div class="galeri-grid" id="galeriGrid">
-    @forelse ($photos as $f)
-      <div class="foto-card" data-f="{{ $f->bulan }}">
-        <img src="{{ $f->url }}" alt="{{ $f->caption }}" loading="lazy">
-        <div class="cap">{{ $f->caption }}<small>{{ $f->label }}</small></div>
+  <div class="jurnal" id="jurnalList">
+    @forelse($albums as $al)
+      <div class="jr-item" data-f="{{ $al->tanggal->translatedFormat('F') }}">
+        <div class="jr-side">
+          <span class="jr-day">D{{ $al->hari }}</span>
+          @unless($loop->last)<span class="jr-line"></span>@endunless
+        </div>
+        <div class="jr-card">
+          <span class="jr-date">Hari ke-{{ $al->hari }} · {{ $al->tanggal->translatedFormat('j F Y') }}</span>
+          <h3 class="jr-title">{{ $al->judul }}</h3>
+          @if($al->cerita)<p class="jr-story">{{ $al->cerita }}</p>@endif
+          @if($al->photos->count())
+            <div class="jr-photos">
+              @foreach($al->photos as $p)
+                <img class="jr-ph" src="{{ $p->url }}" alt="{{ $p->caption }}" loading="lazy" data-cap="{{ $p->caption }}">
+              @endforeach
+            </div>
+          @endif
+          @if($al->instagram_url)
+            <a class="jr-ig" href="{{ $al->instagram_url }}" target="_blank" rel="noopener">📷 Lihat post Instagram</a>
+          @endif
+        </div>
       </div>
     @empty
-      <div class="card muted" style="grid-column:1/-1">Belum ada foto.</div>
+      <div class="card muted">Belum ada album kegiatan. Pengurus dapat membuatnya lewat panel admin → Album Kegiatan, lalu menautkan foto-fotonya.</div>
     @endforelse
   </div>
 
+  @if($photos->count())
   <div class="section-head">
-    <span class="eyebrow">Tambah arsip</span>
-    <h2 class="section-title" style="font-size:1.15rem">Tambah Foto</h2>
+    <span class="eyebrow">Arsip lepas</span>
+    <h2 class="section-title" style="font-size:1.15rem">Dokumentasi Lainnya</h2>
   </div>
-  <p class="hint admin-only">🖼️ Unggah / hapus foto lewat <a href="/admin">Panel Pengurus</a>.</p>
+  <div class="galeri-grid" id="galeriGrid">
+    @foreach ($photos as $f)
+      <div class="foto-card" data-f="{{ $f->bulan }}">
+        <img class="jr-ph" src="{{ $f->url }}" alt="{{ $f->caption }}" loading="lazy" data-cap="{{ $f->caption }}">
+        <div class="cap">{{ $f->caption }}<small>{{ $f->label }}</small></div>
+      </div>
+    @endforeach
+  </div>
+  @endif
+
+  <p class="hint admin-only" style="margin-top:14px">🖼️ Kelola album &amp; foto lewat <a href="/admin">Panel Pengurus</a> → Album Kegiatan / Photos.</p>
 
   <div class="btn-row">
     <a class="btn-link drive-btn" href="https://drive.google.com/drive/folders/1rPKo7NtkP8UnnkeLtajiRxPkfGhHwrb9" target="_blank" rel="noopener">🗂️ Buka Arsip Google Drive</a>
     <a class="btn-link ig-btn" href="https://www.instagram.com/kkncibuaya2026_" target="_blank" rel="noopener">📷 Lihat di Instagram</a>
   </div>
   <p class="hint">Catatan: folder Drive bersifat internal tim — butuh izin akses akun untuk membukanya.</p>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()" role="dialog" aria-modal="true" aria-label="Pratinjau foto">
+    <img id="lbImg" src="" alt="">
+    <p id="lbCap"></p>
+  </div>
 @endsection
 
 @push('scripts')

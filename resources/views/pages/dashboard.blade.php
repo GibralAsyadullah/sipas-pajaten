@@ -150,9 +150,9 @@
   </div>
 
   <div class="stat-row reveal">
-    <div class="stat"><b>2</b><span>Jenis pilahan awal</span></div>
-    <div class="stat"><b>1</b><span>Titik Bank Sampah</span></div>
-    <div class="stat"><b>4</b><span>Dusun di Pajaten</span></div>
+    <div class="stat"><b>3</b><span>Jenis pilahan: plastik, kertas, organik</span></div>
+    <div class="stat"><b>5</b><span>Kelompok dusun uji coba</span></div>
+    <div class="stat"><b>50</b><span>Warga terlibat di tahap awal</span></div>
   </div>
 
   <div class="challenge-card reveal">
@@ -202,6 +202,24 @@
       <span>Sampah sayur &amp; kulit buah difermentasi dalam galon bekas dengan EM4 atau air cucian beras.</span>
     </div>
   </div>
+
+  <div class="section-head reveal">
+    <span class="eyebrow">Hasil musyawarah desa &amp; kecamatan</span>
+    <h2 class="section-title">Alur Bank Sampah Pajaten</h2>
+  </div>
+  <p class="muted reveal">Mekanisme yang disepakati bersama perangkat desa: uji coba dimulai dari <b>5 kelompok dusun</b> (± 10 warga per dusun) dengan pendataan fisik &amp; digital.</p>
+  <div class="alurbs reveal">
+    <div class="alurbs-step"><span class="as-num">1</span><span class="as-ic">🏠</span><b>Pilah di Rumah</b><span>Pisahkan plastik &amp; kertas. Sampah organik diolah jadi kompos &amp; pakan maggot.</span></div>
+    <div class="alurbs-step"><span class="as-num">2</span><span class="as-ic">🤝</span><b>Setor ke RT / Kadus</b><span>Sampah dikoordinasikan lewat RT &amp; Kepala Dusun — tidak perlu bawa sendiri ke desa.</span></div>
+    <div class="alurbs-step"><span class="as-num">3</span><span class="as-ic">⚖️</span><b>Timbang &amp; Catat</b><span>Di titik kumpul desa, sampah ditimbang lalu dicatat di buku fisik dan sistem digital.</span></div>
+    <div class="alurbs-step"><span class="as-num">4</span><span class="as-ic">🚛</span><b>Diangkut Pengepul</b><span>Setiap hari <b>Kamis</b>, pengepul mengangkut sampah yang terkumpul di desa.</span></div>
+    <div class="alurbs-step"><span class="as-num">5</span><span class="as-ic">💰</span><b>Tabungan Cair</b><span>Capai target setoran <b>5 kg per dusun</b>, tabungan sampahmu bisa dicairkan.</span></div>
+  </div>
+  <div class="alur-note reveal">
+    <div class="an ok"><b>✅ Diterima Bank Sampah</b><span>Plastik (botol, gelas, kresek bersih) serta kertas &amp; kardus.</span></div>
+    <div class="an no"><b>🚫 Tidak diterima</b><span>Pampers / popok sekali pakai — tangani terpisah sebagai residu.</span></div>
+  </div>
+  <p class="muted reveal" style="font-size:.8rem;margin-top:10px">🌱 Mahasiswa KKN berperan sebagai pemantik di awal — selanjutnya Bank Sampah dioperasikan penuh oleh perangkat desa agar berkelanjutan.</p>
 
   <div class="section-head reveal">
     <span class="eyebrow">Siapa kami</span>

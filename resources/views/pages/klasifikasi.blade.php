@@ -3,38 +3,60 @@
 @section('content')
   <div class="section-head">
     <span class="eyebrow">Panduan pilah</span>
-    <h2 class="section-title">Daftar Klasifikasi Sampah</h2>
+    <h2 class="section-title">Barang Ini Masuk Mana?</h2>
   </div>
-  <p class="muted">Cari nama barang untuk tahu masuk golongan mana, plus saran pengolahannya di program KKN Pajaten.</p>
+  <p class="muted">Ketik nama barangnya — langsung ketahuan golongannya dan harus diapakan.</p>
 
-  <div class="bin-guide" aria-label="Panduan warna tempat sampah">
-    <div class="bin-g green"><span class="bg-ic">🍃</span><b>Hijau</b><span>Organik</span></div>
-    <div class="bin-g yellow"><span class="bg-ic">🧴</span><b>Kuning</b><span>Anorganik</span></div>
-    <div class="bin-g red"><span class="bg-ic">☢️</span><b>Merah</b><span>B3</span></div>
+  <input class="search" id="searchKlas" placeholder="🔍 Barang apa yang mau kamu buang? mis. baterai, kulit pisang…" oninput="renderKlas()" aria-label="Cari klasifikasi barang">
+
+  <div class="quick-flow" aria-label="Alur cepat menentukan kategori">
+    <p class="qf-title">Tidak ketemu? Jawab 3 pertanyaan ini:</p>
+    <div class="qf-grid">
+      <button class="qf-card o" onclick="setKlasFilterTo('organik')">
+        <b>1. Cepat busuk / sisa makhluk hidup?</b>
+        <span>→ 🍃 Organik (tempat hijau)</span>
+      </button>
+      <button class="qf-card b" onclick="setKlasFilterTo('b3')">
+        <b>2. Beracun? Baterai, obat, oli, elektronik?</b>
+        <span>→ ☢️ B3 (tempat merah)</span>
+      </button>
+      <button class="qf-card a" onclick="setKlasFilterTo('anorganik')">
+        <b>3. Sisanya: kering &amp; tidak membusuk?</b>
+        <span>→ 🧴 Anorganik (kuning) — bisa ditabung!</span>
+      </button>
+    </div>
   </div>
 
-  <input class="search" id="searchKlas" placeholder="🔍 Cari barang… misal: botol, baterai, kardus" oninput="renderKlas()" aria-label="Cari klasifikasi barang">
+  <div class="bin-guide" id="binGuide" aria-label="Saring menurut kategori">
+    <button class="bin-g green" data-k="organik" onclick="toggleKlasFilter(this)">
+      <span class="bg-ic">🍃</span><b>Hijau</b><span>Organik</span><span class="cnt" id="cntOrg"></span>
+    </button>
+    <button class="bin-g yellow" data-k="anorganik" onclick="toggleKlasFilter(this)">
+      <span class="bg-ic">🧴</span><b>Kuning</b><span>Anorganik</span><span class="cnt" id="cntAno"></span>
+    </button>
+    <button class="bin-g red" data-k="b3" onclick="toggleKlasFilter(this)">
+      <span class="bg-ic">☢️</span><b>Merah</b><span>B3</span><span class="cnt" id="cntB3"></span>
+    </button>
+  </div>
+  <p class="klas-count" id="klasCount" aria-live="polite"></p>
 
-  <div class="filter-row">
-    <button class="filter-chip active" data-k="semua" onclick="setKlasFilter(this)">Semua <span class="cnt" id="cntSemua"></span></button>
-    <button class="filter-chip" data-k="organik" onclick="setKlasFilter(this)">🍃 Organik <span class="cnt" id="cntOrg"></span></button>
-    <button class="filter-chip" data-k="anorganik" onclick="setKlasFilter(this)">🧴 Anorganik <span class="cnt" id="cntAno"></span></button>
-    <button class="filter-chip" data-k="b3" onclick="setKlasFilter(this)">☢️ B3 <span class="cnt" id="cntB3"></span></button>
-  </div>
-  <div class="filter-row filter-sumber">
-    <span class="filter-label">Sumber:</span>
-    <button class="filter-chip active" data-s="semua" onclick="setSumberFilter(this)">Semua</button>
-    <button class="filter-chip" data-s="rumah" onclick="setSumberFilter(this)">🏠 Rumah Tangga</button>
-    <button class="filter-chip" data-s="kebun" onclick="setSumberFilter(this)">🌿 Kebun &amp; Halaman</button>
-    <button class="filter-chip" data-s="tani" onclick="setSumberFilter(this)">🌾 Sawah &amp; Ternak</button>
-    <button class="filter-chip" data-s="usaha" onclick="setSumberFilter(this)">🏪 Warung &amp; Pasar</button>
-    <button class="filter-chip" data-s="bengkel" onclick="setSumberFilter(this)">🔧 Elektronik &amp; Bengkel</button>
-    <select id="klasSort" class="klas-sort" onchange="renderKlas()" aria-label="Urutkan daftar">
-      <option value="default">↕️ Urutan bawaan</option>
-      <option value="az">🔤 Nama A–Z</option>
-      <option value="za">🔤 Nama Z–A</option>
-    </select>
-  </div>
+  <details class="filter-more">
+    <summary>⚙️ Filter lain (sumber sampah &amp; urutan)</summary>
+    <div class="filter-row filter-sumber">
+      <span class="filter-label">Sumber:</span>
+      <button class="filter-chip active" data-s="semua" onclick="setSumberFilter(this)">Semua</button>
+      <button class="filter-chip" data-s="rumah" onclick="setSumberFilter(this)">🏠 Rumah Tangga</button>
+      <button class="filter-chip" data-s="kebun" onclick="setSumberFilter(this)">🌿 Kebun &amp; Halaman</button>
+      <button class="filter-chip" data-s="tani" onclick="setSumberFilter(this)">🌾 Sawah &amp; Ternak</button>
+      <button class="filter-chip" data-s="usaha" onclick="setSumberFilter(this)">🏪 Warung &amp; Pasar</button>
+      <button class="filter-chip" data-s="bengkel" onclick="setSumberFilter(this)">🔧 Elektronik &amp; Bengkel</button>
+      <select id="klasSort" class="klas-sort" onchange="renderKlas()" aria-label="Urutkan daftar">
+        <option value="default">↕️ Urutan bawaan</option>
+        <option value="az">🔤 Nama A–Z</option>
+        <option value="za">🔤 Nama Z–A</option>
+      </select>
+    </div>
+  </details>
 
   <div class="klas-grid" id="klasGrid">
     <div class="klas-col o" id="colOrganik">
@@ -42,7 +64,7 @@
       <div id="listOrganik"></div>
     </div>
     <div class="klas-col a" id="colAnorganik">
-      <h3>🧴 Anorganik <span style="font-weight:500;font-size:.78rem;opacity:.75">→ Bank Sampah</span></h3>
+      <h3>🧴 Anorganik <span style="font-weight:500;font-size:.78rem;opacity:.75">→ <a href="#alur-tabung" onclick="jumpTo('alur-tabung');return false" style="color:inherit">Bank Sampah</a></span></h3>
       <div id="listAnorganik"></div>
     </div>
     <div class="klas-col b" id="colB3">
@@ -50,9 +72,26 @@
       <div id="listB3"></div>
     </div>
   </div>
-  <p class="hint" id="klasEmpty" style="display:none">Tidak ada barang yang cocok dengan pencarian. Coba kata kunci lain.</p>
+  <p class="hint" id="klasEmpty" style="display:none">Tidak ada barang yang cocok dengan pencarian. Coba kata kunci lain, atau pakai alur 3 pertanyaan di atas.</p>
 
-  <div class="b3-warn">
+  <div class="section-head" id="alur-tabung">
+    <span class="eyebrow">Setelah dipilah</span>
+    <h2 class="section-title">Dari Pilahan Jadi Tabungan 💰</h2>
+  </div>
+  <p class="muted">Sampah <b>plastik &amp; kertas</b> yang sudah kamu pilah bisa ditabung ke Bank Sampah desa. Begini alurnya:</p>
+  <div class="alurbs">
+    <div class="alurbs-step"><span class="as-num">1</span><span class="as-ic">🏠</span><b>Pilah di Rumah</b><span>Pisahkan plastik &amp; kertas. Sampah organik diolah jadi kompos &amp; pakan maggot.</span></div>
+    <div class="alurbs-step"><span class="as-num">2</span><span class="as-ic">🤝</span><b>Setor ke RT / Kadus</b><span>Sampah dikoordinasikan lewat RT &amp; Kepala Dusun — tidak perlu bawa sendiri ke desa.</span></div>
+    <div class="alurbs-step"><span class="as-num">3</span><span class="as-ic">⚖️</span><b>Timbang &amp; Catat</b><span>Di titik kumpul desa, sampah ditimbang lalu dicatat di buku fisik dan sistem digital.</span></div>
+    <div class="alurbs-step"><span class="as-num">4</span><span class="as-ic">🚛</span><b>Diangkut Pengepul</b><span>Setiap hari <b>Kamis</b>, pengepul mengangkut sampah yang terkumpul di desa.</span></div>
+    <div class="alurbs-step"><span class="as-num">5</span><span class="as-ic">💰</span><b>Tabungan Cair</b><span>Capai target setoran <b>5 kg per dusun</b>, tabungan sampahmu bisa dicairkan.</span></div>
+  </div>
+  <div class="alur-note">
+    <div class="an ok"><b>✅ Diterima Bank Sampah</b><span>Plastik (botol, gelas, kresek bersih) serta kertas &amp; kardus.</span></div>
+    <div class="an no"><b>🚫 Tidak diterima</b><span>Pampers / popok sekali pakai — tangani terpisah sebagai residu.</span></div>
+  </div>
+
+  <div class="b3-warn" id="b3info">
     <span class="bw-ic">⚠️</span>
     <div>
       <b>Penting soal sampah B3</b>

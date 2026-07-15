@@ -5,7 +5,7 @@
     <span class="eyebrow">Peta wilayah</span>
     <h2 class="section-title">Lokasi &amp; Kegiatan</h2>
   </div>
-  <p class="muted">Desa Pajaten terbagi empat dusun; kegiatan pokok KKN berpusat di <b>Dusun 1</b>. Untuk tahap awal, <b>pengumpulan Bank Sampah terpusat di satu titik</b>: Kantor Kepala Desa.</p>
+  <p class="muted">Desa Pajaten terbagi lima dusun. Posko KKN berada di <b>Dusun 3</b> — sedusun dengan pengepul sampah — sedangkan <b>pengumpulan Bank Sampah terpusat di satu titik</b>: Kantor Kepala Desa.</p>
 
   <div class="map-toggle">
     <button class="mt-btn active" data-loc="desa" onclick="switchMap(this)"><span>🏛️</span> Kantor Desa</button>
@@ -27,20 +27,20 @@
     </div>
     <div class="loc-card posko">
       <div class="lc-top"><span class="lc-ic">🏕️</span><div><b>Posko KKN Cibuaya</b><small>🏠 Basecamp mahasiswa</small></div></div>
-      <div class="lc-coord">-6.052482, 107.346781</div>
-      <div class="lc-addr">Dusun 1, Desa Pajaten</div>
+      <div class="lc-coord">-6.048567, 107.351001</div>
+      <div class="lc-addr">Dusun 3, Desa Pajaten</div>
     </div>
   </div>
   <div class="dist-bar">
     <span class="db-ic">🚶</span>
-    <div><b>± 270 meter</b><span>jarak Posko → Kantor Desa, sekitar 4 menit jalan kaki</span></div>
+    <div><b>± 800 meter</b><span>jarak Posko (Dusun 3) → Kantor Desa, sekitar 10 menit jalan kaki</span></div>
   </div>
 
   <div class="section-head">
     <span class="eyebrow">Denah desa</span>
     <h2 class="section-title">Peta Ilustrasi Wilayah</h2>
   </div>
-  <p class="muted">Gambaran tata letak lokasi kegiatan: sawah, saluran irigasi, serta posisi Bank Sampah dan Posko di Dusun 1.</p>
+  <p class="muted">Gambaran tata letak lokasi kegiatan: sawah, saluran irigasi, posisi Bank Sampah di Kantor Desa, serta Posko KKN &amp; pengepul di Dusun 3.</p>
   <div class="card village-holder">
     <svg viewBox="0 0 680 470" role="img" aria-label="Peta ilustrasi Desa Pajaten" class="village-map">
   <defs>
@@ -74,14 +74,16 @@
   <path d="M-10 96 Q120 132 205 214 Q300 306 384 306 Q520 306 700 256" fill="none" stroke="#CFEDF8" stroke-width="4" stroke-linecap="round" opacity=".8"/>
   <text x="120" y="150" fill="#3E8FB0" font-family="Plus Jakarta Sans,sans-serif" font-weight="700" font-size="12" transform="rotate(31 120 150)">〜 Saluran Irigasi</text>
 
-  <!-- batas dusun (4 wilayah) -->
+  <!-- batas dusun (5 wilayah) -->
   <path d="M228 16 L214 456" fill="none" stroke="#96B183" stroke-width="2.2" stroke-dasharray="9 7"/>
-  <path d="M400 16 L390 456" fill="none" stroke="#96B183" stroke-width="2.2" stroke-dasharray="9 7"/>
+  <path d="M336 16 L326 456" fill="none" stroke="#96B183" stroke-width="2.2" stroke-dasharray="9 7"/>
+  <path d="M472 16 L464 456" fill="none" stroke="#96B183" stroke-width="2.2" stroke-dasharray="9 7"/>
   <path d="M560 16 L552 456" fill="none" stroke="#96B183" stroke-width="2.2" stroke-dasharray="9 7"/>
-  <text x="70" y="30" fill="#6E8B5C" font-family="Fredoka,sans-serif" font-weight="600" font-size="14" opacity=".85">DUSUN 1</text>
-  <text x="300" y="30" fill="#6E8B5C" font-family="Fredoka,sans-serif" font-weight="600" font-size="14" opacity=".85">DUSUN 2</text>
-  <text x="462" y="30" fill="#6E8B5C" font-family="Fredoka,sans-serif" font-weight="600" font-size="14" opacity=".85">DUSUN 3</text>
-  <text x="600" y="30" fill="#6E8B5C" font-family="Fredoka,sans-serif" font-weight="600" font-size="14" opacity=".85">DUSUN 4</text>
+  <text x="72" y="30" text-anchor="middle" fill="#6E8B5C" font-family="Fredoka,sans-serif" font-weight="600" font-size="14" opacity=".85">DUSUN 1</text>
+  <text x="282" y="30" text-anchor="middle" fill="#6E8B5C" font-family="Fredoka,sans-serif" font-weight="600" font-size="14" opacity=".85">DUSUN 2</text>
+  <text x="404" y="30" text-anchor="middle" fill="#6E8B5C" font-family="Fredoka,sans-serif" font-weight="600" font-size="14" opacity=".85">DUSUN 3</text>
+  <text x="516" y="30" text-anchor="middle" fill="#6E8B5C" font-family="Fredoka,sans-serif" font-weight="600" font-size="14" opacity=".85">DUSUN 4</text>
+  <text x="618" y="30" text-anchor="middle" fill="#6E8B5C" font-family="Fredoka,sans-serif" font-weight="600" font-size="14" opacity=".85">DUSUN 5</text>
 
   <!-- jalan / rute -->
   <path d="M215 182 Q290 214 335 250 Q398 296 452 306" fill="none" stroke="#EDE2C9" stroke-width="15" stroke-linecap="round"/>
@@ -89,7 +91,7 @@
   <!-- label jarak -->
   <g transform="translate(300 236)">
     <rect x="-42" y="-15" width="84" height="26" rx="13" fill="#fff" stroke="#E7DECB" filter="url(#pinsh)"/>
-    <text x="0" y="3" text-anchor="middle" fill="#8F6710" font-family="Plus Jakarta Sans,sans-serif" font-weight="800" font-size="12">± 270 m</text>
+    <text x="0" y="3" text-anchor="middle" fill="#8F6710" font-family="Plus Jakarta Sans,sans-serif" font-weight="800" font-size="12">± 800 m</text>
   </g>
 
   <!-- PIN kantor desa + bank sampah -->
@@ -113,7 +115,17 @@
   <g transform="translate(452 352)">
     <rect x="-64" y="-2" width="128" height="42" rx="10" fill="#fff" stroke="#E7DECB"/>
     <text x="0" y="15" text-anchor="middle" fill="#17281E" font-family="Fredoka,sans-serif" font-weight="600" font-size="13">Posko KKN</text>
-    <text x="0" y="31" text-anchor="middle" fill="#1E7A46" font-family="Plus Jakarta Sans,sans-serif" font-weight="700" font-size="10">🏠 Basecamp Mahasiswa</text>
+    <text x="0" y="31" text-anchor="middle" fill="#1E7A46" font-family="Plus Jakarta Sans,sans-serif" font-weight="700" font-size="10">🏠 Basecamp · Dusun 3</text>
+  </g>
+
+  <!-- titik pengepul sampah (Dusun 3) -->
+  <g filter="url(#pinsh)">
+    <circle cx="404" cy="92" r="14" fill="#fff" stroke="#C9A24B" stroke-width="2"/>
+    <text x="404" y="98" text-anchor="middle" font-size="14">🚛</text>
+  </g>
+  <g transform="translate(404 116)">
+    <rect x="-80" y="-2" width="160" height="26" rx="9" fill="#fff" stroke="#E7DECB"/>
+    <text x="0" y="14" text-anchor="middle" fill="#7A4A10" font-family="Plus Jakarta Sans,sans-serif" font-weight="700" font-size="10">Pengepul · angkut tiap Kamis</text>
   </g>
 
   <!-- kompas -->
@@ -148,12 +160,12 @@
     <span class="eyebrow">Cara kerja</span>
     <h2 class="section-title">Alur Menabung di Bank Sampah</h2>
   </div>
-  <p class="muted">Empat langkah sederhana mengubah sampah anorganik jadi tabungan.</p>
+  <p class="muted">Empat langkah sederhana mengubah sampah plastik &amp; kertas jadi tabungan.</p>
   <div class="alur">
-    <div class="alur-step"><span class="num">1</span><span class="ai">🧺</span><b>Pilah</b><span>Pisahkan sampah anorganik di rumah</span></div>
-    <div class="alur-step"><span class="num">2</span><span class="ai">🚶</span><b>Setor</b><span>Bawa ke Kantor Kepala Desa</span></div>
-    <div class="alur-step"><span class="num">3</span><span class="ai">⚖️</span><b>Timbang</b><span>Petugas menimbang &amp; mencatat</span></div>
-    <div class="alur-step"><span class="num">4</span><span class="ai">💰</span><b>Tabung</b><span>Nilainya masuk buku tabunganmu</span></div>
+    <div class="alur-step"><span class="num">1</span><span class="ai">🧺</span><b>Pilah</b><span>Pisahkan plastik &amp; kertas di rumah</span></div>
+    <div class="alur-step"><span class="num">2</span><span class="ai">🤝</span><b>Setor</b><span>Kumpulkan lewat RT / Kepala Dusun</span></div>
+    <div class="alur-step"><span class="num">3</span><span class="ai">⚖️</span><b>Timbang</b><span>Dicatat di buku fisik &amp; sistem digital</span></div>
+    <div class="alur-step"><span class="num">4</span><span class="ai">💰</span><b>Tabung</b><span>Cair setelah target 5 kg per dusun</span></div>
   </div>
 
   <div class="section-head">
@@ -223,9 +235,9 @@
       <span><b>Kantor Kepala Desa Pajaten</b><span>Titik pengumpulan Bank Sampah</span></span>
       <span class="go">→</span>
     </a>
-    <a class="map-btn posko" href="https://maps.app.goo.gl/zDVTcJkVMCaULVJH9" target="_blank" rel="noopener">
+    <a class="map-btn posko" href="https://maps.app.goo.gl/293AkHqVSqPxGU7r6" target="_blank" rel="noopener">
       <span class="ic">🏕️</span>
-      <span><b>Posko KKN Cibuaya 2026</b><span>Basecamp kegiatan mahasiswa</span></span>
+      <span><b>Posko KKN Cibuaya 2026</b><span>Basecamp kegiatan mahasiswa · Dusun 3</span></span>
       <span class="go">→</span>
     </a>
   </div>

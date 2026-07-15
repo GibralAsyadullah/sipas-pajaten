@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GameResultController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ReportController;
 
@@ -16,5 +17,8 @@ Route::get('/tentang',     [PageController::class, 'tentang'])->name('tentang');
 
 /* Warga tetap bisa melapor tanpa login */
 Route::post('/lapor', [ReportController::class, 'store'])->name('lapor.store');
+
+/* Hasil main Game & Quiz (identitas responden + skor) untuk bahan evaluasi */
+Route::post('/game/hasil', [GameResultController::class, 'store'])->name('game.hasil');
 
 /* Seluruh pengelolaan data kini lewat panel Filament di /admin */

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\ActivityNote;
+use App\Models\EducationVideo;
+use App\Models\GalleryAlbum;
 use App\Models\Member;
 use App\Models\Photo;
+use App\Models\Poster;
 use App\Models\Report;
 use App\Models\Schedule;
 use App\Models\Umkm;
@@ -13,7 +16,13 @@ class PageController extends Controller
 {
     public function dashboard()   { return view('pages.dashboard'); }
     public function game()        { return view('pages.game'); }
-    public function paparan()     { return view('pages.paparan'); }
+    public function paparan()
+    {
+        return view('pages.paparan', [
+            'videos'  => EducationVideo::orderBy('urutan')->get(),
+            'posters' => Poster::orderBy('urutan')->get(),
+        ]);
+    }
     public function klasifikasi() { return view('pages.klasifikasi'); }
 
     public function lokasi()
@@ -25,8 +34,28 @@ class PageController extends Controller
 
     public function galeri()
     {
+        // Album diurutkan dari yang paling awal untuk penomoran "Hari ke-N",
+        // lalu dibalik agar kegiatan terbaru tampil paling atas.
+        $albums = GalleryAlbum::with('photos')
+            ->orderBy('tanggal')->orderBy('urutan')->orderBy('id')
+            ->get()
+            ->values()
+            ->map(function ($album, $i) {
+                $album->hari = $i + 1;
+                return $album;
+            })
+            ->reverse()->values();
+
+        $photos = Photo::whereNull('album_id')->latest()->get();
+
+        $months = $albums->map(fn ($a) => $a->tanggal->translatedFormat('F'))
+            ->merge($photos->pluck('bulan'))
+            ->filter()->unique()->values();
+
         return view('pages.galeri', [
-            'photos' => Photo::latest()->get(),
+            'albums' => $albums,
+            'photos' => $photos,
+            'months' => $months,
         ]);
     }
 

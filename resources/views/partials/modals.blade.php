@@ -14,6 +14,7 @@
       <div class="info-block"><span class="bic">⏳</span><div><b>Lama terurai di alam</b><span id="mUrai">—</span></div></div>
       <div class="info-block fact"><span class="bic">💡</span><div><b>Tahukah kamu?</b><span id="mFakta">—</span></div></div>
     </div>
+    <div class="modal-actions" id="mActions"></div>
     <button class="modal-close" onclick="closeKlasModal()">Mengerti! 👍</button>
   </div>
 </div>

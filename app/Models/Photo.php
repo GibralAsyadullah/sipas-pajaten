@@ -3,10 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Photo extends Model
 {
     protected $guarded = [];
+
+    public function album(): BelongsTo
+    {
+        return $this->belongsTo(GalleryAlbum::class, 'album_id');
+    }
 
     /**
      * URL publik foto, apa pun asal path-nya:

@@ -15,6 +15,7 @@ class AdminUserSeeder extends Seeder
             [
                 'name'     => 'Pengurus KKN',
                 'password' => Hash::make('pajaten2026'), // ⚠️ GANTI setelah login pertama!
+                'is_admin' => true,
             ]
         );
     }
