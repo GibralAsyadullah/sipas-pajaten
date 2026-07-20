@@ -1,2 +1,11 @@
 *
 !.gitignore
+# Foto konten diikutkan ke repo agar situs tampil lengkap saat deploy ke Railway.
+!anggota/
+!anggota/**
+!galeri/
+!galeri/**
+!jadwal/
+!jadwal/**
+!poster/
+!poster/**
