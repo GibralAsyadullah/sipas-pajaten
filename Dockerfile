@@ -12,9 +12,13 @@ RUN composer dump-autoload --optimize --no-dev
 # --- Tahap 2: runtime ---
 FROM serversideup/php:8.3-fpm-nginx
 
-# Ekstensi tambahan: gd (kompres/konversi foto WebP) & pdo_pgsql (Supabase Postgres).
+# Ekstensi tambahan:
+#  - gd       : kompres/konversi foto ke WebP
+#  - pdo_pgsql: koneksi Supabase Postgres
+#  - intl     : format angka Filament (Number::format) — wajib untuk panel admin
+#  - bcmath, zip: lazim dibutuhkan Filament (perhitungan presisi, ekspor)
 USER root
-RUN install-php-extensions gd pdo_pgsql
+RUN install-php-extensions gd pdo_pgsql intl bcmath zip
 USER www-data
 
 # Salin aplikasi + vendor hasil tahap 1.
