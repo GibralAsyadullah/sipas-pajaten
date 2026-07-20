@@ -40,9 +40,12 @@
         <p>Satu titik pengumpulan untuk tahap awal — setor sampah anorganikmu di sini.</p>
       </div>
     </div>
-    <div class="dots" id="dots"></div>
-    <button class="slide-nav prev" onclick="prevSlide()" aria-label="Slide sebelumnya">‹</button>
-    <button class="slide-nav next" onclick="nextSlide()" aria-label="Slide berikutnya">›</button>
+    <div class="slide-progress" id="slideProgress"><i></i></div>
+    <div class="slide-ctrl">
+      <button class="slide-nav prev" onclick="prevSlide()" aria-label="Slide sebelumnya">‹</button>
+      <div class="dots" id="dots"></div>
+      <button class="slide-nav next" onclick="nextSlide()" aria-label="Slide berikutnya">›</button>
+    </div>
   </div>
 
   <div class="maskot-card reveal">
@@ -143,10 +146,22 @@
 
   <div class="komp reveal" id="kompCard">
     <div class="section-head" style="margin:0 0 2px"><span class="eyebrow">Tahukah kamu</span><h2 class="section-title" style="font-size:1.15rem">Komposisi Sampah Rumah Tangga</h2></div>
-    <div class="komp-row"><div class="komp-top"><span>🍃 Organik</span><span class="kv" id="kOrg">0%</span></div><div class="komp-bar"><i class="org" data-v="55"></i></div></div>
-    <div class="komp-row"><div class="komp-top"><span>🧴 Anorganik</span><span class="kv" id="kAno">0%</span></div><div class="komp-bar"><i class="ano" data-v="35"></i></div></div>
-    <div class="komp-row"><div class="komp-top"><span>☢️ B3</span><span class="kv" id="kB3">0%</span></div><div class="komp-bar"><i class="b3" data-v="10"></i></div></div>
-    <p class="komp-note">Sebagian besar sampah rumah tangga adalah organik yang bisa dikompos. Memilah dari rumah membuat lebih banyak sampah bernilai &amp; mengurangi yang berakhir di TPA.</p>
+    <div class="komp-row"><div class="komp-top"><span>🍃 Organik <small>(sisa makanan, kayu/ranting/daun)</small></span><span class="kv" id="kOrg">0%</span></div><div class="komp-bar"><i class="org" data-v="52"></i></div></div>
+    <div class="komp-row"><div class="komp-top"><span>🧴 Anorganik <small>(plastik, kertas, logam, kaca, kain, karet)</small></span><span class="kv" id="kAno">0%</span></div><div class="komp-bar"><i class="ano" data-v="41"></i></div></div>
+    <div class="komp-row"><div class="komp-top"><span>🗑️ Lainnya &amp; B3</span><span class="kv" id="kB3">0%</span></div><div class="komp-bar"><i class="b3" data-v="7"></i></div></div>
+    <p class="komp-note">Sisa makanan saja menyumbang <b>39,4%</b> dan plastik <b>19,6%</b> dari sampah nasional. Lebih dari separuh sampah rumah tangga bisa dikompos — memilah dari rumah membuat lebih banyak sampah bernilai &amp; mengurangi yang berakhir di TPA.</p>
+    <p class="komp-src">Sumber: <a href="https://sipsn.menlhk.go.id/sipsn/public/data/komposisi" target="_blank" rel="noopener">SIPSN — Kementerian Lingkungan Hidup</a>, komposisi sampah nasional 2024.</p>
+  </div>
+
+  <div class="komp reveal" id="sumberCard">
+    <div class="section-head" style="margin:0 0 2px"><span class="eyebrow">Tahukah kamu</span><h2 class="section-title" style="font-size:1.15rem">Dari Mana Asal Sampah?</h2></div>
+    <div class="komp-row"><div class="komp-top"><span>🏠 Rumah tangga</span><span class="kv">0%</span></div><div class="komp-bar"><i class="org" data-v="57"></i></div></div>
+    <div class="komp-row"><div class="komp-top"><span>🧺 Pasar</span><span class="kv">0%</span></div><div class="komp-bar"><i class="src" data-v="14"></i></div></div>
+    <div class="komp-row"><div class="komp-top"><span>🏪 Perniagaan <small>(toko &amp; warung)</small></span><span class="kv">0%</span></div><div class="komp-bar"><i class="src" data-v="8"></i></div></div>
+    <div class="komp-row"><div class="komp-top"><span>🏛️ Fasilitas publik</span><span class="kv">0%</span></div><div class="komp-bar"><i class="src" data-v="7"></i></div></div>
+    <div class="komp-row"><div class="komp-top"><span>🏢 Kantor, kawasan &amp; lainnya</span><span class="kv">0%</span></div><div class="komp-bar"><i class="src" data-v="15"></i></div></div>
+    <p class="komp-note">Lebih dari separuh sampah nasional (<b>56,7%</b>) lahir dari <b>rumah tangga</b> — itulah kenapa gerakan pilah dimulai dari dapur rumahmu sendiri. <i>(angka dibulatkan)</i></p>
+    <p class="komp-src">Sumber: <a href="https://sipsn.menlhk.go.id/sipsn/" target="_blank" rel="noopener">SIPSN — Kementerian Lingkungan Hidup</a>, sumber timbulan sampah nasional 2025.</p>
   </div>
 
   <div class="stat-row reveal">
@@ -192,14 +207,66 @@
       <span>Sampah organik jadi pakan maggot, dikeringkan, dijual online satu pintu lewat desa.</span>
     </div>
     <div class="proker" style="--pk:var(--sky)">
-      <span class="pk-ic">🌾</span>
-      <b>Eco-Enzyme &amp; Pakan Eceng Gondok</b>
-      <span>Eceng gondok dicacah + keong sawah jadi pakan ternak murah, plus pelatihan eco-enzyme.</span>
+      <span class="pk-ic">🎨</span>
+      <b>Media Kreatif</b>
+      <span>Sampah anorganik disulap jadi kerajinan bernilai — pot, hiasan, dan produk kreatif lainnya.</span>
     </div>
     <div class="proker" style="--pk:var(--gold)">
-      <span class="pk-ic">🧪</span>
-      <b>Pupuk Organik Cair (POC)</b>
-      <span>Sampah sayur &amp; kulit buah difermentasi dalam galon bekas dengan EM4 atau air cucian beras.</span>
+      <span class="pk-ic">🌿</span>
+      <b>Kompos</b>
+      <span>Sampah organik rumah tangga diolah menjadi kompos untuk kebun &amp; pertanian warga.</span>
+    </div>
+  </div>
+
+  <div class="section-head reveal">
+    <span class="eyebrow">Media edukasi</span>
+    <h2 class="section-title">Papan Informasi Lingkungan</h2>
+  </div>
+  <p class="muted reveal">Papan <b>“Berapa Lama Sampahmu Terurai?”</b> yang kami dirikan di halaman <b>Kantor Kepala Desa Pajaten</b> — tiap tingkatnya ditempeli contoh sampah asli, agar angkanya terlihat nyata dan bukan sekadar teori.</p>
+  @include('partials.papan-informasi', ['ringkas' => true])
+
+  <div class="section-head reveal">
+    <span class="eyebrow">Sekilas info</span>
+    <h2 class="section-title">Bank Sampah Desa Pajaten</h2>
+  </div>
+  <p class="muted reveal">Yang perlu kamu tahu sebelum menyetor sampah pertama kali.</p>
+  <div class="bs-card reveal">
+    <div class="bs-head">
+      <span class="bs-ic">♻️</span>
+      <div>
+        <b>Tabung Sampahmu, Jadi Rupiah</b>
+        <small>Sampah anorganik ditimbang, dicatat, lalu jadi tabungan warga</small>
+      </div>
+    </div>
+    <div class="bs-rows">
+      <div class="bs-row">
+        <span class="br-ic">📍</span>
+        <div><b>Titik kumpul</b><span>Kantor Kepala Desa Pajaten — satu titik terpusat untuk seluruh dusun</span></div>
+      </div>
+      <div class="bs-row">
+        <span class="br-ic">👥</span>
+        <div><b>Cara menyetor</b><span>Lewat kelompok dusun, dikoordinasikan RT / Kepala Dusun — bukan perorangan</span></div>
+      </div>
+      <div class="bs-row">
+        <span class="br-ic">🗓️</span>
+        <div><b>Jadwal</b><span>Kira-kira seminggu sekali; pengepul mengangkut tiap hari Kamis</span></div>
+      </div>
+      <div class="bs-row">
+        <span class="br-ic">🎯</span>
+        <div><b>Target pencairan</b><span>5 kg per dusun. Belum capai target tidak hangus — diakumulasi ke minggu berikutnya</span></div>
+      </div>
+      <div class="bs-row">
+        <span class="br-ic">🍶</span>
+        <div><b>Yang diterima</b><span>Hanya botol plastik &amp; gelas/cup kemasan — bersih &amp; kering</span></div>
+      </div>
+      <div class="bs-row">
+        <span class="br-ic">🥇</span>
+        <div><b>Tips menyetor</b><span>Belum sempat dipilah pun tetap dibeli. Usahakan bersih &amp; kering agar penimbangan lancar</span></div>
+      </div>
+    </div>
+    <div class="bs-cta">
+      <button class="btn-main" onclick="gotoTab('paparan')">📖 Pelajari alur lengkapnya</button>
+      <button class="btn-ghost" onclick="gotoTab('lokasi')">📍 Lihat lokasi</button>
     </div>
   </div>
 
@@ -209,14 +276,14 @@
   </div>
   <p class="muted reveal">Mekanisme yang disepakati bersama perangkat desa: uji coba dimulai dari <b>5 kelompok dusun</b> (± 10 warga per dusun) dengan pendataan fisik &amp; digital.</p>
   <div class="alurbs reveal">
-    <div class="alurbs-step"><span class="as-num">1</span><span class="as-ic">🏠</span><b>Pilah di Rumah</b><span>Pisahkan plastik &amp; kertas. Sampah organik diolah jadi kompos &amp; pakan maggot.</span></div>
+    <div class="alurbs-step"><span class="as-num">1</span><span class="as-ic">🏠</span><b>Pilah di Rumah</b><span>Pisahkan botol plastik &amp; gelas/cup kemasan. Sampah organik diolah jadi kompos &amp; pakan maggot.</span></div>
     <div class="alurbs-step"><span class="as-num">2</span><span class="as-ic">🤝</span><b>Setor ke RT / Kadus</b><span>Sampah dikoordinasikan lewat RT &amp; Kepala Dusun — tidak perlu bawa sendiri ke desa.</span></div>
     <div class="alurbs-step"><span class="as-num">3</span><span class="as-ic">⚖️</span><b>Timbang &amp; Catat</b><span>Di titik kumpul desa, sampah ditimbang lalu dicatat di buku fisik dan sistem digital.</span></div>
     <div class="alurbs-step"><span class="as-num">4</span><span class="as-ic">🚛</span><b>Diangkut Pengepul</b><span>Setiap hari <b>Kamis</b>, pengepul mengangkut sampah yang terkumpul di desa.</span></div>
     <div class="alurbs-step"><span class="as-num">5</span><span class="as-ic">💰</span><b>Tabungan Cair</b><span>Capai target setoran <b>5 kg per dusun</b>, tabungan sampahmu bisa dicairkan.</span></div>
   </div>
   <div class="alur-note reveal">
-    <div class="an ok"><b>✅ Diterima Bank Sampah</b><span>Plastik (botol, gelas, kresek bersih) serta kertas &amp; kardus.</span></div>
+    <div class="an ok"><b>✅ Diterima Bank Sampah</b><span>Hanya <b>botol plastik</b> dan <b>gelas/cup kemasan</b> — bersih &amp; kering.</span></div>
     <div class="an no"><b>🚫 Tidak diterima</b><span>Pampers / popok sekali pakai — tangani terpisah sebagai residu.</span></div>
   </div>
   <p class="muted reveal" style="font-size:.8rem;margin-top:10px">🌱 Mahasiswa KKN berperan sebagai pemantik di awal — selanjutnya Bank Sampah dioperasikan penuh oleh perangkat desa agar berkelanjutan.</p>
@@ -237,7 +304,7 @@
       <div class="fact"><b>Tema</b>Pemberdayaan Masyarakat dalam Pengelolaan Sampah Berbasis Lingkungan Berkelanjutan</div>
       <div class="fact"><b>Lokasi</b>Desa Pajaten, Kec. Cibuaya, Kab. Karawang, Jawa Barat</div>
       <div class="fact"><b>Periode</b>Juli – Agustus 2026 · Program Reguler</div>
-      <div class="fact"><b>Fokus Program</b>Bank Sampah, edukasi 3R, maggot, eco enzyme, POC, pakan eceng gondok</div>
+      <div class="fact"><b>Fokus Program</b>Bank Sampah, edukasi 3R, budidaya maggot, media kreatif, kompos</div>
     </div>
     <div class="profil-galeri">
       <figure>
@@ -256,7 +323,6 @@
     <div class="btn-row">
       <a class="btn-link ig-btn" href="https://www.instagram.com/kkncibuaya2026_" target="_blank" rel="noopener">📷 @kkncibuaya2026_</a>
       <a class="btn-link maps-btn" href="https://maps.app.goo.gl/7HUxCny95nknTSLPA" target="_blank" rel="noopener">📍 Kantor Desa</a>
-      <a class="btn-link drive-btn" href="https://drive.google.com/drive/folders/1rPKo7NtkP8UnnkeLtajiRxPkfGhHwrb9" target="_blank" rel="noopener">🗂️ Drive Dokumentasi</a>
     </div>
     <div class="ubp-row">
       <img src="data:image/webp;base64,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" alt="Logo UBP Karawang">

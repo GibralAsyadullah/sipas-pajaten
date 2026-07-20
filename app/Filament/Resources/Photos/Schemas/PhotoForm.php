@@ -2,10 +2,12 @@
 
 namespace App\Filament\Resources\Photos\Schemas;
 
+use App\Support\ImageConverter;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class PhotoForm
 {
@@ -15,10 +17,13 @@ class PhotoForm
             ->components([
                 FileUpload::make('src')
                     ->label('File Foto')
+                    ->helperText('Foto otomatis dikompres & dikonversi ke WebP saat disimpan. Format: JPG/PNG/WebP — foto iPhone (HEIC) harap disimpan ulang sebagai JPG dulu.')
                     ->image()
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                     ->disk('public')
                     ->directory('galeri')
-                    ->maxSize(4096)
+                    ->maxSize(8192)
+                    ->saveUploadedFileUsing(fn (TemporaryUploadedFile $file) => ImageConverter::toWebp($file, 'galeri'))
                     ->required()
                     ->columnSpanFull(),
                 Select::make('album_id')

@@ -1,26 +1,28 @@
-/* galeri.js — filter per bulan (album + foto lepas) & lightbox */
+/* galeri.js — filter per bulan (album + foto lepas), mode tampilan & lightbox */
 function setFilter(btn){
   document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
   btn.classList.add('active');
   const f=btn.dataset.f;
-  document.querySelectorAll('.jr-item, #galeriGrid .foto-card').forEach(c=>{
+  document.querySelectorAll('.jr-item, .foto-card').forEach(c=>{
     c.style.display=(f==='semua'||c.dataset.f===f)?'':'none';
   });
 }
 
-/* ---- lightbox foto ---- */
-function openLightbox(src,cap){
-  document.getElementById('lbImg').src=src;
-  document.getElementById('lbCap').textContent=cap||'';
-  document.getElementById('lightbox').classList.add('show');
-  document.body.style.overflow='hidden';
+/* ---- mode tampilan: timeline (jurnal) vs grid (semua foto) ---- */
+function setView(btn){
+  document.querySelectorAll('.vt-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const grid=btn.dataset.v==='grid';
+  document.getElementById('timelineView').classList.toggle('hidden',grid);
+  document.getElementById('gridView').classList.toggle('hidden',!grid);
 }
-function closeLightbox(){
-  document.getElementById('lightbox').classList.remove('show');
-  document.body.style.overflow='';
+
+/* lightbox foto kini global — lihat app.js */
+
+/* ---- kolase feed IG: tampilkan 9 dulu, sisanya di balik tombol ---- */
+function toggleIgAll(btn){
+  const buka=btn.dataset.open!=='1';
+  document.querySelectorAll('.ig-kolase .ig-hide').forEach(el=>el.classList.toggle('show',buka));
+  btn.dataset.open=buka?'1':'0';
+  btn.textContent=buka?'⬆ Sembunyikan':'⬇ Tampilkan semua '+btn.dataset.total+' post';
 }
-document.addEventListener('click',e=>{
-  const img=e.target.closest('.jr-ph');
-  if(img)openLightbox(img.src,img.dataset.cap);
-});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});

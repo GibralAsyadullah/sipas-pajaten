@@ -53,12 +53,17 @@
     </div>
     <div class="set-links">
       <a class="btn-link ig-btn" href="https://www.instagram.com/kkncibuaya2026_" target="_blank" rel="noopener">📷 Instagram</a>
-      <a class="btn-link drive-btn" href="https://drive.google.com/drive/folders/1rPKo7NtkP8UnnkeLtajiRxPkfGhHwrb9" target="_blank" rel="noopener">🗂️ Drive</a>
     </div>
     <button class="btn-main" style="width:100%;margin-top:10px" onclick="shareApp()">🔗 Bagikan Aplikasi</button>
     <div id="shareMsg" style="text-align:center;font-size:.78rem;color:var(--pine-2);font-weight:700;margin-top:8px;min-height:16px"></div>
     <button class="modal-close" onclick="closeSettings()">Selesai</button>
   </div>
+</div>
+
+<!-- ===== LIGHTBOX FOTO (global — galeri, jadwal, profil, dll.) ===== -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()" role="dialog" aria-modal="true" aria-label="Pratinjau foto">
+  <img id="lbImg" src="" alt="">
+  <p id="lbCap"></p>
 </div>
 
 <button class="to-top" id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Kembali ke atas">↑</button>

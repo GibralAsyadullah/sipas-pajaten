@@ -1,6 +1,51 @@
 @extends('layouts.app')
 @section('title', 'Edukasi & Alur Program')
 @section('content')
+  <div class="section-head" id="konsep-3r">
+    <span class="eyebrow">Konsep dasar</span>
+    <h2 class="section-title">Prinsip 3R: Reduce, Reuse, Recycle</h2>
+  </div>
+  <p class="muted lead">Seluruh program pengelolaan sampah KKN 2026 berpijak pada satu konsep: <b>3R</b>. Intinya menangani sampah <b>sejak dari sumbernya</b> — bukan menunggu menumpuk lalu dibuang. Urutannya penting: kurangi dulu, kalau tidak bisa pakai ulang, kalau tidak bisa baru daur ulang.</p>
+  <div class="r3-grid">
+    <div class="r3-card reduce">
+      <span class="r3-badge">1 · Paling utama</span>
+      <span class="r3-ic">🚯</span>
+      <b>Reduce <span>— Kurangi</span></b>
+      <p>Menekan jumlah sampah sebelum terlanjur ada. Sampah yang tidak pernah dibuat tidak perlu diurus siapa pun.</p>
+      <ul class="r3-list">
+        <li>Bawa tas belanja sendiri, tolak kantong kresek</li>
+        <li>Pakai botol minum isi ulang, hindari gelas sekali pakai</li>
+        <li>Beli ukuran besar daripada banyak kemasan sachet</li>
+      </ul>
+    </div>
+    <div class="r3-card reuse">
+      <span class="r3-badge">2 · Sebelum dibuang</span>
+      <span class="r3-ic">🔁</span>
+      <b>Reuse <span>— Pakai Ulang</span></b>
+      <p>Memakai kembali barang dalam bentuk aslinya, tanpa proses pabrik. Cara paling murah memperpanjang umur barang.</p>
+      <ul class="r3-list">
+        <li>Galon &amp; botol bekas jadi media budidaya maggot atau POC</li>
+        <li>Kaleng &amp; ember bekas jadi pot tanaman</li>
+        <li>Kantong plastik dipakai berkali-kali selagi masih layak</li>
+      </ul>
+    </div>
+    <div class="r3-card recycle">
+      <span class="r3-badge">3 · Jalan terakhir</span>
+      <span class="r3-ic">♻️</span>
+      <b>Recycle <span>— Daur Ulang</span></b>
+      <p>Mengolah sampah jadi barang baru. Di sinilah <b>Bank Sampah</b> berperan: sampahmu didaur ulang, kamu dapat tabungan.</p>
+      <ul class="r3-list">
+        <li>Botol plastik &amp; gelas/cup kemasan ditabung ke Bank Sampah desa</li>
+        <li>Sampah organik jadi kompos, eco-enzyme, atau pakan maggot</li>
+        <li>Plastik bekas diolah jadi produk kerajinan bernilai jual</li>
+      </ul>
+    </div>
+  </div>
+  <div class="info-block fact" style="margin-top:12px">
+    <span class="bic">💡</span>
+    <div><b>Kenapa urutannya tidak boleh dibalik?</b><span>Daur ulang tetap butuh energi, air, dan biaya angkut. Karena itu <b>Reduce</b> selalu didahulukan — paling murah, paling ringan bagi lingkungan. Recycle adalah pilihan terakhir, bukan yang pertama.</span></div>
+  </div>
+
   <div class="section-head" id="alur-bank-sampah">
     <span class="eyebrow">Program utama</span>
     <h2 class="section-title">Alur Bank Sampah Desa Pajaten</h2>
@@ -13,72 +58,31 @@
     <div class="stat"><b>5 kg</b><span>Target setoran plastik per kelompok / minggu</span></div>
   </div>
 
-  <div class="flow-list">
-    <div class="flow-step">
-      <span class="fs-num">1</span>
-      <div class="fs-body">
-        <b>🏠 Kumpulkan &amp; pilah dari rumah</b>
-        <p>Kumpulkan sampah plastik — terutama <b>botol</b> dan <b>gelas/cup kemasan</b>. Pastikan <b>bersih, kering, dan labelnya dilepas</b> agar nilai jualnya lebih tinggi. Sisa makanan &amp; sampah organik dipisahkan (lihat alur organik di bawah).</p>
-      </div>
-    </div>
-    <div class="flow-step">
-      <span class="fs-num">2</span>
-      <div class="fs-body">
-        <b>👥 Setor lewat kelompok dusun</b>
-        <p>Penyetoran dilakukan <b>per kelompok dusun</b> (bukan perorangan), kira-kira <b>seminggu sekali</b>. Untuk dusun yang jauh, pengangkutan kolektif dibantu Kepala Dusun / Linmas agar warga tidak terbebani ongkos.</p>
-      </div>
-    </div>
-    <div class="flow-step">
-      <span class="fs-num">3</span>
-      <div class="fs-body">
-        <b>⚖️ Timbang di Bank Sampah Kantor Desa</b>
-        <p>Sampah ditimbang di unit Bank Sampah yang dipusatkan di Kantor Desa. Penimbangan <b>disaksikan langsung oleh pemilik sampah</b> demi transparansi. Setelah ditimbang, sampah dipilah ke rak/sekat botol dan gelas.</p>
-      </div>
-    </div>
-    <div class="flow-step">
-      <span class="fs-num">4</span>
-      <div class="fs-body">
-        <b>📒 Dicatat ganda: buku &amp; digital</b>
-        <p>Hasil timbangan dicatat di <b>buku tabungan fisik</b> milik warga dan <b>pencatatan digital berbasis web</b> yang dipegang pihak desa sebagai data cadangan. Pencatatan dikoordinasikan lewat ketua kelompok tiap dusun.</p>
-      </div>
-    </div>
-    <div class="flow-step">
-      <span class="fs-num">5</span>
-      <div class="fs-body">
-        <b>🐷 Menabung &amp; akumulasi</b>
-        <p>Penukaran dihitung <b>per 5 kg</b>. Kalau minggu ini belum sampai target (misal baru 3 kg), tidak hangus — otomatis <b>diakumulasikan ke minggu berikutnya</b>.</p>
-      </div>
-    </div>
-    <div class="flow-step">
-      <span class="fs-num">6</span>
-      <div class="fs-body">
-        <b>💵 Cairkan tabungan</b>
-        <p>Setelah tabungan mencapai target minimal, nilainya bisa <b>dicairkan menjadi uang atau sembako</b>. Sampah lalu disalurkan desa ke pengepul besar.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-head">
-    <span class="eyebrow">Biar makin untung</span>
-    <h2 class="section-title">Aturan Harga Sampah</h2>
-  </div>
-  <p class="muted">Harga ditentukan dari cara menyetor. Makin rapi memilah, makin tinggi nilainya.</p>
-  <div class="harga-grid">
-    <div class="harga-card best">
-      <span class="hc-ic">🥇</span>
-      <b>Dipilah sendiri dari rumah</b>
-      <p>Botol dan gelas/cup dipisahkan, bersih &amp; tanpa label → dihargai <b>lebih tinggi</b>.</p>
-    </div>
-    <div class="harga-card">
-      <span class="hc-ic">🥈</span>
-      <b>Disetor campur</b>
-      <p>Boleh, tapi dihitung dengan <b>patokan harga terendah</b> (± Rp2.000–3.000/kg) karena harus dipilah ulang oleh pihak desa.</p>
-    </div>
-    <div class="harga-card zero">
-      <span class="hc-ic">🤝</span>
-      <b>Plastik tanpa nilai jual</b>
-      <p>Tetap <b>diterima</b> supaya lingkungan bersih, namun tidak ada pembayaran (Rp0). Jangan dibakar atau dibuang ke sungai!</p>
-    </div>
+  <div class="acc-flow">
+    <details class="acc-item" open>
+      <summary><span class="acc-num">1</span><b>🏠 Kumpulkan &amp; pilah dari rumah</b><span class="acc-chev">⌄</span></summary>
+      <p>Kumpulkan sampah plastik — terutama <b>botol</b> dan <b>gelas/cup kemasan</b>. Pastikan <b>bersih, kering, dan labelnya dilepas</b> agar nilai jualnya lebih tinggi. Sisa makanan &amp; sampah organik dipisahkan (lihat alur organik di bawah).</p>
+    </details>
+    <details class="acc-item">
+      <summary><span class="acc-num">2</span><b>👥 Setor lewat kelompok dusun</b><span class="acc-chev">⌄</span></summary>
+      <p>Penyetoran dilakukan <b>per kelompok dusun</b> (bukan perorangan), kira-kira <b>seminggu sekali</b>. Untuk dusun yang jauh, pengangkutan kolektif dibantu Kepala Dusun / Linmas agar warga tidak terbebani ongkos.</p>
+    </details>
+    <details class="acc-item">
+      <summary><span class="acc-num">3</span><b>⚖️ Timbang di Bank Sampah Kantor Desa</b><span class="acc-chev">⌄</span></summary>
+      <p>Sampah ditimbang di unit Bank Sampah yang dipusatkan di Kantor Desa. Penimbangan <b>disaksikan langsung oleh pemilik sampah</b> demi transparansi. Setelah ditimbang, sampah dipilah ke rak/sekat botol dan gelas.</p>
+    </details>
+    <details class="acc-item">
+      <summary><span class="acc-num">4</span><b>📒 Dicatat ganda: buku &amp; digital</b><span class="acc-chev">⌄</span></summary>
+      <p>Hasil timbangan dicatat di <b>buku tabungan fisik</b> milik warga dan <b>pencatatan digital berbasis web</b> yang dipegang pihak desa sebagai data cadangan. Pencatatan dikoordinasikan lewat ketua kelompok tiap dusun.</p>
+    </details>
+    <details class="acc-item">
+      <summary><span class="acc-num">5</span><b>🐷 Menabung &amp; akumulasi</b><span class="acc-chev">⌄</span></summary>
+      <p>Penukaran dihitung <b>per 5 kg</b>. Kalau minggu ini belum sampai target (misal baru 3 kg), tidak hangus — otomatis <b>diakumulasikan ke minggu berikutnya</b>.</p>
+    </details>
+    <details class="acc-item">
+      <summary><span class="acc-num">6</span><b>💵 Cairkan tabungan</b><span class="acc-chev">⌄</span></summary>
+      <p>Setelah tabungan mencapai target minimal, nilainya bisa <b>dicairkan menjadi uang atau sembako</b>. Sampah lalu disalurkan desa ke pengepul besar.</p>
+    </details>
   </div>
 
   <div class="section-head" id="alur-organik">
@@ -86,28 +90,19 @@
     <h2 class="section-title">Alur Sampah Organik → Maggot &amp; Kompos</h2>
   </div>
   <p class="muted">Sampah organik tidak ditabung ke Bank Sampah, tapi diolah agar tidak berakhir di sungai.</p>
-  <div class="flow-list">
-    <div class="flow-step">
-      <span class="fs-num">1</span>
-      <div class="fs-body">
-        <b>🥬 Pisahkan sisa dapur</b>
-        <p>Sisa makanan, sayur, dan kulit buah dikumpulkan terpisah dari plastik.</p>
-      </div>
-    </div>
-    <div class="flow-step">
-      <span class="fs-num">2</span>
-      <div class="fs-body">
-        <b>🪱 Jadikan pakan maggot (BSF)</b>
-        <p>Sampah organik menjadi pakan budidaya maggot. Media awalnya cukup <b>galon/botol bekas</b> secara swadaya di tiap dusun — tidak perlu kandang mahal. Maggot yang dipanen bernilai jual sebagai pakan ternak.</p>
-      </div>
-    </div>
-    <div class="flow-step">
-      <span class="fs-num">3</span>
-      <div class="fs-body">
-        <b>🌱 Atau olah sendiri di rumah</b>
-        <p>Bisa juga dijadikan <b>kompos, eco-enzyme, atau POC</b> — ikuti panduan langkah demi langkah di bagian <b>Panduan DIY</b> di bawah halaman ini.</p>
-      </div>
-    </div>
+  <div class="acc-flow">
+    <details class="acc-item" open>
+      <summary><span class="acc-num">1</span><b>🥬 Pisahkan sisa dapur</b><span class="acc-chev">⌄</span></summary>
+      <p>Sisa makanan, sayur, dan kulit buah dikumpulkan terpisah dari plastik.</p>
+    </details>
+    <details class="acc-item">
+      <summary><span class="acc-num">2</span><b>🪱 Jadikan pakan maggot (BSF)</b><span class="acc-chev">⌄</span></summary>
+      <p>Sampah organik menjadi pakan budidaya maggot. Media awalnya cukup <b>galon/botol bekas</b> secara swadaya di tiap dusun — tidak perlu kandang mahal. Maggot yang dipanen bernilai jual sebagai pakan ternak.</p>
+    </details>
+    <details class="acc-item">
+      <summary><span class="acc-num">3</span><b>🌱 Atau olah sendiri di rumah</b><span class="acc-chev">⌄</span></summary>
+      <p>Bisa juga dijadikan <b>kompos, eco-enzyme, atau POC</b> — ikuti panduan langkah demi langkah di bagian <b>Panduan DIY</b> di bawah halaman ini.</p>
+    </details>
   </div>
   <div class="info-block fact" style="margin-top:12px">
     <span class="bic">🚫</span>
@@ -163,9 +158,19 @@
   <p class="muted">Video cara memilah sampah, sosialisasi, dan dokumentasi kegiatan. Video dikelola pengurus lewat panel admin.</p>
   <div class="video-grid">
     @forelse($videos as $v)
-      @if($v->youtube_id)
+      @if($v->embed_url)
         <div class="video-card">
-          <div class="frame"><iframe src="https://www.youtube.com/embed/{{ $v->youtube_id }}" title="{{ $v->judul }}" allowfullscreen loading="lazy"></iframe></div>
+          <div class="frame"><iframe src="{{ $v->embed_url }}" title="{{ $v->judul }}" allowfullscreen loading="lazy"></iframe></div>
+          <div class="cap">🎬 {{ $v->judul }}</div>
+        </div>
+      @elseif($v->is_file)
+        <div class="video-card">
+          <div class="frame"><video src="{{ $v->youtube_url }}" controls preload="metadata"></video></div>
+          <div class="cap">🎬 {{ $v->judul }}</div>
+        </div>
+      @else
+        <div class="video-card">
+          <a class="frame frame-link" href="{{ $v->youtube_url }}" target="_blank" rel="noopener"><span>Tonton video</span></a>
           <div class="cap">🎬 {{ $v->judul }}</div>
         </div>
       @endif
@@ -286,8 +291,8 @@
   </div>
   <div class="diy-list">
     <details class="diy"><summary><span class="diy-ic">❓</span> Apa itu Bank Sampah?</summary><div class="diy-body"><p>Tempat menabung sampah anorganik yang dipusatkan di Kantor Desa. Sampahmu ditimbang (disaksikan langsung olehmu), dicatat di buku tabungan fisik dan pencatatan digital, lalu nilainya bisa dicairkan menjadi uang atau sembako.</p></div></details>
-    <details class="diy"><summary><span class="diy-ic">♻️</span> Sampah apa saja yang diterima?</summary><div class="diy-body"><p>Fokus utama: plastik <b>botol</b> dan <b>gelas/cup kemasan</b> dalam kondisi bersih, kering, dan tanpa label. Plastik yang tidak bernilai jual pun tetap diterima agar lingkungan bersih (tapi tidak dibayar). Lihat daftar lengkap jenis sampah di menu Pilah.</p></div></details>
-    <details class="diy"><summary><span class="diy-ic">🧺</span> Apakah harus memilah dulu di rumah?</summary><div class="diy-body"><p>Boleh menyetor campur, tapi dihargai dengan patokan terendah. Kalau botol dan gelas sudah dipilah sendiri dari rumah, harganya <b>lebih tinggi</b> — jadi sangat dianjurkan memilah.</p></div></details>
+    <details class="diy"><summary><span class="diy-ic">♻️</span> Sampah apa saja yang diterima?</summary><div class="diy-body"><p>Bank Sampah hanya menerima <b>botol plastik</b> dan <b>gelas/cup kemasan</b> dalam kondisi bersih &amp; kering. Jenis sampah lain tetap perlu dipilah di rumah — panduan lengkapnya ada di menu Pilah.</p></div></details>
+    <details class="diy"><summary><span class="diy-ic">🧺</span> Apakah harus memilah dulu di rumah?</summary><div class="diy-body"><p>Tidak wajib — sampah yang <b>belum dipilah pun tetap dibeli</b> oleh pengepul. Tapi memilah dari rumah tetap dianjurkan: penimbangan lebih cepat, dan sampah organik bisa langsung diolah jadi kompos &amp; pakan maggot.</p></div></details>
     <details class="diy"><summary><span class="diy-ic">👥</span> Bagaimana sistem setorannya?</summary><div class="diy-body"><p>Per kelompok dusun (5 dusun, ±10 warga perwakilan tiap dusun pada tahap uji coba), dengan target minimal 5 kg plastik per kelompok tiap minggu. Pembagian kuota di dalam kelompok disepakati bersama anggota dusun masing-masing.</p></div></details>
     <details class="diy"><summary><span class="diy-ic">⚖️</span> Kalau setoran belum sampai 5 kg?</summary><div class="diy-body"><p>Tidak hangus. Beratnya tercatat dan diakumulasikan ke minggu berikutnya sampai mencapai target penukaran.</p></div></details>
     <details class="diy"><summary><span class="diy-ic">🚚</span> Dusun saya jauh dari Kantor Desa, bagaimana?</summary><div class="diy-body"><p>Pengangkutan kolektif seminggu sekali akan dibantu Kepala Dusun / Linmas, jadi warga tidak terbebani ongkos bensin.</p></div></details>

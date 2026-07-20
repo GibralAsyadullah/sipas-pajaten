@@ -10,6 +10,17 @@
       <p class="ah-tag">“Pajaten Bergerak, Sampah Terkelola” 🌱</p>
     </div>
   </div>
+  <div class="mitra-strip reveal">
+    <span class="mitra-label">Diselenggarakan bersama</span>
+    <div class="mitra-item">
+      <img src="{{ asset('img/Logo-Ubp.png') }}" alt="Logo Universitas Buana Perjuangan Karawang">
+      <span>Universitas Buana<br>Perjuangan Karawang</span>
+    </div>
+    <div class="mitra-item">
+      <img src="{{ asset('img/logo-karawang.png') }}" alt="Lambang Desa Pajaten, Kecamatan Cibuaya">
+      <span>Desa Pajaten<br>Kec. Cibuaya</span>
+    </div>
+  </div>
   <div class="ah-stats reveal">
     <div><b data-count="30">30</b><span>Hari Mengabdi</span></div>
     <div><b data-count="5">5</b><span>Dusun Binaan</span></div>
@@ -17,18 +28,17 @@
     <div><b data-count="5">5</b><span>Program Kerja</span></div>
   </div>
   <div class="fact-chips reveal">
-    <span class="fchip">📮 41356</span>
-    <span class="fchip">🌊 Pesisir Utara</span>
-    <span class="fchip">🏘️ 5 Dusun</span>
-    <span class="fchip">👩‍💼 Kades Perempuan</span>
-    <span class="fchip">🍘 Khas Opak Ketan</span>
-    <span class="fchip">💪 Lokus P2WKSS 2026</span>
+    <span class="fchip"><i class="fc-ic">📮</i><span class="fc-txt"><span class="fc-l">Kode Pos</span><b>41356</b></span></span>
+    <span class="fchip"><i class="fc-ic">🌊</i><span class="fc-txt"><span class="fc-l">Letak</span><b>Pesisir Utara</b></span></span>
+    <span class="fchip"><i class="fc-ic">🏘️</i><span class="fc-txt"><span class="fc-l">Wilayah</span><b>5 Dusun</b></span></span>
+    <span class="fchip"><i class="fc-ic">👩‍💼</i><span class="fc-txt"><span class="fc-l">Kepala Desa</span><b>Hj. Nurheni, S.Pd.</b></span></span>
+    <span class="fchip"><i class="fc-ic">🍘</i><span class="fc-txt"><span class="fc-l">Produk Khas</span><b>Opak Ketan</b></span></span>
+    <span class="fchip"><i class="fc-ic">💪</i><span class="fc-txt"><span class="fc-l">Program</span><b>Lokus P2WKSS 2026</b></span></span>
   </div>
   <div class="tentang-nav reveal">
     <a href="#sec-sejarah" onclick="jumpTo('sec-sejarah');return false">📜 Sejarah</a>
     <a href="#sec-tim" onclick="jumpTo('sec-tim');return false">👥 Tim</a>
     <a href="#sec-proker" onclick="jumpTo('sec-proker');return false">🎯 Proker</a>
-    <a href="#sec-umkm" onclick="jumpTo('sec-umkm');return false">🏪 UMKM</a>
     <a href="#sec-dok" onclick="jumpTo('sec-dok');return false">📸 Dokumentasi</a>
   </div>
 
@@ -40,7 +50,7 @@
     <span class="ab-ic">📜</span>
     <div>
       <b>Asal-usul Nama: dari Pejaten menjadi Pajaten</b>
-      <p>Desa ini dahulu bernama <b>Pejaten</b>, lalu berubah menjadi <b>Pajaten</b> yang dipakai sampai sekarang. Nama Pajaten sendiri diambil dari nama <b>kuburan (makam)</b> yang berada di wilayah desa. Karena sejarah itu, ejaan lama "Pejaten" masih sering dijumpai di dokumen maupun percakapan warga.</p>
+      <p>Desa ini dahulu bernama <b>Pejaten</b>, lalu berubah menjadi <b>Pajaten</b> yang dipakai sampai sekarang. Secara historis, nama ini berakar dari kata <b>"Pajaratan"</b> — bahasa Sunda yang berarti <b>makam atau kuburan kuno</b> — merujuk pada keberadaan situs makam bersejarah di wilayah desa. Seiring waktu, pelafalan masyarakat bergeser dari <i>Pajaratan</i>, <i>Pajaten</i>, hingga <i>Pejaten</i>. Karena sejarah itu, ejaan lama "Pejaten" masih sering dijumpai di dokumen maupun percakapan warga.</p>
     </div>
   </div>
   <div class="profil-grid reveal">
@@ -50,22 +60,134 @@
     </div>
     <div class="profil-card">
       <span class="pf-ic">🏘️</span><b>Wilayah</b>
-      <p>Terbagi menjadi <b>lima dusun</b>, di antaranya Dusun Pajaten, Babakan Karawang, dan Cimerta, dengan jaringan irigasi sebagai urat nadi warga.</p>
+      <p>Terbagi menjadi <b>lima dusun</b>: Dusun I, II, III, serta Dusun <b>Cimerta</b> dan <b>Babakan Karawang</b> — dengan jaringan irigasi sebagai urat nadi warga.</p>
     </div>
     <div class="profil-card">
       <span class="pf-ic">👩‍💼</span><b>Pemerintahan</b>
-      <p>Dipimpin oleh <b>kepala desa perempuan</b> dan ditetapkan sebagai lokus program <b>P2WKSS 2026</b> (pemberdayaan perempuan menuju keluarga sehat sejahtera).</p>
+      <p>Dipimpin oleh <b>Hj. Nurheni, S.Pd.</b> sejak April 2021 dan ditetapkan sebagai lokus program <b>P2WKSS 2026</b> (pemberdayaan perempuan menuju keluarga sehat sejahtera).</p>
     </div>
     <div class="profil-card">
       <span class="pf-ic">🌾</span><b>Potensi &amp; Tantangan</b>
       <p>Didominasi sawah &amp; pertanian dengan produk khas <b>opak ketan</b>; sebagai desa pesisir, sebagian wilayahnya menghadapi <b>abrasi air laut</b>.</p>
     </div>
   </div>
+  <div class="btn-row reveal">
+    <a class="btn-link ig-btn" href="https://www.instagram.com/pajaten_karawang" target="_blank" rel="noopener">📷 @pajaten_karawang · IG resmi Desa</a>
+    <a class="btn-link ig-btn" href="https://www.instagram.com/kec_cibuaya" target="_blank" rel="noopener">📷 @kec_cibuaya · IG Kecamatan</a>
+  </div>
+
+  <div class="section-head reveal">
+    <span class="eyebrow">Perangkat desa</span>
+    <h2 class="section-title">Kepala Desa &amp; Kepala Dusun</h2>
+  </div>
+  <div class="kades-card reveal">
+    <div class="kd-head">
+      <span class="kd-av"><img src="{{ asset('img/perangkat/kades.webp') }}" alt="Foto Hj. Nurheni, S.Pd." loading="lazy"></span>
+      <div class="kd-id">
+        <b class="kd-name">Hj. Nurheni, S.Pd.</b>
+        <span class="kd-role">Kepala Desa Pajaten</span>
+        <span class="kd-alias">Dikenal dengan nama <b>Hj. Henny Dinata</b> di media sosial</span>
+      </div>
+    </div>
+    <div class="kd-meta">
+      <div class="kd-m">
+        <span class="km-l">Periode jabatan</span>
+        <b>2021 – 2027</b>
+        <span class="km-s">terpilih 21 Maret 2021, dilantik akhir April 2021</span>
+      </div>
+      <div class="kd-m">
+        <span class="km-l">Wilayah pemerintahan</span>
+        <b>5 Dusun</b>
+        <span class="km-s">Dusun I, II, III, Cimerta, Babakan Karawang</span>
+      </div>
+      <div class="kd-m">
+        <span class="km-l">Program prioritas</span>
+        <b>Lokus P2WKSS 2026</b>
+        <span class="km-s">pemberdayaan perempuan menuju keluarga sehat sejahtera</span>
+      </div>
+    </div>
+  </div>
+  <p class="muted">Lima Kepala Dusun yang menjadi ujung tombak koordinasi Bank Sampah di wilayahnya masing-masing.</p>
+  <div class="orang-grid reveal">
+    <div class="orang-card">
+      <span class="og-av"><img src="{{ asset('img/perangkat/kadus-rusdi.webp') }}" alt="Foto Rusdi" loading="lazy"></span>
+      <div class="og-id">
+        <b class="og-name">Rusdi</b>
+        <span class="og-role">Kepala Dusun I</span>
+      </div>
+    </div>
+    <div class="orang-card">
+      <span class="og-av"><img src="{{ asset('img/perangkat/kadus-kardi.webp') }}" alt="Foto Kardi" loading="lazy"></span>
+      <div class="og-id">
+        <b class="og-name">Kardi</b>
+        <span class="og-role">Kepala Dusun II</span>
+      </div>
+    </div>
+    <div class="orang-card">
+      <span class="og-av"><img src="{{ asset('img/perangkat/kadus-asna.webp') }}" alt="Foto Asna" loading="lazy"></span>
+      <div class="og-id">
+        <b class="og-name">Asna</b>
+        <span class="og-role">Kepala Dusun III</span>
+      </div>
+    </div>
+    <div class="orang-card">
+      <span class="og-av"><img src="{{ asset('img/perangkat/kadus-esin.webp') }}" alt="Foto Esin Khaerudin" loading="lazy"></span>
+      <div class="og-id">
+        <b class="og-name">Esin Khaerudin</b>
+        <span class="og-role">Kepala Dusun Cimerta</span>
+      </div>
+    </div>
+    <div class="orang-card">
+      <span class="og-av"><img src="{{ asset('img/perangkat/kadus-idit.webp') }}" alt="Foto Idit" loading="lazy"></span>
+      <div class="og-id">
+        <b class="og-name">Idit</b>
+        <span class="og-role">Kepala Dusun Babakan Karawang</span>
+      </div>
+    </div>
+  </div>
   <div class="about-card reveal">
     <span class="ab-ic">🎓</span>
     <div>
-      <b>Tentang KKN Cibuaya 2026</b>
-      <p>Kuliah Kerja Nyata (KKN) Universitas Buana Perjuangan Karawang tahun 2026 menerjunkan mahasiswa lintas program studi ke Kecamatan Cibuaya secara gabungan beberapa desa. Di Desa Pajaten, fokus utamanya adalah <b>pemberdayaan masyarakat dalam pengelolaan sampah berbasis lingkungan berkelanjutan</b> — mulai dari sosialisasi 3R, Bank Sampah, budidaya maggot, hingga edukasi digital.</p>
+      <b>Tentang KKN UBP Karawang Tahun 2026</b>
+      <p>Kuliah Kerja Nyata (KKN) merupakan implementasi <b>Tri Dharma Perguruan Tinggi</b>, khususnya dharma pengabdian kepada masyarakat, yang wajib ditempuh mahasiswa sebagai sarana pembelajaran sekaligus pengabdian. Penyelenggaraan KKN dikelola oleh <b>Lembaga Penelitian dan Pengabdian kepada Masyarakat (LPPM)</b> Universitas Buana Perjuangan Karawang. Pada tahun 2026, KKN dilaksanakan sebagai <b>Program Reguler</b> di wilayah Purwasukasi (Kabupaten Purwakarta, Subang, Karawang, dan Bekasi) — dan Desa Pajaten, Kecamatan Cibuaya, menjadi salah satu desa sasarannya.</p>
+    </div>
+  </div>
+
+  <div class="tema-banner reveal">
+    <span class="tb-label">Tema KKN 2026</span>
+    <b class="tb-title">“Pemberdayaan Masyarakat dalam Pengelolaan Sampah Berbasis Lingkungan Berkelanjutan”</b>
+    <p class="tb-desc">Tema ini ditetapkan berdasarkan hasil evaluasi KKN sebelumnya, kebutuhan masyarakat, serta rapat koordinasi LPPM tanggal <b>18 Mei 2026</b>. Latar belakangnya adalah meningkatnya volume sampah akibat pertumbuhan penduduk dan pola konsumsi, yang berdampak pada pencemaran lingkungan, penurunan kualitas kesehatan, tersumbatnya saluran air pemicu banjir, hingga kerusakan ekosistem.</p>
+  </div>
+
+  <div class="about-card reveal">
+    <span class="ab-ic">🎯</span>
+    <div>
+      <b>Tujuan Umum</b>
+      <p>Meningkatkan kesadaran dan partisipasi masyarakat dalam pengelolaan sampah secara berkelanjutan, guna menciptakan lingkungan yang <b>bersih, sehat, dan bernilai ekonomi</b>. Melalui program ini mahasiswa diharapkan menjadi <b>agen perubahan</b> (<i>agent of change</i>) — bukan sekadar menjalankan program seremonial, melainkan menghadirkan solusi nyata dan berkelanjutan.</p>
+    </div>
+  </div>
+
+  <div class="section-head reveal">
+    <span class="eyebrow">Sasaran program</span>
+    <h2 class="section-title">Tujuan Khusus KKN 2026</h2>
+  </div>
+  <p class="muted">Delapan sasaran yang ditetapkan LPPM sebagai arah pelaksanaan seluruh program kerja.</p>
+  <div class="tujuan-grid reveal">
+    <div class="tujuan-item"><span class="tj-n">1</span><span>Memberikan edukasi mengenai pengelolaan sampah yang baik dan benar.</span></div>
+    <div class="tujuan-item"><span class="tj-n">2</span><span>Mendorong penerapan konsep <b>3R</b> dalam kehidupan sehari-hari.</span></div>
+    <div class="tujuan-item"><span class="tj-n">3</span><span>Membantu masyarakat memilah sampah organik dan anorganik.</span></div>
+    <div class="tujuan-item"><span class="tj-n">4</span><span>Mengembangkan <b>bank sampah</b> sebagai sarana pemberdayaan ekonomi.</span></div>
+    <div class="tujuan-item"><span class="tj-n">5</span><span>Mengurangi pencemaran lingkungan akibat penumpukan sampah.</span></div>
+    <div class="tujuan-item"><span class="tj-n">6</span><span>Menumbuhkan kepedulian terhadap kebersihan secara berkelanjutan.</span></div>
+    <div class="tujuan-item"><span class="tj-n">7</span><span>Meningkatkan keterampilan mengolah sampah jadi produk bernilai jual.</span></div>
+    <div class="tujuan-item"><span class="tj-n">8</span><span>Membangun kolaborasi mahasiswa, pemerintah desa, dan masyarakat.</span></div>
+  </div>
+
+  <div class="about-card reveal">
+    <span class="ab-ic">💻</span>
+    <div>
+      <b>Fokus Program Studi Teknik Informatika</b>
+      <p>Sesuai <i>Tabel Sub Tema KKN Program Studi</i> dalam buku panduan, sub tema Teknik Informatika adalah <b>“Pemanfaatan Teknologi Digital dalam Edukasi dan Monitoring Pengelolaan Sampah”</b>, dengan fokus kegiatan berupa <b>website edukasi</b> dan <b>media kampanye digital</b>. Situs <b>SIPAS Pajaten</b> yang sedang Anda buka ini merupakan wujud dari sub tema tersebut.</p>
     </div>
   </div>
 
@@ -73,36 +195,144 @@
     <span class="eyebrow">Susunan tim</span>
     <h2 class="section-title">Anggota Kelompok</h2>
   </div>
-  <p class="muted">Susunan mahasiswa KKN di Desa Pajaten. <span class="admin-only" style="display:inline">Tambahkan lewat form di bawah (mode admin).</span></p>
+  @php
+    // DPL dipisah dari mahasiswa: perannya beda, jadi tidak dicampur dalam grid yang sama.
+    [$dpl, $mahasiswa] = $members->partition(fn ($m) => str_contains(strtolower($m->peran), 'dosen'));
+  @endphp
+  <p class="muted">{{ $mahasiswa->count() }} mahasiswa lintas program studi, didampingi {{ $dpl->count() }} Dosen Pembimbing Lapangan.</p>
+
+  @foreach ($dpl as $d)
+    <div class="dpl-card reveal">
+      <span class="dpl-av">
+        @if ($d->foto_url)
+          <img src="{{ $d->foto_url }}" alt="Foto {{ $d->nama }}" loading="lazy">
+        @else
+          {{ strtoupper(mb_substr(trim($d->nama) ?: '?', 0, 1)) }}
+        @endif
+      </span>
+      <div class="dpl-id">
+        <span class="dpl-l">Dosen Pembimbing Lapangan</span>
+        <b class="dpl-name">{{ $d->nama }}</b>
+        <span class="dpl-s">Membimbing, mengarahkan &amp; menilai pelaksanaan KKN di Desa Pajaten</span>
+      </div>
+    </div>
+  @endforeach
+
   <div class="team-grid" id="anggota">
-    @forelse ($members as $m)
+    @forelse ($mahasiswa as $m)
       <div class="team-card">
-        <div class="team-av">{{ strtoupper(mb_substr(trim($m->nama) ?: '?', 0, 1)) }}</div>
+        <div class="team-av">
+          @if ($m->foto_url)
+            <img src="{{ $m->foto_url }}" alt="Foto {{ $m->nama }}" loading="lazy">
+          @else
+            {{ strtoupper(mb_substr(trim($m->nama) ?: '?', 0, 1)) }}
+          @endif
+        </div>
         <div class="tc-name">{{ $m->nama }}</div><div class="tc-role">{{ $m->peran }}</div>
+        @if ($m->prodi)<div class="tc-prodi">{{ $m->prodi }}</div>@endif
       </div>
     @empty
       <div class="team-empty">Belum ada data anggota. Tambahkan lewat mode admin.</div>
     @endforelse
   </div>
-<p class="hint admin-only">👥 Kelola anggota lewat <a href="/admin">Panel Pengurus</a>.</p>
+  <div class="section-head reveal" id="sec-kerangka">
+    <span class="eyebrow">Kerangka LPPM</span>
+    <h2 class="section-title">Fungsi &amp; Fokus Program KKN 2026</h2>
+  </div>
+  <p class="muted lead">Buku Panduan KKN UBP Karawang 2026 membagi program kerja ke dalam tiga lapis. <b>Program Utama</b> adalah fokus wajib tiap kelompok, <b>Program Pendukung</b> memperkuatnya, dan <b>Program Individu</b> menyesuaikan bidang ilmu tiap mahasiswa. Kerangka inilah yang kami terjemahkan menjadi program nyata di Desa Pajaten.</p>
+
+  <div class="prog-tabs reveal">
+    <div class="prog-tab utama"><b>5</b><span>Program Utama</span><small>fokus wajib kelompok</small></div>
+    <div class="prog-tab dukung"><b>4</b><span>Program Pendukung</span><small>penguat program utama</small></div>
+    <div class="prog-tab individu"><b>12</b><span>Program Individu</span><small>satu per program studi</small></div>
+  </div>
+
+  <h3 class="sub-head reveal">🎯 Program Utama <span>— fokus wajib tiap kelompok KKN</span></h3>
+  <div class="acc-flow reveal">
+    <details class="acc-item" open>
+      <summary><span class="acc-num">1</span><b>📢 Sosialisasi Pengelolaan Sampah Berbasis 3R</b><span class="acc-chev">⌄</span></summary>
+      <p><b>Tujuan:</b> Memberikan edukasi kepada masyarakat tentang pentingnya pengelolaan sampah dengan konsep Reduce, Reuse, Recycle.<br>
+      <b>Kegiatan:</b> Penyuluhan lingkungan hidup · edukasi pemilahan sampah organik dan anorganik · kampanye hidup bersih dan sehat.<br>
+      <b>Sasaran:</b> Masyarakat umum, ibu rumah tangga, dan pemuda.<br>
+      <b>Output:</b> Masyarakat memahami cara pengelolaan sampah yang benar.</p>
+    </details>
+    <details class="acc-item">
+      <summary><span class="acc-num">2</span><b>🧪 Pelatihan Pembuatan Eco Enzyme dan Kompos</b><span class="acc-chev">⌄</span></summary>
+      <p><b>Tujuan:</b> Mengurangi sampah organik rumah tangga melalui pengolahan menjadi produk bermanfaat.<br>
+      <b>Kegiatan:</b> Praktik pembuatan eco enzyme · pelatihan pembuatan pupuk kompos · pemanfaatan limbah organik rumah tangga.<br>
+      <b>Sasaran:</b> PKK, kelompok tani, dan masyarakat.<br>
+      <b>Output:</b> Terbentuk keterampilan masyarakat dalam mengolah sampah organik.</p>
+    </details>
+    <details class="acc-item">
+      <summary><span class="acc-num">3</span><b>♻️ Pembentukan Bank Sampah</b><span class="acc-chev">⌄</span></summary>
+      <p><b>Tujuan:</b> Meningkatkan nilai ekonomis sampah dan membangun budaya menabung sampah.<br>
+      <b>Kegiatan:</b> Sosialisasi mekanisme bank sampah · pendataan nasabah · pengumpulan dan penimbangan sampah.<br>
+      <b>Sasaran:</b> RT/RW dan masyarakat desa.<br>
+      <b>Output:</b> Terbentuknya sistem pengelolaan sampah berbasis masyarakat.</p>
+    </details>
+    <details class="acc-item">
+      <summary><span class="acc-num">4</span><b>🧹 Gerakan Jumat Bersih dan Aksi Lingkungan</b><span class="acc-chev">⌄</span></summary>
+      <p><b>Tujuan:</b> Menumbuhkan budaya gotong royong menjaga kebersihan lingkungan.<br>
+      <b>Kegiatan:</b> Kerja bakti lingkungan · pembersihan saluran air · penanaman pohon dan penghijauan.<br>
+      <b>Sasaran:</b> Masyarakat dan pemuda desa.<br>
+      <b>Output:</b> Lingkungan desa menjadi lebih bersih dan sehat.</p>
+    </details>
+    <details class="acc-item">
+      <summary><span class="acc-num">5</span><b>🎨 Pemanfaatan Sampah Anorganik Menjadi Produk Kreatif</b><span class="acc-chev">⌄</span></summary>
+      <p><b>Tujuan:</b> Meningkatkan kreativitas masyarakat melalui daur ulang sampah.<br>
+      <b>Kegiatan:</b> Pelatihan kerajinan dari plastik bekas · pembuatan pot bunga, tas, dan hiasan · pameran hasil karya masyarakat.<br>
+      <b>Sasaran:</b> Remaja dan ibu rumah tangga.<br>
+      <b>Output:</b> Produk kreatif bernilai ekonomis dari sampah daur ulang.</p>
+    </details>
+  </div>
+
+  <h3 class="sub-head reveal">🧩 Program Pendukung <span>— penguat program utama</span></h3>
+  <div class="dukung-grid reveal">
+    <div class="dukung-card">
+      <span class="dk-ic">🗑️</span>
+      <b>Pembuatan Tempat Sampah Terpilah</b>
+      <p>Pengecatan tong sampah organik &amp; anorganik, lalu ditempatkan di titik strategis desa.</p>
+      <span class="dk-out">Output: masyarakat terbiasa memilah sampah</span>
+    </div>
+    <div class="dukung-card">
+      <span class="dk-ic">🏫</span>
+      <b>Edukasi Lingkungan di Sekolah</b>
+      <p>Penyuluhan PHBS, lomba kebersihan kelas, serta gerakan membawa tumbler &amp; pengurangan plastik.</p>
+      <span class="dk-out">Output: kesadaran lingkungan tumbuh sejak dini</span>
+    </div>
+    <div class="dukung-card">
+      <span class="dk-ic">📋</span>
+      <b>Pembuatan Media Informasi Lingkungan</b>
+      <p>Poster pengelolaan sampah, spanduk kebersihan, dan konten media sosial edukatif.</p>
+      <span class="dk-out">Output: peningkatan informasi &amp; kesadaran masyarakat</span>
+    </div>
+    <div class="dukung-card">
+      <span class="dk-ic">📱</span>
+      <b>Digitalisasi Kampanye Lingkungan</b>
+      <p>Publikasi kegiatan di media sosial, video edukasi, dan dokumentasi program berbasis digital.</p>
+      <span class="dk-out">Output: partisipasi masyarakat lewat media digital</span>
+    </div>
+  </div>
 
   <div class="section-head reveal" id="sec-proker">
-    <span class="eyebrow">Program bersama</span>
+    <span class="eyebrow">Penerapan di Pajaten</span>
     <h2 class="section-title">Program Kerja Kelompok</h2>
   </div>
+  <p class="muted">Program kerja kelompok mengikuti <b>lima Program Utama</b> pada kerangka di atas, ditambah <b>budidaya maggot</b> sebagai program pendukung — hasil observasi dan musyawarah bersama perangkat desa serta tokoh masyarakat Desa Pajaten.</p>
   <div class="proker-grid">
-    <div class="proker" style="--pk:var(--leaf)"><span class="pk-ic">📢</span><b>Sosialisasi 3R</b><span>Edukasi memilah &amp; kurangi sampah ke warga, PKK, sekolah.</span></div>
-    <div class="proker" style="--pk:var(--clay)"><span class="pk-ic">♻️</span><b>Bank Sampah &amp; Pembukuan</b><span>Menabung sampah anorganik jadi rupiah.</span></div>
-    <div class="proker" style="--pk:var(--pine-2)"><span class="pk-ic">🪱</span><b>Budidaya Maggot</b><span>Sampah organik jadi pakan bernilai.</span></div>
-    <div class="proker" style="--pk:var(--gold)"><span class="pk-ic">🌾</span><b>Eco-Enzyme &amp; Pakan Eceng Gondok</b><span>Manfaatkan limbah jadi produk berguna.</span></div>
-    <div class="proker" style="--pk:var(--sky)"><span class="pk-ic">🧪</span><b>Pupuk Organik Cair</b><span>Fermentasi sampah organik jadi POC.</span></div>
+    <div class="proker" style="--pk:var(--leaf)"><span class="pk-ic">📢</span><b>Sosialisasi 3R</b><span>Edukasi pengelolaan sampah Reduce–Reuse–Recycle ke warga, PKK, &amp; sekolah.</span></div>
+    <div class="proker" style="--pk:var(--sky)"><span class="pk-ic">🧪</span><b>Eco Enzyme &amp; Kompos</b><span>Pelatihan mengolah sampah organik jadi eco enzyme &amp; pupuk kompos.</span></div>
+    <div class="proker" style="--pk:var(--clay)"><span class="pk-ic">♻️</span><b>Bank Sampah &amp; Pembukuan</b><span>Menabung sampah anorganik jadi rupiah, ditimbang &amp; dicatat rapi.</span></div>
+    <div class="proker" style="--pk:var(--pine-2)"><span class="pk-ic">🧹</span><b>Jumat Bersih &amp; Aksi Lingkungan</b><span>Kerja bakti, pembersihan saluran air, &amp; penghijauan bersama warga.</span></div>
+    <div class="proker" style="--pk:var(--gold)"><span class="pk-ic">🎨</span><b>Media Kreatif</b><span>Sampah anorganik disulap jadi kerajinan bernilai ekonomis.</span></div>
+    <div class="proker" style="--pk:var(--pine)"><span class="pk-ic">🪱</span><b>Budidaya Maggot <em class="pk-tag">Pendukung</em></b><span>Sampah organik jadi pakan maggot bernilai — penguat program utama.</span></div>
   </div>
 
   <div class="section-head reveal">
     <span class="eyebrow">Kontribusi per bidang</span>
     <h2 class="section-title">Program Kerja Individu</h2>
   </div>
-  <p class="muted">Kontribusi tiap anggota sesuai program studi. <i>(Contoh — sesuaikan dengan tim.)</i></p>
+  <p class="muted">Program individu bidang Teknik Informatika, sesuai sub tema prodi dalam buku panduan KKN 2026.</p>
   <div class="indiv-list">
     <div class="indiv-item hl">
       <span class="iv-ic">💻</span>
@@ -113,36 +343,7 @@
         <span class="iv-tag">Proker aktif</span>
       </div>
     </div>
-    <div class="indiv-item">
-      <span class="iv-ic">📊</span>
-      <div><span class="iv-bid">Manajemen / Akuntansi</span><b>Pembukuan Bank Sampah</b><p>Menyusun sistem pencatatan tabungan &amp; laporan keuangan sederhana Bank Sampah.</p></div>
-    </div>
-    <div class="indiv-item">
-      <span class="iv-ic">📣</span>
-      <div><span class="iv-bid">Ilmu Komunikasi</span><b>Kampanye &amp; Publikasi</b><p>Mengelola media sosial, poster, dan dokumentasi kegiatan KKN.</p></div>
-    </div>
-    <div class="indiv-item">
-      <span class="iv-ic">🌱</span>
-      <div><span class="iv-bid">Agroteknologi / Teknik</span><b>Pendampingan Kompos &amp; Maggot</b><p>Mendampingi warga membuat kompos, POC, dan budidaya maggot.</p></div>
-    </div>
   </div>
-
-  <div class="section-head reveal" id="sec-umkm">
-    <span class="eyebrow">Ekonomi warga</span>
-    <h2 class="section-title">UMKM &amp; Potensi Desa</h2>
-  </div>
-  <p class="muted">Usaha &amp; produk unggulan warga Desa Pajaten. <span class="admin-only" style="display:inline">Tambahkan lewat form di bawah (mode admin).</span></p>
-  <div class="umkm-list" id="umkm">
-    @forelse ($umkms as $u)
-      <div class="umkm-item {{ $u->tag ? 'hl' : '' }}">
-        <span class="um-ic">{{ $u->emoji }}</span>
-        <div><b>{{ $u->nama }}</b>@if ($u->deskripsi)<p>{{ $u->deskripsi }}</p>@endif @if ($u->tag)<span class="um-tag">{{ $u->tag }}</span>@endif</div>
-      </div>
-    @empty
-      <div class="team-empty">Belum ada data UMKM.</div>
-    @endforelse
-  </div>
-<p class="hint admin-only">🏪 Kelola UMKM lewat <a href="/admin">Panel Pengurus</a>.</p>
 
   <div class="section-head reveal" id="sec-dok">
     <span class="eyebrow">Arsip</span>
@@ -150,10 +351,32 @@
   </div>
   <p class="muted">Foto &amp; berkas kegiatan tersimpan di Galeri aplikasi serta arsip online tim.</p>
   <div class="doc-links">
-    <a href="#" onclick="activateTab('galeri');return false"><span class="dl-ic">📸</span> Galeri Foto</a>
-    <a href="https://drive.google.com/drive/folders/1rPKo7NtkP8UnnkeLtajiRxPkfGhHwrb9" target="_blank" rel="noopener"><span class="dl-ic">🗂️</span> Google Drive</a>
-    <a href="https://www.instagram.com/kkncibuaya2026_" target="_blank" rel="noopener"><span class="dl-ic">📷</span> Instagram</a>
-    <a href="#" onclick="activateTab('jadwal');return false"><span class="dl-ic">🗓️</span> Jadwal Kegiatan</a>
+    <a href="#" onclick="activateTab('galeri');return false">
+      <span class="dl-ic">📸</span>
+      <span class="dl-txt"><b>Galeri Foto</b><small>Jurnal kegiatan hari demi hari &amp; arsip foto tim</small></span>
+      <span class="dl-go">→</span>
+    </a>
+    <a href="https://www.instagram.com/kkncibuaya2026_" target="_blank" rel="noopener">
+      <span class="dl-ic">📷</span>
+      <span class="dl-txt"><b>Instagram</b><small>@kkncibuaya2026_ — publikasi &amp; reels kegiatan</small></span>
+      <span class="dl-go">→</span>
+    </a>
+    <a href="#" onclick="activateTab('jadwal');return false">
+      <span class="dl-ic">🗓️</span>
+      <span class="dl-txt"><b>Jadwal Kegiatan</b><small>Kalender &amp; rundown lengkap 8 Juli – 8 Agustus 2026</small></span>
+      <span class="dl-go">→</span>
+    </a>
+  </div>
+
+  <div class="qr-card reveal">
+    <span class="qr-eyebrow">— Scan &amp; Follow</span>
+    <b class="qr-title">Akun Resmi KKN Cibuaya 2026</b>
+    <div class="qr-box">
+      <img src="{{ asset('img/qr-instagram.svg') }}" alt="QR code menuju Instagram @kkncibuaya2026_" width="180" height="180">
+    </div>
+    <span class="qr-handle">@kkncibuaya2026_</span>
+    <p class="qr-hint">Arahkan kamera HP ke kode ini untuk membuka Instagram resmi dan melihat dokumentasi kegiatan KKN.</p>
+    <a class="qr-btn" href="https://www.instagram.com/kkncibuaya2026_" target="_blank" rel="noopener">📷 Buka Instagram</a>
   </div>
 
   <div class="about-cta reveal">

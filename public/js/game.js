@@ -32,11 +32,56 @@ function submitResult(jenis,skor,benar,total,detail){
       'X-CSRF-TOKEN':tokenEl?tokenEl.content:''},
     body:JSON.stringify({nama:responden.nama,usia:responden.usia,asal:responden.asal,
       jenis,skor,benar,total_soal:total,detail})
-  }).catch(()=>{/* offline? hasil lokal tetap tampil */});
+  }).then(r=>r.ok?r.json():null)
+    .then(d=>{if(d&&d.ok){renderBoard('boardGameBody',d.top_game,' poin');renderBoard('boardQuizBody',d.top_quiz,'');}})
+    .catch(()=>{/* offline? hasil lokal tetap tampil */});
+}
+/* papan juara diperbarui langsung setelah skor tersimpan — tanpa reload */
+function renderBoard(id,rows,suffix){
+  const el=$(id);if(!el||!Array.isArray(rows))return;
+  const medali=['🥇','🥈','🥉'];
+  el.innerHTML=rows.length
+    ? rows.map((t,i)=>'<div class="board-row '+(i===0?'top1':'')+'">'
+        +'<span class="br-rank">'+(medali[i]||(i+1)+'.')+'</span>'
+        +'<span class="br-name">'+escapeHtml(String(t.nama))+'</span>'
+        +'<b class="br-skor">'+parseInt(t.skor,10)+suffix+'</b></div>').join('')
+    : '<p class="board-empty">Belum ada pemain — jadilah juara pertama! 🌟</p>';
 }
 
 /* ===== GAME PILAH ===== */
 let gIdx=0,gScore=0,gLives=3,gSet=[],gStreak=0,gBest=0,gCorrect=0,gDetail=[];
+/* ---- mode & timer per soal: habis waktu = dihitung salah ---- */
+const G_MODES={santai:0,normal:15000,cepat:8000};
+let gMode=(loadP('sipas-gmode')in G_MODES)?loadP('sipas-gmode'):'normal';
+function setGMode(btn){
+  gMode=btn.dataset.mode;saveP('sipas-gmode',gMode);
+  btn.parentElement.querySelectorAll('.gmode-btn').forEach(b=>b.classList.toggle('active',b===btn));
+}
+/* ---- jumlah soal per permainan (berlaku untuk Game Pilah & Quiz) ---- */
+const G_COUNTS=[10,15,20];
+let gCount=parseInt(loadP('sipas-gcount'),10);
+if(!G_COUNTS.includes(gCount))gCount=10;
+function setGCount(btn){
+  gCount=parseInt(btn.dataset.count,10)||10;saveP('sipas-gcount',String(gCount));
+  btn.parentElement.querySelectorAll('.gcount-btn').forEach(b=>b.classList.toggle('active',b===btn));
+}
+let gTimer=null,gTimeMs=0;
+function startTimer(){
+  stopTimer();
+  const bar=$('gTime');if(!bar)return;
+  const wrap=bar.parentElement,dur=G_MODES[gMode]||0;
+  if(!dur){if(wrap)wrap.style.display='none';return;}
+  if(wrap)wrap.style.display='';
+  gTimeMs=dur;
+  bar.style.width='100%';bar.classList.remove('low');
+  gTimer=setInterval(()=>{
+    gTimeMs-=100;
+    bar.style.width=Math.max(0,gTimeMs/dur*100)+'%';
+    if(gTimeMs<=Math.min(3000,dur*.35))bar.classList.add('low');
+    if(gTimeMs<=0){stopTimer();answer('__timeout__',null);}
+  },100);
+}
+function stopTimer(){if(gTimer){clearInterval(gTimer);gTimer=null}}
 /* ---- maskot reaktif & skor terbaik ---- */
 function react(el,pose,mood){
   if(!el)return;el.src=MASCOTS[pose];
@@ -73,7 +118,8 @@ function updateStartBest(){
 
 function startGame(){
   responden=getResponden();if(!responden)return;
-  gSet=shuffle(ITEMS).slice(0,10);
+  gSet=shuffle(ITEMS).slice(0,Math.min(gCount,ITEMS.length));
+  if($('gTotal'))$('gTotal').textContent=gSet.length;
   gIdx=0;gScore=0;gLives=3;gStreak=0;gBest=0;gCorrect=0;gDetail=[];
   audio();
   $('gameStart').classList.add('hidden');
@@ -97,14 +143,16 @@ function showItem(){
   $('gFeedback').className='game-feedback';
   $('gReact').classList.remove('show','correct','wrong');
   document.querySelectorAll('#gItem .bin-btn').forEach(b=>b.disabled=false);
+  startTimer();
 }
 function answer(pick,btn){
+  stopTimer();
   const it=gSet[gIdx];
   const fb=$('gFeedback'),item=$('gItem');
   document.querySelectorAll('#gItem .bin-btn').forEach(b=>b.disabled=true);
   if(btn){btn.classList.remove('tap');void btn.offsetWidth;btn.classList.add('tap')}
   const KAT={organik:'Organik',anorganik:'Anorganik',b3:'B3'};
-  gDetail.push({soal:it.n,jawab:KAT[pick]||pick,benar:pick===it.t});
+  gDetail.push({soal:it.n,jawab:KAT[pick]||'Waktu habis',benar:pick===it.t});
   if(pick===it.t){
     gCorrect++;
     gStreak++;gBest=Math.max(gBest,gStreak);
@@ -124,7 +172,7 @@ function answer(pick,btn){
     scorePop('❌','minus');
     item.classList.remove('shake');void item.offsetWidth;item.classList.add('shake');
     react($('gReact'),'plant','wrong');
-    fb.textContent='❌ Salah! '+it.n+' termasuk '+({organik:'Organik',anorganik:'Anorganik',b3:'B3'}[it.t])+'. '+it.s;
+    fb.textContent=(pick==='__timeout__'?'⏰ Waktu habis! ':'❌ Salah! ')+it.n+' termasuk '+({organik:'Organik',anorganik:'Anorganik',b3:'B3'}[it.t])+'. '+it.s;
     fb.className='game-feedback no';
   }
   $('gScore').textContent=gScore;
@@ -142,9 +190,10 @@ function endGame(){
   $('gameOver').classList.remove('hidden');
   $('goScore').textContent=gScore+' poin';
   const win=gLives>0, isNewBest=setBest('game',gScore), badges=[];
+  const akurasi=gSet.length?gCorrect/gSet.length:0;
   pushHist('Game',gScore);
   submitResult('game',gScore,gCorrect,gDetail.length,gDetail);
-  if(gScore>=100)badges.push('🌟 Sempurna');
+  if(win&&gCorrect===gSet.length)badges.push('🌟 Sempurna');
   if(gBest>=5)badges.push('🔥 Combo x'+gBest);
   else if(gBest>=3)badges.push('🔥 Combo Master');
   if(gLives===3&&win)badges.push('❤️ Nyawa Utuh');
@@ -152,7 +201,7 @@ function endGame(){
   renderBadges(badges);
   let pose;
   if(!win){pose='plant';$('goMsg').textContent='Nyawa habis! Combo terbaikmu '+gBest+'. Ayo coba lagi, Si Asri percaya kamu bisa! 🌱';sfxLose();}
-  else if(gScore>=90){pose='cheer';$('goMsg').textContent='Luar biasa! Kamu Pahlawan Pilah Desa Pajaten! 🎉';sfxWin();confetti();}
+  else if(akurasi>=.9){pose='cheer';$('goMsg').textContent='Luar biasa! '+gCorrect+' dari '+gSet.length+' benar. Kamu Pahlawan Pilah Desa Pajaten! 🎉';sfxWin();confetti();}
   else{pose='thumb';$('goMsg').textContent='Kerja bagus! Combo terbaik '+gBest+'. Terus asah kemampuan memilahmu.';sfxWin();}
   showGoMascot(pose);
   $('goBest').innerHTML=(isNewBest&&gScore>0?'<span class="nb">✨ Rekor baru!</span> ':'')+'Skor terbaik: <b>'+getBest('game')+' poin</b>';
@@ -208,7 +257,7 @@ const QUIZ_ALL=(window.SIPAS_QUIZ&&window.SIPAS_QUIZ.length)?window.SIPAS_QUIZ:Q
 let qSet=[],qIdx=0,qScore=0,qCorrect=0,qCorrectIdx=0,qShuffled=[],qDetail=[];
 function startQuiz(){
   responden=getResponden();if(!responden)return;
-  qSet=shuffle(QUIZ_ALL).slice(0,Math.min(8,QUIZ_ALL.length));
+  qSet=shuffle(QUIZ_ALL).slice(0,Math.min(gCount,QUIZ_ALL.length));
   qIdx=0;qScore=0;qCorrect=0;qDetail=[];
   audio();
   $('gameStart').classList.add('hidden');
@@ -286,5 +335,9 @@ function finishQuiz(){
 }
 
 /* ===== INIT halaman game ===== */
-if($('gameStart')){updateStartBest();loadResponden();}
+if($('gameStart')){
+  updateStartBest();loadResponden();
+  document.querySelectorAll('.gmode-btn[data-mode]').forEach(b=>b.classList.toggle('active',b.dataset.mode===gMode));
+  document.querySelectorAll('.gcount-btn').forEach(b=>b.classList.toggle('active',parseInt(b.dataset.count,10)===gCount));
+}
 

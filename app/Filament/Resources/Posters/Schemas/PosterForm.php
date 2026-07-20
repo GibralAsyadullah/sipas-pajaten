@@ -2,9 +2,11 @@
 
 namespace App\Filament\Resources\Posters\Schemas;
 
+use App\Support\ImageConverter;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class PosterForm
 {
@@ -18,10 +20,13 @@ class PosterForm
                     ->placeholder('mis. Ayo Pilah Sampahmu!'),
                 FileUpload::make('gambar')
                     ->label('File Poster (gambar)')
+                    ->helperText('Gambar otomatis dikompres & dikonversi ke WebP saat disimpan (format: JPG/PNG/WebP).')
                     ->image()
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                     ->disk('public')
                     ->directory('poster')
-                    ->maxSize(4096)
+                    ->maxSize(8192)
+                    ->saveUploadedFileUsing(fn (TemporaryUploadedFile $file) => ImageConverter::toWebp($file, 'poster'))
                     ->required()
                     ->columnSpanFull(),
                 TextInput::make('keterangan')

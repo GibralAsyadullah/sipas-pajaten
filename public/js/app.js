@@ -155,7 +155,31 @@ function runSearch(){
 }
 document.addEventListener('keydown',e=>{
   if(e.key==='/'&&!/^(input|textarea)$/i.test(document.activeElement.tagName)){e.preventDefault();openSearch();}
-  if(e.key==='Escape'){closeSearch();closeSettings();}
+  if(e.key==='Escape'){closeSearch();closeSettings();closeLightbox();}
+});
+
+
+/* ===== LIGHTBOX FOTO (global) =====
+   Semua foto dokumentasi bisa diketuk untuk dilihat besar:
+   galeri (.jr-ph), jadwal (.tl-foto), profil beranda, papan informasi. */
+function openLightbox(src,cap){
+  const lb=$('lightbox');if(!lb)return;
+  $('lbImg').src=src;
+  $('lbCap').textContent=cap||'';
+  lb.classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  const lb=$('lightbox');if(!lb||!lb.classList.contains('show'))return;
+  lb.classList.remove('show');
+  document.body.style.overflow='';
+}
+document.addEventListener('click',e=>{
+  const img=e.target.closest('.jr-ph, .tl-foto, .profil-galeri img, .papan-foto');
+  if(!img)return;
+  const fig=img.closest('figure');
+  const cap=img.dataset.cap||(fig&&fig.querySelector('figcaption')?fig.querySelector('figcaption').textContent.trim():'')||img.alt;
+  openLightbox(img.src,cap);
 });
 
 

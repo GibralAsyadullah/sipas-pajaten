@@ -26,6 +26,12 @@ class GameResultController extends Controller
 
         $result = GameResult::create($data);
 
-        return response()->json(['ok' => true, 'id' => $result->id]);
+        // Kirim papan juara terbaru agar tampilan bisa diperbarui tanpa reload.
+        return response()->json([
+            'ok'       => true,
+            'id'       => $result->id,
+            'top_game' => GameResult::papanJuara('game'),
+            'top_quiz' => GameResult::papanJuara('quiz'),
+        ]);
     }
 }

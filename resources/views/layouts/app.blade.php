@@ -26,6 +26,7 @@ try{if(sessionStorage.getItem('sipas-splash')==='1'){document.documentElement.cl
 </main>
 
 @include('partials.modals')
+@include('partials.wa-float')
 
 <script>
 window.SIPAS_ITEMS = @json($sipasItems ?? []);

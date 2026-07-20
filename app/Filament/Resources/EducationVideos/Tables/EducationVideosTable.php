@@ -21,7 +21,7 @@ class EducationVideosTable
                     ->searchable()
                     ->wrap(),
                 TextColumn::make('youtube_url')
-                    ->label('Link YouTube')
+                    ->label('Link Video')
                     ->url(fn ($record) => $record->youtube_url, shouldOpenInNewTab: true)
                     ->limit(45),
             ])

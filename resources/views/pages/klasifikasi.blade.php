@@ -16,13 +16,13 @@
         <b>1. Cepat busuk / sisa makhluk hidup?</b>
         <span>→ 🍃 Organik (tempat hijau)</span>
       </button>
-      <button class="qf-card b" onclick="setKlasFilterTo('b3')">
-        <b>2. Beracun? Baterai, obat, oli, elektronik?</b>
-        <span>→ ☢️ B3 (tempat merah)</span>
-      </button>
       <button class="qf-card a" onclick="setKlasFilterTo('anorganik')">
-        <b>3. Sisanya: kering &amp; tidak membusuk?</b>
+        <b>2. Kering, tidak membusuk &amp; tidak beracun?</b>
         <span>→ 🧴 Anorganik (kuning) — bisa ditabung!</span>
+      </button>
+      <button class="qf-card b" onclick="setKlasFilterTo('b3')">
+        <b>3. Beracun? Baterai, obat, oli, elektronik?</b>
+        <span>→ ☢️ B3 (tempat merah)</span>
       </button>
     </div>
   </div>
@@ -40,31 +40,37 @@
   </div>
   <p class="klas-count" id="klasCount" aria-live="polite"></p>
 
-  <details class="filter-more">
-    <summary>⚙️ Filter lain (sumber sampah &amp; urutan)</summary>
-    <div class="filter-row filter-sumber">
-      <span class="filter-label">Sumber:</span>
-      <button class="filter-chip active" data-s="semua" onclick="setSumberFilter(this)">Semua</button>
-      <button class="filter-chip" data-s="rumah" onclick="setSumberFilter(this)">🏠 Rumah Tangga</button>
-      <button class="filter-chip" data-s="kebun" onclick="setSumberFilter(this)">🌿 Kebun &amp; Halaman</button>
-      <button class="filter-chip" data-s="tani" onclick="setSumberFilter(this)">🌾 Sawah &amp; Ternak</button>
-      <button class="filter-chip" data-s="usaha" onclick="setSumberFilter(this)">🏪 Warung &amp; Pasar</button>
-      <button class="filter-chip" data-s="bengkel" onclick="setSumberFilter(this)">🔧 Elektronik &amp; Bengkel</button>
+  <div class="filter-panel">
+    <div class="fp-row">
+      <span class="filter-label">🗂️ Sumber sampah</span>
+      <div class="filter-row filter-sumber">
+        <button class="filter-chip active" data-s="semua" onclick="setSumberFilter(this)">Semua</button>
+        <button class="filter-chip" data-s="rumah" onclick="setSumberFilter(this)">🏠 Rumah Tangga</button>
+        <button class="filter-chip" data-s="kebun" onclick="setSumberFilter(this)">🌿 Kebun &amp; Halaman</button>
+        <button class="filter-chip" data-s="tani" onclick="setSumberFilter(this)">🌾 Sawah &amp; Ternak</button>
+        <button class="filter-chip" data-s="usaha" onclick="setSumberFilter(this)">🏪 Warung &amp; Pasar</button>
+        <button class="filter-chip" data-s="bengkel" onclick="setSumberFilter(this)">🔧 Elektronik &amp; Bengkel</button>
+      </div>
+    </div>
+    <div class="fp-row fp-sort">
+      <span class="filter-label">↕️ Urutkan</span>
       <select id="klasSort" class="klas-sort" onchange="renderKlas()" aria-label="Urutkan daftar">
-        <option value="default">↕️ Urutan bawaan</option>
-        <option value="az">🔤 Nama A–Z</option>
-        <option value="za">🔤 Nama Z–A</option>
+        <option value="default">Urutan bawaan</option>
+        <option value="az">Nama A–Z</option>
+        <option value="za">Nama Z–A</option>
       </select>
     </div>
-  </details>
+  </div>
 
   <div class="klas-grid" id="klasGrid">
     <div class="klas-col o" id="colOrganik">
-      <h3>🍃 Organik <span style="font-weight:500;font-size:.78rem;opacity:.75">→ kompos / maggot / POC</span></h3>
+      <h3>🍃 Organik <span style="font-weight:500;font-size:.78rem;opacity:.75">→ kompos / pakan maggot</span></h3>
       <div id="listOrganik"></div>
     </div>
     <div class="klas-col a" id="colAnorganik">
-      <h3>🧴 Anorganik <span style="font-weight:500;font-size:.78rem;opacity:.75">→ <a href="#alur-tabung" onclick="jumpTo('alur-tabung');return false" style="color:inherit">Bank Sampah</a></span></h3>
+      <h3>🧴 Anorganik <span class="klas-arrow">→</span>
+        <a class="klas-chip" href="#alur-tabung" onclick="jumpTo('alur-tabung');return false">🏦 Bank Sampah</a>
+      </h3>
       <div id="listAnorganik"></div>
     </div>
     <div class="klas-col b" id="colB3">
@@ -78,16 +84,16 @@
     <span class="eyebrow">Setelah dipilah</span>
     <h2 class="section-title">Dari Pilahan Jadi Tabungan 💰</h2>
   </div>
-  <p class="muted">Sampah <b>plastik &amp; kertas</b> yang sudah kamu pilah bisa ditabung ke Bank Sampah desa. Begini alurnya:</p>
+  <p class="muted">Sampah <b>botol plastik &amp; gelas/cup kemasan</b> yang sudah kamu pilah bisa ditabung ke Bank Sampah desa. Begini alurnya:</p>
   <div class="alurbs">
-    <div class="alurbs-step"><span class="as-num">1</span><span class="as-ic">🏠</span><b>Pilah di Rumah</b><span>Pisahkan plastik &amp; kertas. Sampah organik diolah jadi kompos &amp; pakan maggot.</span></div>
+    <div class="alurbs-step"><span class="as-num">1</span><span class="as-ic">🏠</span><b>Pilah di Rumah</b><span>Pisahkan botol plastik &amp; gelas/cup kemasan. Sampah organik diolah jadi kompos &amp; pakan maggot.</span></div>
     <div class="alurbs-step"><span class="as-num">2</span><span class="as-ic">🤝</span><b>Setor ke RT / Kadus</b><span>Sampah dikoordinasikan lewat RT &amp; Kepala Dusun — tidak perlu bawa sendiri ke desa.</span></div>
     <div class="alurbs-step"><span class="as-num">3</span><span class="as-ic">⚖️</span><b>Timbang &amp; Catat</b><span>Di titik kumpul desa, sampah ditimbang lalu dicatat di buku fisik dan sistem digital.</span></div>
     <div class="alurbs-step"><span class="as-num">4</span><span class="as-ic">🚛</span><b>Diangkut Pengepul</b><span>Setiap hari <b>Kamis</b>, pengepul mengangkut sampah yang terkumpul di desa.</span></div>
     <div class="alurbs-step"><span class="as-num">5</span><span class="as-ic">💰</span><b>Tabungan Cair</b><span>Capai target setoran <b>5 kg per dusun</b>, tabungan sampahmu bisa dicairkan.</span></div>
   </div>
   <div class="alur-note">
-    <div class="an ok"><b>✅ Diterima Bank Sampah</b><span>Plastik (botol, gelas, kresek bersih) serta kertas &amp; kardus.</span></div>
+    <div class="an ok"><b>✅ Diterima Bank Sampah</b><span>Hanya <b>botol plastik</b> dan <b>gelas/cup kemasan</b> — bersih &amp; kering.</span></div>
     <div class="an no"><b>🚫 Tidak diterima</b><span>Pampers / popok sekali pakai — tangani terpisah sebagai residu.</span></div>
   </div>
 
