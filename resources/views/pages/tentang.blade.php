@@ -318,14 +318,14 @@
     <span class="eyebrow">Penerapan di Pajaten</span>
     <h2 class="section-title">Program Kerja Kelompok</h2>
   </div>
-  <p class="muted">Program kerja kelompok mengikuti <b>lima Program Utama</b> pada kerangka di atas, ditambah <b>budidaya maggot</b> sebagai program pendukung — hasil observasi dan musyawarah bersama perangkat desa serta tokoh masyarakat Desa Pajaten.</p>
+  <p class="muted">Program kerja kelompok mengikuti <b>lima Program Utama</b> pada kerangka di atas, ditambah <b>budidaya maggot</b> sebagai <b>program tambahan</b> — hasil observasi dan musyawarah bersama perangkat desa serta tokoh masyarakat Desa Pajaten.</p>
   <div class="proker-grid">
     <div class="proker" style="--pk:var(--leaf)"><span class="pk-ic">📢</span><b>Sosialisasi 3R</b><span>Edukasi pengelolaan sampah Reduce–Reuse–Recycle ke warga, PKK, &amp; sekolah.</span></div>
     <div class="proker" style="--pk:var(--sky)"><span class="pk-ic">🧪</span><b>Eco Enzyme &amp; Kompos</b><span>Pelatihan mengolah sampah organik jadi eco enzyme &amp; pupuk kompos.</span></div>
     <div class="proker" style="--pk:var(--clay)"><span class="pk-ic">♻️</span><b>Bank Sampah &amp; Pembukuan</b><span>Menabung sampah anorganik jadi rupiah, ditimbang &amp; dicatat rapi.</span></div>
     <div class="proker" style="--pk:var(--pine-2)"><span class="pk-ic">🧹</span><b>Jumat Bersih &amp; Aksi Lingkungan</b><span>Kerja bakti, pembersihan saluran air, &amp; penghijauan bersama warga.</span></div>
     <div class="proker" style="--pk:var(--gold)"><span class="pk-ic">🎨</span><b>Media Kreatif</b><span>Sampah anorganik disulap jadi kerajinan bernilai ekonomis.</span></div>
-    <div class="proker" style="--pk:var(--pine)"><span class="pk-ic">🪱</span><b>Budidaya Maggot <em class="pk-tag">Pendukung</em></b><span>Sampah organik jadi pakan maggot bernilai — penguat program utama.</span></div>
+    <div class="proker" style="--pk:var(--pine)"><span class="pk-ic">🪱</span><b>Budidaya Maggot <em class="pk-tag">Tambahan</em></b><span>Sampah organik jadi pakan maggot bernilai — program tambahan kelompok.</span></div>
   </div>
 
   <div class="section-head reveal">

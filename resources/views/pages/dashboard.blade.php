@@ -187,14 +187,19 @@
 
   <div class="section-head reveal">
     <span class="eyebrow">Apa yang kami kerjakan</span>
-    <h2 class="section-title">Program Kerja Utama</h2>
+    <h2 class="section-title">Program Kerja Kelompok</h2>
   </div>
-  <p class="muted reveal">Lima program hasil koordinasi mahasiswa KKN bersama perangkat desa &amp; tokoh masyarakat.</p>
+  <p class="muted reveal">Lima <b>Program Utama</b> sesuai kerangka LPPM, ditambah <b>budidaya maggot</b> sebagai program tambahan — hasil koordinasi mahasiswa KKN bersama perangkat desa &amp; tokoh masyarakat.</p>
   <div class="proker-grid reveal">
     <div class="proker" style="--pk:var(--leaf)">
       <span class="pk-ic">📢</span>
       <b>Sosialisasi 3R &amp; Kebersihan</b>
-      <span>Edukasi warga, ibu PKK, dan siswa sekolah — dipadukan pelatihan kerajinan dari barang bekas.</span>
+      <span>Edukasi pengelolaan sampah Reduce–Reuse–Recycle ke warga, ibu PKK, dan siswa sekolah.</span>
+    </div>
+    <div class="proker" style="--pk:var(--sky)">
+      <span class="pk-ic">🧪</span>
+      <b>Eco Enzyme &amp; Kompos</b>
+      <span>Pelatihan mengolah sampah organik jadi eco enzyme &amp; pupuk kompos untuk kebun warga.</span>
     </div>
     <div class="proker" style="--pk:var(--clay)">
       <span class="pk-ic">♻️</span>
@@ -202,19 +207,19 @@
       <span>Sampah anorganik ditimbang &amp; ditabung, dengan pembukuan transparan oleh tim Akuntansi &amp; Manajemen.</span>
     </div>
     <div class="proker" style="--pk:var(--pine-2)">
-      <span class="pk-ic">🪱</span>
-      <b>Budidaya &amp; Pemasaran Maggot</b>
-      <span>Sampah organik jadi pakan maggot, dikeringkan, dijual online satu pintu lewat desa.</span>
+      <span class="pk-ic">🧹</span>
+      <b>Jumat Bersih &amp; Aksi Lingkungan</b>
+      <span>Kerja bakti, pembersihan saluran air, &amp; penghijauan bersama warga dan pemuda desa.</span>
     </div>
-    <div class="proker" style="--pk:var(--sky)">
+    <div class="proker" style="--pk:var(--gold)">
       <span class="pk-ic">🎨</span>
       <b>Media Kreatif</b>
       <span>Sampah anorganik disulap jadi kerajinan bernilai — pot, hiasan, dan produk kreatif lainnya.</span>
     </div>
-    <div class="proker" style="--pk:var(--gold)">
-      <span class="pk-ic">🌿</span>
-      <b>Kompos</b>
-      <span>Sampah organik rumah tangga diolah menjadi kompos untuk kebun &amp; pertanian warga.</span>
+    <div class="proker" style="--pk:var(--pine)">
+      <span class="pk-ic">🪱</span>
+      <b>Budidaya Maggot <em class="pk-tag">Tambahan</em></b>
+      <span>Sampah organik jadi pakan maggot, dikeringkan, dijual online satu pintu lewat desa.</span>
     </div>
   </div>
 
