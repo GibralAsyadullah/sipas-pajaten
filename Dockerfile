@@ -21,6 +21,14 @@ USER root
 RUN install-php-extensions gd pdo_pgsql intl bcmath zip
 USER www-data
 
+# OPcache: WAJIB dinyalakan. Image serversideup mematikannya secara default
+# (PHP_OPCACHE_ENABLE="0"), sehingga PHP mengompilasi ulang seluruh berkas Laravel +
+# Filament pada SETIAP request — terukur ~3,8 detik boot per request di Railway.
+# VALIDATE_TIMESTAMPS=0 karena isi container tidak pernah berubah setelah build,
+# jadi pengecekan tanggal berkas hanya membuang I/O.
+ENV PHP_OPCACHE_ENABLE=1
+ENV PHP_OPCACHE_VALIDATE_TIMESTAMPS=0
+
 # Salin aplikasi + vendor hasil tahap 1.
 COPY --chown=www-data:www-data --from=vendor /app /var/www/html
 

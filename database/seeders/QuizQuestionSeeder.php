@@ -112,6 +112,54 @@ class QuizQuestionSeeder extends Seeder
                 'jawaban'    => 1,
                 'penjelasan' => 'Pencatatan dilakukan ganda: buku tabungan fisik milik warga dan pencatatan digital yang dipegang pihak desa sebagai cadangan.',
             ],
+            [
+                'pertanyaan' => 'Minyak jelantah sisa menggoreng sebaiknya diapakan?',
+                'opsi'       => ['Disiram ke got atau saluran air', 'Dikumpulkan di botol tertutup lalu disetor/dijual', 'Dibuang ke kebun', 'Dicampur ke kompos'],
+                'jawaban'    => 1,
+                'penjelasan' => 'Satu liter jelantah dapat mencemari ribuan liter air bersih — kumpulkan di botol tertutup, jangan dibuang ke got.',
+            ],
+            [
+                'pertanyaan' => 'Kenapa membakar jerami setelah panen sebaiknya dihindari?',
+                'opsi'       => ['Membuat tanah jadi terlalu subur', 'Mencemari udara & memicu ISPA, padahal jerami berharga untuk tanah', 'Membuat padi tumbuh terlalu cepat', 'Tidak ada alasannya'],
+                'jawaban'    => 1,
+                'penjelasan' => 'Asapnya memicu gangguan pernapasan, sementara jerami sebenarnya bernilai tinggi sebagai kompos, mulsa, atau media tanam.',
+            ],
+            [
+                'pertanyaan' => 'Ban bekas yang dibiarkan terbuka di halaman berbahaya karena?',
+                'opsi'       => ['Menampung air hujan dan jadi sarang nyamuk DBD', 'Menarik petir', 'Membuat tanah tandus', 'Mengundang burung'],
+                'jawaban'    => 0,
+                'penjelasan' => 'Air yang menggenang di dalam ban jadi tempat berkembang biak nyamuk DBD — simpan telungkup atau manfaatkan jadi pot.',
+            ],
+            [
+                'pertanyaan' => 'Kaca atau beling pecah sebaiknya dibuang dengan cara?',
+                'opsi'       => ['Langsung dimasukkan kantong kresek', 'Dibungkus kertas/kardus tebal dan diberi label', 'Dibuang ke saluran air', 'Dibakar bersama sampah lain'],
+                'jawaban'    => 1,
+                'penjelasan' => 'Kaca pecah tanpa pembungkus melukai petugas sampah — bungkus tebal dan beri tulisan penanda.',
+            ],
+            [
+                'pertanyaan' => 'Kulit singkong sebaiknya direbus dulu sebelum jadi pakan ternak karena?',
+                'opsi'       => ['Supaya lebih wangi', 'Mengandung sianida alami saat mentah', 'Supaya lebih berat', 'Supaya tahan lama'],
+                'jawaban'    => 1,
+                'penjelasan' => 'Kulit singkong mentah mengandung sianida alami; direbus dulu agar aman untuk ternak.',
+            ],
+            [
+                'pertanyaan' => 'Powerbank atau baterai HP rusak tidak boleh ditusuk maupun dibakar karena?',
+                'opsi'       => ['Baunya menyengat', 'Bisa meledak dan memicu kebakaran', 'Harganya jadi turun', 'Warnanya memudar'],
+                'jawaban'    => 1,
+                'penjelasan' => 'Baterai lithium yang rusak bisa terbakar atau meledak — serahkan utuh ke dropbox B3 atau toko elektronik.',
+            ],
+            [
+                'pertanyaan' => 'Kemasan pestisida bekas yang sudah kosong sebaiknya?',
+                'opsi'       => ['Dipakai ulang untuk wadah air minum', 'Dibilas 3x, dirusak, lalu diserahkan ke fasilitas B3', 'Dibakar di pematang', 'Dibuang ke saluran irigasi'],
+                'jawaban'    => 1,
+                'penjelasan' => 'Sisa bahan aktif tetap menempel; kemasannya wajib dirusak agar tidak dipakai ulang sebagai wadah pangan.',
+            ],
+            [
+                'pertanyaan' => 'Puntung rokok termasuk sampah yang bermasalah karena?',
+                'opsi'       => ['Cepat terurai dalam sehari', 'Mengandung mikroplastik dan jadi sampah terbanyak di dunia', 'Menyuburkan tanah', 'Bisa dijadikan kompos'],
+                'jawaban'    => 1,
+                'penjelasan' => 'Filter rokok berbahan serat plastik, butuh 10–12 tahun terurai, dan jadi sampah paling banyak ditemukan di dunia.',
+            ],
         ];
 
         foreach ($data as $i => $row) {

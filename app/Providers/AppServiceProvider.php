@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Models\QuizQuestion;
 use App\Models\WasteItem;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,22 +17,44 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        // Data klasifikasi sampah dari database, dibagikan ke semua halaman.
-        // try/catch agar website tetap jalan sebelum migrasi dijalankan.
-        try {
-            if (Schema::hasTable('waste_items')) {
-                View::share('sipasItems', WasteItem::orderBy('urutan')->get()
-                    ->map(fn ($i) => $i->toClientArray())->values());
-            }
+        // Katalog sampah dipakai kotak pencarian di semua halaman, jadi dititipkan ke
+        // layout — bukan View::share, supaya panel admin Filament, /up, dan halaman
+        // error tidak ikut menanggung kuerinya.
+        View::composer('layouts.app', function ($view) {
+            $view->with('sipasItems', $this->katalog(
+                'sipas_items',
+                fn () => WasteItem::orderBy('urutan')->get()->map(fn ($i) => $i->toClientArray())
+            ));
+        });
 
-            // Bank soal quiz dari database, dipakai halaman Game & Quiz.
-            if (Schema::hasTable('quiz_questions')) {
-                View::share('sipasQuiz', QuizQuestion::where('aktif', true)
-                    ->orderBy('urutan')->get()
-                    ->map(fn ($q) => $q->toClientArray())->values());
-            }
+        // Bank soal hanya dibutuhkan halaman Game & Quiz — halaman lain tak perlu memuatnya.
+        View::composer('pages.game', function ($view) {
+            $view->with('sipasQuiz', $this->katalog(
+                'sipas_quiz',
+                fn () => QuizQuestion::where('aktif', true)->orderBy('urutan')->get()
+                    ->map(fn ($q) => $q->toClientArray())
+            ));
+        });
+    }
+
+    /**
+     * Ambil katalog dari cache. Tanpa ini setiap request menarik ulang seluruh tabel
+     * dari Supabase. Cache dibersihkan otomatis saat pengurus menyunting data lewat
+     * panel admin (lihat method booted() di model terkait).
+     *
+     * try/catch: sebelum migrasi dijalankan tabelnya belum ada — JS akan memakai
+     * data cadangan bawaan di public/js/data.js.
+     *
+     * Sengaja disimpan sebagai array biasa, bukan Collection: objek Collection yang
+     * di-serialize bisa kembali sebagai __PHP_Incomplete_Class dan membuat @json
+     * menghasilkan objek kosong — situs lalu diam-diam jatuh ke data cadangan.
+     */
+    private function katalog(string $kunci, callable $ambil): array
+    {
+        try {
+            return Cache::remember($kunci, now()->addDay(), fn () => $ambil()->values()->all());
         } catch (\Throwable $e) {
-            // biarkan JS memakai data cadangan bawaan
+            return [];
         }
     }
 }

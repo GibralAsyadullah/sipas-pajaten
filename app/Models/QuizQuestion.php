@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 class QuizQuestion extends Model
 {
@@ -12,6 +13,14 @@ class QuizQuestion extends Model
         'opsi'  => 'array',
         'aktif' => 'boolean',
     ];
+
+    /** Suntingan lewat panel admin harus langsung terlihat di halaman Game & Quiz. */
+    protected static function booted(): void
+    {
+        $segarkan = fn () => Cache::forget('sipas_quiz');
+        static::saved($segarkan);
+        static::deleted($segarkan);
+    }
 
     /** Bentuk ringkas yang dipakai JavaScript pada halaman Game & Quiz. */
     public function toClientArray(): array

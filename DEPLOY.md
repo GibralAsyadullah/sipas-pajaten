@@ -10,7 +10,7 @@ Arsitektur produksi: **Database di Supabase (Postgres)** + **Aplikasi di Railway
 ## 1. Database — Supabase (SUDAH SELESAI ✅)
 
 - Project: **sipas-pajaten** (region Singapore, Postgres 17).
-- Skema 21 tabel + seluruh data (126 sampah, 21 anggota, 16 quiz, 45 foto IG, 19 jadwal, dll.) sudah dimuat.
+- Skema 21 tabel + seluruh data (141 sampah, 21 anggota, 24 quiz, 45 foto IG, 19 jadwal, dll.) sudah dimuat.
 - Connection string (Session pooler, port 5432) dipakai sebagai `DB_URL` di Railway (lihat bawah).
 
 Kalau perlu muat ulang data dari nol: jalankan `database/pg/pg-schema.sql` lalu `database/pg/pg-data.sql`
@@ -75,7 +75,22 @@ Halaman utama & `/admin` (login pakai akun admin yang sudah ada) harus tampil de
 
 ---
 
-## 4. Troubleshooting
+## 4. Catatan performa (penting)
+
+- **OPcache wajib nyala.** Image `serversideup/php` mematikannya secara bawaan
+  (`PHP_OPCACHE_ENABLE="0"`), sehingga PHP mengompilasi ulang ribuan berkas Laravel +
+  Filament pada setiap request. Terukur menambah **~3,8 detik per request** di Railway.
+  Sudah dipasang permanen lewat `ENV` di `Dockerfile`, jadi tidak perlu diatur di Railway.
+- **Katalog sampah & bank soal di-cache.** Dulu setiap request (termasuk panel admin dan
+  `/up`) menarik ulang seluruh tabel `waste_items` + `quiz_questions` dari Supabase.
+  Sekarang lewat `Cache` dengan pembersihan otomatis saat pengurus menyunting data.
+- Opsional: `CACHE_STORE=file` lebih cepat daripada `database` karena tidak perlu
+  bolak-balik ke Supabase. Aman selama service Railway hanya **satu replika** — kalau
+  suatu saat ditambah replika, kembalikan ke `database` agar cache-nya seragam.
+
+---
+
+## 5. Troubleshooting
 - **Aset panel admin (Filament) tidak muncul** → jalankan sekali di Railway shell:
   `php artisan filament:assets`.
 - **Error koneksi DB** → pastikan pakai **Session pooler (port 5432)**, bukan transaction pooler (6543),

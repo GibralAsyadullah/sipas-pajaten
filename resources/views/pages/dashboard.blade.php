@@ -165,7 +165,7 @@
   </div>
 
   <div class="stat-row reveal">
-    <div class="stat"><b>3</b><span>Jenis pilahan: plastik, kertas, organik</span></div>
+    <div class="stat"><b>3</b><span>Jenis pilahan: organik, anorganik, B3</span></div>
     <div class="stat"><b>5</b><span>Kelompok dusun uji coba</span></div>
     <div class="stat"><b>50</b><span>Warga terlibat di tahap awal</span></div>
   </div>

@@ -6,7 +6,7 @@ use App\Models\WasteItem;
 use Illuminate\Database\Seeder;
 
 /**
- * Katalog lengkap klasifikasi sampah — 126 item.
+ * Katalog lengkap klasifikasi sampah — 141 item.
  * Kategori: organik / anorganik / b3.
  * Sumber: rumah / kebun / tani / usaha / bengkel.
  */
@@ -143,6 +143,21 @@ class WasteItemSeeder extends Seeder
             ['nama'=>'Korek gas & kaleng gas portable','emoji'=>'🔥','kategori'=>'b3','sumber'=>'rumah','saran'=>'Pastikan gas benar-benar habis; jangan dibakar atau ditusuk','waktu_urai'=>'ratusan tahun','fakta'=>'Sisa gas bertekanan bisa meledak bila terkena panas — bahaya di tumpukan sampah.','urutan'=>124],
             ['nama'=>'Semir, cat rambut & kutek','emoji'=>'💅','kategori'=>'b3','sumber'=>'rumah','saran'=>'Habiskan isinya; sisa & kemasannya serahkan ke dropbox B3','waktu_urai'=>'tidak terurai alami','fakta'=>'Aseton dan amonia di dalamnya mengiritasi kulit serta mencemari air.','urutan'=>125],
             ['nama'=>'Raket nyamuk & senter rusak','emoji'=>'🦟','kategori'=>'b3','sumber'=>'rumah','saran'=>'Lepas baterainya, serahkan sebagai e-waste — jangan dibongkar sembarangan','waktu_urai'=>'tidak terurai','fakta'=>'Raket nyamuk masih menyimpan muatan listrik meski sudah mati — hati-hati saat membongkar.','urutan'=>126],
+            ['nama'=>'Kulit rambutan & lengkeng','emoji'=>'🍒','kategori'=>'organik','sumber'=>'kebun','saran'=>'Kompos — cacah dulu supaya cepat terurai','waktu_urai'=>'1–2 bulan','fakta'=>'Kulit rambutan berbulu lambat terurai kalau utuh; dicacah dulu jadi jauh lebih cepat.','urutan'=>127],
+            ['nama'=>'Kulit melon & semangka','emoji'=>'🍉','kategori'=>'organik','sumber'=>'rumah','saran'=>'Pakan maggot / kompos — tiriskan airnya dulu','waktu_urai'=>'1–2 minggu','fakta'=>'Kulit semangka 90% air; kalau langsung ditumpuk, komposnya jadi becek dan bau.','urutan'=>128],
+            ['nama'=>'Dedak & katul apkir','emoji'=>'🌾','kategori'=>'organik','sumber'=>'tani','saran'=>'Campuran pakan maggot atau bahan fermentasi kompos','waktu_urai'=>'beberapa minggu','fakta'=>'Dedak apkir adalah bahan pemancing fermentasi kompos yang murah dan mudah didapat di desa.','urutan'=>129],
+            ['nama'=>'Sisa sayur & buah pasar','emoji'=>'🥕','kategori'=>'organik','sumber'=>'usaha','saran'=>'Angkut rutin ke pakan maggot / kompos — jangan menginap di lapak','waktu_urai'=>'beberapa hari','fakta'=>'Sisa dagangan pasar adalah sumber bahan maggot paling melimpah dan gratis.','urutan'=>130],
+            ['nama'=>'Serasah kandang & sekam kotor','emoji'=>'🐔','kategori'=>'organik','sumber'=>'tani','saran'=>'Fermentasi jadi pupuk kandang — jangan ditumpuk basah dekat rumah','waktu_urai'=>'1–2 bulan','fakta'=>'Serasah kandang yang difermentasi dulu tidak lagi berbau dan tidak membakar akar tanaman.','urutan'=>131],
+            ['nama'=>'Gantungan baju plastik','emoji'=>'🧺','kategori'=>'anorganik','sumber'=>'rumah','saran'=>'Pakai ulang; kalau patah, setor sebagai plastik keras','waktu_urai'=>'ratusan tahun','fakta'=>'Hanger plastik jarang diterima daur ulang biasa karena campuran bahannya — pakai ulang jauh lebih baik.','urutan'=>132],
+            ['nama'=>'Kacamata & lensa rusak','emoji'=>'👓','kategori'=>'anorganik','sumber'=>'rumah','saran'=>'Donasikan bila masih layak; jika rusak, pisahkan rangka logamnya','waktu_urai'=>'ratusan tahun','fakta'=>'Kacamata bekas layak pakai banyak dicari program bakti sosial kesehatan mata.','urutan'=>133],
+            ['nama'=>'Tutup galon & segel plastik','emoji'=>'💧','kategori'=>'anorganik','sumber'=>'rumah','saran'=>'Kumpulkan dalam satu wadah, setor ke Bank Sampah','waktu_urai'=>'ratusan tahun','fakta'=>'Tutup galon berbahan plastik keras yang laku di pengepul — sayang kalau tercecer satu-satu.','urutan'=>134],
+            ['nama'=>'Terpal & plastik penutup jemuran','emoji'=>'⛺','kategori'=>'anorganik','sumber'=>'tani','saran'=>'Tambal dan pakai ulang; kalau sudah getas, gulung dan setor ke pengepul','waktu_urai'=>'ratusan tahun','fakta'=>'Terpal getas yang dibiarkan di sawah pecah jadi serpihan mikroplastik yang tak bisa dipungut lagi.','urutan'=>135],
+            ['nama'=>'Sarung tangan karet bekas','emoji'=>'🧤','kategori'=>'anorganik','sumber'=>'bengkel','saran'=>'Buang ke residu — jangan dibakar','waktu_urai'=>'puluhan tahun','fakta'=>'Karet yang dibakar melepas asap hitam beracun yang lebih berbahaya daripada asap kayu.','urutan'=>136],
+            ['nama'=>'Baterai kancing & baterai jam','emoji'=>'⌚','kategori'=>'b3','sumber'=>'rumah','saran'=>'Simpan jauh dari jangkauan anak, serahkan ke dropbox B3','waktu_urai'=>'ratusan tahun','fakta'=>'Baterai kancing yang tertelan anak dapat melukai kerongkongan dalam hitungan jam — segera ke fasilitas kesehatan.','urutan'=>137],
+            ['nama'=>'Sisa bensin & solar','emoji'=>'⛽','kategori'=>'b3','sumber'=>'bengkel','saran'=>'Tampung di jeriken tertutup berlabel; jangan disiram ke tanah atau got','waktu_urai'=>'mencemari air tanah lama','fakta'=>'Bahan bakar yang meresap ke tanah bisa mencemari sumur warga di sekitarnya bertahun-tahun.','urutan'=>138],
+            ['nama'=>'Kaporit & pembersih kolam','emoji'=>'🧪','kategori'=>'b3','sumber'=>'tani','saran'=>'Simpan kering dan tertutup; jangan dicampur bahan kimia lain','waktu_urai'=>'tidak terurai alami','fakta'=>'Kaporit yang tercampur pembersih lain bisa melepas gas klorin yang menyesakkan napas.','urutan'=>139],
+            ['nama'=>'Asbes & sisa bahan bangunan','emoji'=>'🏚️','kategori'=>'b3','sumber'=>'bengkel','saran'=>'Jangan digergaji atau dipecah kering — basahi, bungkus rapat, buang terpisah','waktu_urai'=>'tidak terurai','fakta'=>'Serat asbes yang beterbangan saat dipecah dapat terhirup dan merusak paru-paru bertahun kemudian.','urutan'=>140],
+            ['nama'=>'Kemasan herbisida & ZPT','emoji'=>'🌾','kategori'=>'b3','sumber'=>'tani','saran'=>'Bilas 3x ke tangki semprot, rusak kemasannya, serahkan ke fasilitas B3','waktu_urai'=>'tidak terurai alami','fakta'=>'Air bilasan pertama masih berisi bahan aktif — masukkan ke tangki, jangan dibuang ke saluran.','urutan'=>141],
         ];
 
         foreach ($data as $row) {

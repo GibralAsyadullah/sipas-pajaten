@@ -155,23 +155,35 @@
     <span class="eyebrow">Tonton &amp; pelajari</span>
     <h2 class="section-title">Video Edukasi</h2>
   </div>
-  <p class="muted">Video cara memilah sampah, sosialisasi, dan dokumentasi kegiatan. Video dikelola pengurus lewat panel admin.</p>
+  <p class="muted">Video cara memilah sampah, sosialisasi, dan dokumentasi kegiatan. Ketuk sampulnya untuk memutar — video baru dimuat saat ditekan supaya hemat kuota. Video dikelola pengurus lewat panel admin.</p>
   <div class="video-grid">
     @forelse($videos as $v)
       @if($v->embed_url)
+        {{-- Sampul dulu, iframe baru dimuat saat diketuk (hemat kuota & tak ada kotak putih menunggu). --}}
         <div class="video-card">
-          <div class="frame"><iframe src="{{ $v->embed_url }}" title="{{ $v->judul }}" allowfullscreen loading="lazy"></iframe></div>
-          <div class="cap">🎬 {{ $v->judul }}</div>
+          <div class="frame">
+            <button type="button" class="frame-play" data-embed="{{ $v->embed_url }}" data-judul="{{ $v->judul }}"
+                    aria-label="Putar video {{ $v->judul }}">
+              @if($v->thumb_url)
+                <img src="{{ $v->thumb_url }}" alt="" onerror="this.remove()">
+              @endif
+              <span class="fp-play" aria-hidden="true">▶</span>
+            </button>
+          </div>
+          <div class="cap">
+            <b>🎬 {{ $v->judul }}</b>
+            <a href="{{ $v->watch_url }}" target="_blank" rel="noopener">Buka di {{ $v->provider }} ↗</a>
+          </div>
         </div>
       @elseif($v->is_file)
         <div class="video-card">
-          <div class="frame"><video src="{{ $v->youtube_url }}" controls preload="metadata"></video></div>
-          <div class="cap">🎬 {{ $v->judul }}</div>
+          <div class="frame"><video src="{{ $v->youtube_url }}" controls playsinline preload="none"></video></div>
+          <div class="cap"><b>🎬 {{ $v->judul }}</b></div>
         </div>
       @else
         <div class="video-card">
           <a class="frame frame-link" href="{{ $v->youtube_url }}" target="_blank" rel="noopener"><span>Tonton video</span></a>
-          <div class="cap">🎬 {{ $v->judul }}</div>
+          <div class="cap"><b>🎬 {{ $v->judul }}</b></div>
         </div>
       @endif
     @empty
@@ -300,3 +312,29 @@
     <details class="diy"><summary><span class="diy-ic">🙋</span> Bagaimana cara ikut serta?</summary><div class="diy-body"><p>Hubungi ketua kelompok / kepala dusun masing-masing, datang ke Kantor Kepala Desa Pajaten, atau temui mahasiswa KKN saat sosialisasi &amp; kunjungan ke rumah warga.</p></div></details>
   </div>
 @endsection
+
+@push('scripts')
+<script>
+/* Video rekaman HP itu potret. Sesuaikan tinggi bingkainya biar tidak penuh bilah hitam. */
+document.querySelectorAll('.frame-play img').forEach(function (img) {
+  var tandai = function () {
+    if (img.naturalHeight > img.naturalWidth) {
+      img.closest('.video-card').classList.add('is-portrait');
+    }
+  };
+  if (img.complete && img.naturalWidth) { tandai(); } else { img.addEventListener('load', tandai, { once: true }); }
+});
+
+/* Sampul video → iframe. Iframe baru dibuat setelah warga menekan tombol putar. */
+document.querySelectorAll('.frame-play').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var f = document.createElement('iframe');
+    f.src = btn.dataset.embed;
+    f.title = btn.dataset.judul || 'Video edukasi';
+    f.allow = 'autoplay; encrypted-media; fullscreen';
+    f.allowFullscreen = true;
+    btn.replaceWith(f);
+  }, { once: true });
+});
+</script>
+@endpush

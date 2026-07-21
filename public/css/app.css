@@ -457,7 +457,17 @@ a{color:var(--pine-2)}
 .video-card .frame-link{display:block;position:relative;padding-top:56.25%;background:linear-gradient(135deg,#0F3D28,#1E7A46);color:#fff;text-decoration:none}
 .video-card .frame-link::before{content:'▶️';position:absolute;top:38%;left:50%;transform:translate(-50%,-50%);font-size:2rem}
 .video-card .frame-link span{position:absolute;bottom:16%;left:0;right:0;text-align:center;font-size:.8rem;font-weight:700}
-.video-card .cap{padding:11px 13px;font-size:.8rem;font-weight:600}
+.video-card .cap{padding:11px 13px;font-size:.8rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.video-card .cap b{font-weight:600}
+.video-card .cap a{color:var(--pine);font-size:.74rem;font-weight:700;text-decoration:none;margin-left:auto;white-space:nowrap}
+.video-card .cap a:hover{text-decoration:underline}
+/* sampul video: iframe baru dimuat setelah tombol putar ditekan */
+.video-card .frame-play{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;cursor:pointer;background:linear-gradient(135deg,#0F3D28,#1E7A46);display:grid;place-items:center}
+.video-card .frame-play img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.video-card .fp-play{position:relative;width:56px;height:56px;border-radius:50%;background:rgba(11,22,15,.62);color:#fff;display:grid;place-items:center;font-size:1.15rem;padding-left:4px;box-shadow:0 4px 14px rgba(0,0,0,.35);transition:transform .18s,background .18s}
+.video-card .frame-play:hover .fp-play,.video-card .frame-play:focus-visible .fp-play{transform:scale(1.08);background:var(--pine)}
+.video-card.is-portrait .frame{padding-top:118%}
+@media(prefers-reduced-motion:reduce){.video-card .fp-play{transition:none}}
 .input-row{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
 .input-row input{flex:1;min-width:200px;border:1.5px solid var(--line);border-radius:12px;padding:12px 15px;font-family:inherit;font-size:.85rem;background:var(--paper-2);transition:border-color .2s}
 .input-row input:focus{border-color:var(--pine-2);outline:none}
@@ -1414,3 +1424,28 @@ html.no-splash #splash{display:none !important}
 .profil-card>b{display:block;font-size:.9rem;margin-bottom:5px}
 .profil-card p{font-size:.83rem;line-height:1.55;color:var(--ink-soft);margin:0}
 @media(max-width:700px){.profil-grid{grid-template-columns:1fr}}
+
+/* ===== PENYESUAIAN LAYAR HP ===== */
+@media(max-width:859px){
+  /* tombol WhatsApp jangan menimpa tabbar bawah, dan tombol "ke atas" jangan menimpa WhatsApp */
+  .wa-float{bottom:calc(74px + env(safe-area-inset-bottom,0px))}
+  body:has(.wa-float) .to-top{bottom:calc(140px + env(safe-area-inset-bottom,0px))}
+
+  /* jempol butuh sasaran yang lebih besar */
+  .filter-chip{padding:11px 16px;font-size:.8rem}
+  .fp-row .filter-chip{padding:10px 15px}
+  .klas-chip{min-height:34px;padding:8px 13px;font-size:.75rem}
+  .slide-nav{width:38px;height:38px}
+  .slide{padding-bottom:60px} /* tombol geser jadi lebih besar — beri ruang agar tak menyenggol teks */
+  /* titik tetap terlihat 8px, tapi area ketuknya 20px */
+  .dots{gap:0}
+  .dots button{box-sizing:border-box;width:20px;height:20px;border:6px solid transparent;background-clip:content-box}
+  .dots button.active{width:34px}
+  .search,.input-row input,.report-form input,.report-form select,.report-form textarea{font-size:16px}
+
+  /* satu video per baris supaya sampulnya terbaca di layar sempit */
+  .video-grid{grid-template-columns:1fr}
+}
+@media(max-width:400px){
+  .video-card .cap a{margin-left:0}
+}
