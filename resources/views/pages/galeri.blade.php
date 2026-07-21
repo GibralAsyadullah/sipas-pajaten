@@ -111,5 +111,5 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('js/galeri.js') }}"></script>
+<script src="@aset('js/galeri.js')"></script>
 @endpush

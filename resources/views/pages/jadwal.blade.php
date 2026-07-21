@@ -119,5 +119,5 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('js/jadwal.js') }}"></script>
+<script src="@aset('js/jadwal.js')"></script>
 @endpush

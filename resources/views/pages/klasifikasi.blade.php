@@ -107,5 +107,5 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('js/klasifikasi.js') }}"></script>
+<script src="@aset('js/klasifikasi.js')"></script>
 @endpush

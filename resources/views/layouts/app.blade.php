@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<link rel="stylesheet" href="@aset('css/app.css')">
 <script>/* cegah intro muncul lagi saat pindah halaman (jalan sebelum render) */
 try{if(sessionStorage.getItem('sipas-splash')==='1'){document.documentElement.classList.add('no-splash')}}catch(e){}</script>
 </head>
@@ -33,8 +33,8 @@ window.SIPAS_ITEMS = @json($sipasItems ?? []);
 window.SIPAS_QUIZ  = @json($sipasQuiz ?? []);
 window.SIPAS_URLS  = { paparan: @json(route('paparan')) };
 </script>
-<script src="{{ asset('js/data.js') }}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="@aset('js/data.js')"></script>
+<script src="@aset('js/app.js')"></script>
 @stack('scripts')
 </body>
 </html>

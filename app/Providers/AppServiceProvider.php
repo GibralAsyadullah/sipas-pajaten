@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\QuizQuestion;
 use App\Models\WasteItem;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -17,6 +18,13 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        // Nginx menyajikan aset dengan `Cache-Control: max-age=31536000, immutable`,
+        // artinya browser tidak akan pernah mengecek ulang selama setahun. Tanpa versi
+        // di URL-nya, perubahan CSS/JS tidak akan terlihat pengunjung lama sama sekali —
+        // refresh biasa pun tidak menolong karena `immutable`. Waktu ubah berkas dipakai
+        // sebagai versi supaya URL ikut berganti tiap kali berkasnya berubah.
+        Blade::directive('aset', fn ($berkas) => "<?php echo asset({$berkas}).'?v='.(@filemtime(public_path({$berkas})) ?: 0); ?>");
+
         // Katalog sampah dipakai kotak pencarian di semua halaman, jadi dititipkan ke
         // layout — bukan View::share, supaya panel admin Filament, /up, dan halaman
         // error tidak ikut menanggung kuerinya.

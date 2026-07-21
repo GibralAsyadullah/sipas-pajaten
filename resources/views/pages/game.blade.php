@@ -125,5 +125,5 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('js/game.js') }}"></script>
+<script src="@aset('js/game.js')"></script>
 @endpush

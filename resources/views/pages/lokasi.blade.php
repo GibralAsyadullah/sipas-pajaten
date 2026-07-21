@@ -195,5 +195,5 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('js/lokasi.js') }}"></script>
+<script src="@aset('js/lokasi.js')"></script>
 @endpush
