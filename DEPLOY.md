@@ -23,9 +23,13 @@ lewat `php artisan make:filament-user` lalu nyalakan kolom `is_admin` = true pad
 
 ### a. Buat service
 1. Buka [railway.app](https://railway.app) → **New Project** → **Deploy from GitHub repo**.
-2. Pilih repo **GibralAsyadullah/sipas-pajaten**, branch **`develop`** (semua fitur terbaru ada di sini;
-   atau merge dulu `develop` → `main` lalu deploy `main`).
+2. Pilih repo **GibralAsyadullah/sipas-pajaten**, branch **`main`**.
 3. Railway mendeteksi `Dockerfile` di root dan membangun image otomatis. Port container: **8080**.
+
+> **Branch yang di-deploy adalah `main`, bukan `develop`.** Push ke `develop` saja
+> **tidak** memicu deploy — pernah bikin bingung karena situs tampak "tidak berubah"
+> padahal commit sudah masuk. Alur kerjanya: kerjakan di `develop`, lalu
+> `git push origin develop:main` untuk merilis.
 
 ### b. Variabel Environment (Railway → service → Variables)
 Salin semua ini. Ganti `PASSWORD_ANDA` dan `APP_URL` sesuai milik Anda:
@@ -84,9 +88,44 @@ Halaman utama & `/admin` (login pakai akun admin yang sudah ada) harus tampil de
 - **Katalog sampah & bank soal di-cache.** Dulu setiap request (termasuk panel admin dan
   `/up`) menarik ulang seluruh tabel `waste_items` + `quiz_questions` dari Supabase.
   Sekarang lewat `Cache` dengan pembersihan otomatis saat pengurus menyunting data.
-- Opsional: `CACHE_STORE=file` lebih cepat daripada `database` karena tidak perlu
-  bolak-balik ke Supabase. Aman selama service Railway hanya **satu replika** — kalau
-  suatu saat ditambah replika, kembalikan ke `database` agar cache-nya seragam.
+### Langkah berikutnya yang belum dikerjakan
+
+Setelah OPcache nyala, `/up` (tanpa sesi, tanpa DB) turun dari **4,3 dtk → 0,4 dtk**.
+Tapi halaman biasa masih ~4 dtk. Hasil pengukuran TTFB di produksi:
+
+| Halaman | TTFB | Kueri di controller |
+|---|---|---|
+| `/up` | ~0,4 dtk | — |
+| `/lokasi`, `/klasifikasi` | ~4,0 dtk | **nol** |
+| `/galeri`, `/jadwal` | ~5,2 dtk | banyak |
+
+Halaman tanpa kueri sama sekali tetap 4 detik, dan menambah banyak kueri hanya
+menambah ~1 detik. Artinya yang mahal adalah **membuka koneksi** ke Postgres
+(PHP-FPM bikin koneksi baru tiap request, lewat session pooler + TLS ≈ 3,5 dtk),
+bukan kuerinya.
+
+Yang menyeret halaman polos ke Postgres adalah `SESSION_DRIVER=database` dan
+`CACHE_STORE=database`. Ganti keduanya di Railway → `file`:
+
+```
+SESSION_DRIVER=file
+CACHE_STORE=file
+```
+
+Perkiraan: `/`, `/lokasi`, `/klasifikasi` tidak lagi menyentuh Postgres sama sekali
+→ ~4 dtk menjadi ~0,5 dtk. Halaman yang memang perlu data (galeri, jadwal, tentang,
+game) tetap menanggung biaya koneksi.
+
+Konsekuensi yang perlu diterima:
+- Sesi tersimpan di container, jadi **admin ter-logout setiap kali re-deploy**.
+  Untuk situs informasi desa ini praktis tidak terasa.
+- Hanya aman selama service Railway **satu replika**. Kalau nanti ditambah replika,
+  kembalikan ke `database` agar sesi & cache seragam antar container.
+
+Kalau halaman ber-database juga mau dipercepat, langkah setelahnya adalah koneksi
+PDO persisten (`PDO::ATTR_PERSISTENT` di `config/database.php`) supaya worker
+PHP-FPM memakai ulang koneksi. Perlu diuji dulu — pooler dan koneksi persisten
+kadang bermasalah pada prepared statement.
 
 ---
 
