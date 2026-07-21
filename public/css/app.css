@@ -469,7 +469,6 @@ a{color:var(--pine-2)}
 .video-card .frame-play img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .video-card .fp-play{position:relative;width:56px;height:56px;border-radius:50%;background:rgba(11,22,15,.62);color:#fff;display:grid;place-items:center;font-size:1.15rem;padding-left:4px;box-shadow:0 4px 14px rgba(0,0,0,.35);transition:transform .18s,background .18s}
 .video-card .frame-play:hover .fp-play,.video-card .frame-play:focus-visible .fp-play{transform:scale(1.08);background:var(--pine)}
-.video-card.is-portrait .frame{padding-top:118%}
 @media(prefers-reduced-motion:reduce){.video-card .fp-play{transition:none}}
 .input-row{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
 .input-row input{flex:1;min-width:200px;border:1.5px solid var(--line);border-radius:12px;padding:12px 15px;font-family:inherit;font-size:.85rem;background:var(--paper-2);transition:border-color .2s}

@@ -315,16 +315,6 @@
 
 @push('scripts')
 <script>
-/* Video rekaman HP itu potret. Sesuaikan tinggi bingkainya biar tidak penuh bilah hitam. */
-document.querySelectorAll('.frame-play img').forEach(function (img) {
-  var tandai = function () {
-    if (img.naturalHeight > img.naturalWidth) {
-      img.closest('.video-card').classList.add('is-portrait');
-    }
-  };
-  if (img.complete && img.naturalWidth) { tandai(); } else { img.addEventListener('load', tandai, { once: true }); }
-});
-
 /* Sampul video → iframe. Iframe baru dibuat setelah warga menekan tombol putar. */
 document.querySelectorAll('.frame-play').forEach(function (btn) {
   btn.addEventListener('click', function () {
