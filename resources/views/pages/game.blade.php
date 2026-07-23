@@ -123,8 +123,8 @@
       <div class="progress"><i id="bsProg"></i></div>
       <div class="card" id="bsCard" style="position:relative">
         <img class="game-react" id="bsReact" alt="" aria-hidden="true">
-        <h3 id="bsStatement" style="font-size:1.02rem;line-height:1.5;font-family:var(--font-body);font-weight:700">Pernyataan...</h3>
-        <div class="game-btns" id="bsOptions" style="margin-top:12px">
+        <h3 id="bsStatement" style="font-size:1.02rem;line-height:1.5;font-family:var(--font-body);font-weight:700;padding-right:44px;min-height:44px">Pernyataan...</h3>
+        <div class="game-btns" id="bsOptions" style="margin-top:16px;grid-template-columns:repeat(2,1fr);max-width:360px;margin-left:auto;margin-right:auto">
           <button class="btn-organik bin-btn" onclick="pickBS(true,this)"><span class="be">✅</span>Benar</button>
           <button class="btn-b3 bin-btn" onclick="pickBS(false,this)"><span class="be">❌</span>Salah</button>
         </div>
