@@ -12,7 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // Di belakang proxy Railway/Render (TLS di-terminate di edge): percayai
+        // header X-Forwarded-* agar Laravel tahu request sebenarnya HTTPS,
+        // sehingga asset()/url() menghasilkan tautan https (bukan http) — mencegah
+        // CSS/JS terblokir sebagai mixed content.
+        $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

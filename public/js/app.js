@@ -107,7 +107,7 @@ const SEARCH_INDEX=(function(){
   ].forEach(j=>idx.push({cat:'Jadwal',ic:'🗓️',title:j[0],sub:j[1],key:(j[0]+' '+j[1]).toLowerCase(),go:()=>activateTab('jadwal')}));
 
   idx.push({cat:'Lokasi',ic:'🏛️',title:'Kantor Kepala Desa Pajaten',sub:'Titik Bank Sampah · -6.0511, 107.3447',key:'kantor kepala desa pajaten bank sampah lokasi peta titik kumpul cibuaya',go:()=>activateTab('lokasi')});
-  idx.push({cat:'Lokasi',ic:'🏕️',title:'Posko KKN Cibuaya',sub:'Basecamp mahasiswa · Dusun 1',key:'posko kkn cibuaya basecamp mahasiswa dusun lokasi',go:()=>activateTab('lokasi')});
+  idx.push({cat:'Lokasi',ic:'🏕️',title:'Posko KKN Cibuaya',sub:'Basecamp mahasiswa · Dusun 3',key:'posko kkn cibuaya basecamp mahasiswa dusun lokasi',go:()=>activateTab('lokasi')});
   return idx;
 })();
 const SUGGEST=['Botol plastik','Maggot','Bank Sampah','Eceng gondok','Jadwal','Posko'];
@@ -155,7 +155,31 @@ function runSearch(){
 }
 document.addEventListener('keydown',e=>{
   if(e.key==='/'&&!/^(input|textarea)$/i.test(document.activeElement.tagName)){e.preventDefault();openSearch();}
-  if(e.key==='Escape'){closeSearch();closeSettings();}
+  if(e.key==='Escape'){closeSearch();closeSettings();closeLightbox();}
+});
+
+
+/* ===== LIGHTBOX FOTO (global) =====
+   Semua foto dokumentasi bisa diketuk untuk dilihat besar:
+   galeri (.jr-ph), jadwal (.tl-foto), profil beranda, papan informasi. */
+function openLightbox(src,cap){
+  const lb=$('lightbox');if(!lb)return;
+  $('lbImg').src=src;
+  $('lbCap').textContent=cap||'';
+  lb.classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  const lb=$('lightbox');if(!lb||!lb.classList.contains('show'))return;
+  lb.classList.remove('show');
+  document.body.style.overflow='';
+}
+document.addEventListener('click',e=>{
+  const img=e.target.closest('.jr-ph, .tl-foto, .profil-galeri img, .papan-foto');
+  if(!img)return;
+  const fig=img.closest('figure');
+  const cap=img.dataset.cap||(fig&&fig.querySelector('figcaption')?fig.querySelector('figcaption').textContent.trim():'')||img.alt;
+  openLightbox(img.src,cap);
 });
 
 
@@ -175,48 +199,7 @@ async function shareApp(){
 }
 
 
-/* ===== MODE ADMIN ===== */
-const ADMIN_PIN='pajaten2026';
-function updateAdminUI(){
-  const on=document.documentElement.getAttribute('data-admin')==='1';
-  const s=$('adminState'),b=$('adminBtn');
-  if(s)s.textContent=on?'Terbuka — fitur pengurus aktif':'Terkunci — khusus pengurus';
-  if(b)b.textContent=on?'Kunci':'Buka';
-}
-function toggleAdmin(){
-  if(document.documentElement.getAttribute('data-admin')==='1'){
-    document.documentElement.removeAttribute('data-admin');saveP('sipas-admin','0');updateAdminUI();return;
-  }
-  const pin=prompt('Masukkan PIN admin:');
-  if(pin===null)return;
-  if(pin.trim()===ADMIN_PIN){
-    document.documentElement.setAttribute('data-admin','1');saveP('sipas-admin','1');
-    updateAdminUI();(typeof renderReportsAdmin==='function'&&renderReportsAdmin());
-  }else{alert('PIN salah. Hubungi koordinator KKN untuk akses.');}
-}
-if(loadP('sipas-admin')==='1')document.documentElement.setAttribute('data-admin','1');
-updateAdminUI();(typeof renderReportsAdmin==='function'&&renderReportsAdmin());
-
-
-function applyDark(on){
-  document.documentElement.setAttribute('data-theme',on?'dark':'');
-  const m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',on?'#0B2E1E':'#0F3D28');
-  const t=$('darkToggle');if(t)t.checked=on;
-}
-function toggleDark(){const on=$('darkToggle').checked;applyDark(on);saveP('sipas-dark',on?'1':'0')}
-function setFont(fs,btn){
-  if(fs)document.documentElement.setAttribute('data-fs',fs);else document.documentElement.removeAttribute('data-fs');
-  document.querySelectorAll('#fsBtns button').forEach(b=>b.classList.remove('active'));
-  if(btn)btn.classList.add('active');
-  saveP('sipas-fs',fs||'');
-}
-(function(){
-  if(loadP('sipas-dark')==='1')applyDark(true);
-  const fs=loadP('sipas-fs');
-  if(fs){document.documentElement.setAttribute('data-fs',fs);
-    document.querySelectorAll('#fsBtns button').forEach(b=>b.classList.toggle('active',b.dataset.fs===fs));}
-})();
-
+/* MODE ADMIN dihapus — kini pakai login Laravel (atribut data-admin dipasang server) */
 
 /* ===== TOMBOL KE ATAS ===== */
 window.addEventListener('scroll',()=>{$('toTop').classList.toggle('show',window.scrollY>440)},{passive:true});

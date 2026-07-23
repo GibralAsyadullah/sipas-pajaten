@@ -1,6 +1,7 @@
 /* Data bersama: barang, maskot, seal (dipakai semua halaman) */
 /* ===== DATA BARANG ===== */
-const ITEMS=[
+/* Data utama dari database (di-inject server); array di bawah jadi cadangan bila DB kosong */
+const ITEMS=(window.SIPAS_ITEMS&&window.SIPAS_ITEMS.length)?window.SIPAS_ITEMS:[
   {n:'Kulit pisang',e:'🍌',t:'organik',s:'Pakan maggot / kompos',u:'2–10 minggu',f:'Kulit pisang bisa jadi pengkilap sepatu dan pupuk penyubur tanaman!'},
   {n:'Botol plastik',e:'🍼',t:'anorganik',s:'Ditabung ke Bank Sampah',u:'± 450 tahun',f:'Satu botol plastik butuh ratusan tahun untuk hancur. Lebih tua dari kakek buyutmu!'},
   {n:'Sisa sayur',e:'🥬',t:'organik',s:'POC / pakan maggot',u:'1–2 minggu',f:'Sisa sayur cepat busuk, jadi bahan pupuk cair yang bagus untuk kebun.'},
