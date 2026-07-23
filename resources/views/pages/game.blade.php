@@ -27,6 +27,7 @@
           <button type="button" class="gmode-btn" data-mode="santai" onclick="setGMode(this)">🌱 Santai<small>tanpa batas waktu</small></button>
           <button type="button" class="gmode-btn active" data-mode="normal" onclick="setGMode(this)">🙂 Normal<small>15 detik / soal</small></button>
           <button type="button" class="gmode-btn" data-mode="cepat" onclick="setGMode(this)">⚡ Cepat<small>8 detik / soal</small></button>
+          <button type="button" class="gmode-btn" data-mode="hard" onclick="setGMode(this)">🔥 Hard<small>5 dtk · nyawa 2 · skor ×2</small></button>
         </div>
       </div>
       <div class="gmode">

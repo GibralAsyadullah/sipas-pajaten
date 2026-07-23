@@ -49,9 +49,12 @@ function renderBoard(id,rows,suffix){
 }
 
 /* ===== GAME PILAH ===== */
-let gIdx=0,gScore=0,gLives=3,gSet=[],gStreak=0,gBest=0,gCorrect=0,gDetail=[];
-/* ---- mode & timer per soal: habis waktu = dihitung salah ---- */
-const G_MODES={santai:0,normal:15000,cepat:8000};
+let gIdx=0,gScore=0,gLives=3,gLivesMax=3,gSet=[],gStreak=0,gBest=0,gCorrect=0,gDetail=[];
+/* ---- mode & timer per soal: habis waktu = dihitung salah ----
+   Hard: waktu paling singkat, nyawa lebih sedikit, dan skor dikali dua. */
+const G_MODES={santai:0,normal:15000,cepat:8000,hard:5000};
+const G_LIVES={santai:3,normal:3,cepat:3,hard:2};   // nyawa awal per mode
+const G_MULT ={santai:1,normal:1,cepat:1,hard:2};   // pengali skor per mode
 let gMode=(loadP('sipas-gmode')in G_MODES)?loadP('sipas-gmode'):'normal';
 function setGMode(btn){
   gMode=btn.dataset.mode;saveP('sipas-gmode',gMode);
@@ -120,7 +123,8 @@ function startGame(){
   responden=getResponden();if(!responden)return;
   gSet=shuffle(ITEMS).slice(0,Math.min(gCount,ITEMS.length));
   if($('gTotal'))$('gTotal').textContent=gSet.length;
-  gIdx=0;gScore=0;gLives=3;gStreak=0;gBest=0;gCorrect=0;gDetail=[];
+  gLivesMax=G_LIVES[gMode]||3;
+  gIdx=0;gScore=0;gLives=gLivesMax;gStreak=0;gBest=0;gCorrect=0;gDetail=[];
   audio();
   $('gameStart').classList.add('hidden');
   $('quizArea').classList.add('hidden');
@@ -137,7 +141,7 @@ function showItem(){
   $('gNum').textContent=gIdx+1;
   $('gScore').textContent=gScore;
   $('gStreak').textContent=gStreak;
-  $('gLives').textContent='❤️'.repeat(gLives)+'🖤'.repeat(3-gLives);
+  $('gLives').textContent='❤️'.repeat(Math.max(0,gLives))+'🖤'.repeat(Math.max(0,gLivesMax-gLives));
   $('gProg').style.width=(gIdx/gSet.length*100)+'%';
   $('gFeedback').textContent='';
   $('gFeedback').className='game-feedback';
@@ -156,7 +160,7 @@ function answer(pick,btn){
   if(pick===it.t){
     gCorrect++;
     gStreak++;gBest=Math.max(gBest,gStreak);
-    const bonus=gStreak>=3?5:0,gain=10+bonus;
+    const bonus=gStreak>=3?5:0,gain=(10+bonus)*(G_MULT[gMode]||1);
     gScore+=gain;
     sfxCorrect();buzz(30);
     scorePop('+'+gain,'plus');
@@ -177,7 +181,7 @@ function answer(pick,btn){
   }
   $('gScore').textContent=gScore;
   $('gStreak').textContent=gStreak;
-  $('gLives').textContent='❤️'.repeat(gLives)+'🖤'.repeat(3-gLives);
+  $('gLives').textContent='❤️'.repeat(Math.max(0,gLives))+'🖤'.repeat(Math.max(0,gLivesMax-gLives));
   setTimeout(()=>{
     gIdx++;
     if(gLives<=0||gIdx>=gSet.length){endGame();}
@@ -196,7 +200,7 @@ function endGame(){
   if(win&&gCorrect===gSet.length)badges.push('🌟 Sempurna');
   if(gBest>=5)badges.push('🔥 Combo x'+gBest);
   else if(gBest>=3)badges.push('🔥 Combo Master');
-  if(gLives===3&&win)badges.push('❤️ Nyawa Utuh');
+  if(gLives===gLivesMax&&win)badges.push('❤️ Nyawa Utuh');
   if(isNewBest&&gScore>0)badges.push('🏆 Rekor Baru');
   renderBadges(badges);
   let pose;
