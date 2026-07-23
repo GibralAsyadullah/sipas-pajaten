@@ -5,7 +5,7 @@
     <span class="eyebrow">Belajar sambil bermain</span>
     <h2 class="section-title">Game &amp; Quiz Edukasi</h2>
   </div>
-  <p class="muted">Latih insting memilah! Ada dua mode: <b>Game Pilah Cepat</b> (tebak Organik / Anorganik / B3) dan <b>Quiz Pengetahuan</b>.</p>
+  <p class="muted">Latih insting memilah! Ada tiga mode: <b>Game Pilah Cepat</b> (tebak Organik / Anorganik / B3), <b>Quiz Pengetahuan</b>, dan <b>Benar atau Salah</b>.</p>
 
   <div class="game-shell">
     <div class="card center" id="gameStart" style="margin-top:16px">
@@ -27,6 +27,7 @@
           <button type="button" class="gmode-btn" data-mode="santai" onclick="setGMode(this)">🌱 Santai<small>tanpa batas waktu</small></button>
           <button type="button" class="gmode-btn active" data-mode="normal" onclick="setGMode(this)">🙂 Normal<small>15 detik / soal</small></button>
           <button type="button" class="gmode-btn" data-mode="cepat" onclick="setGMode(this)">⚡ Cepat<small>8 detik / soal</small></button>
+          <button type="button" class="gmode-btn" data-mode="hard" onclick="setGMode(this)">🔥 Hard<small>5 dtk · nyawa 2 · skor ×2</small></button>
         </div>
       </div>
       <div class="gmode">
@@ -40,6 +41,7 @@
       <div class="mode-pick">
         <button class="btn-main" onclick="startGame()">▶️ Game Pilah</button>
         <button class="btn-ghost" onclick="startQuiz()">🧠 Quiz Pengetahuan</button>
+        <button class="btn-ghost" onclick="startBenarSalah()">⚖️ Benar / Salah</button>
       </div>
       <div class="go-best" id="startBest" style="margin-top:14px"></div>
       <div class="hist-panel" id="histPanel"></div>
@@ -110,6 +112,23 @@
         <h3 id="qQuestion" style="font-size:1.02rem;line-height:1.5;font-family:var(--font-body);font-weight:700">Pertanyaan...</h3>
         <div id="qOptions"></div>
         <div class="game-feedback" id="qFeedback" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="hidden" id="bsArea" style="margin-top:16px">
+      <div class="game-top">
+        <span>⭐ <span id="bsScore">0</span></span>
+        <span>Pernyataan <span id="bsNum">1</span>/<span id="bsTotal">8</span></span>
+      </div>
+      <div class="progress"><i id="bsProg"></i></div>
+      <div class="card" id="bsCard" style="position:relative">
+        <img class="game-react" id="bsReact" alt="" aria-hidden="true">
+        <h3 id="bsStatement" style="font-size:1.02rem;line-height:1.5;font-family:var(--font-body);font-weight:700">Pernyataan...</h3>
+        <div class="game-btns" id="bsOptions" style="margin-top:12px">
+          <button class="btn-organik bin-btn" onclick="pickBS(true,this)"><span class="be">✅</span>Benar</button>
+          <button class="btn-b3 bin-btn" onclick="pickBS(false,this)"><span class="be">❌</span>Salah</button>
+        </div>
+        <div class="game-feedback" id="bsFeedback" aria-live="polite"></div>
       </div>
     </div>
 

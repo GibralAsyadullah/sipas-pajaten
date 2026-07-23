@@ -29,8 +29,16 @@ class GameResultsTable
                     ->placeholder('-'),
                 TextColumn::make('jenis')
                     ->badge()
-                    ->color(fn (string $state): string => $state === 'game' ? 'success' : 'info')
-                    ->formatStateUsing(fn (string $state): string => $state === 'game' ? 'Game Pilah' : 'Quiz'),
+                    ->color(fn (string $state): string => match ($state) {
+                        'game' => 'success',
+                        'benar_salah' => 'warning',
+                        default => 'info',
+                    })
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                        'game' => 'Game Pilah',
+                        'benar_salah' => 'Benar/Salah',
+                        default => 'Quiz',
+                    }),
                 TextColumn::make('skor')
                     ->sortable(),
                 TextColumn::make('benar_total')
@@ -46,6 +54,7 @@ class GameResultsTable
                     ->options([
                         'game' => 'Game Pilah',
                         'quiz' => 'Quiz',
+                        'benar_salah' => 'Benar/Salah',
                     ]),
             ])
             ->recordActions([
