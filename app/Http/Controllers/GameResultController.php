@@ -14,7 +14,7 @@ class GameResultController extends Controller
             'nama'            => 'required|string|max:100',
             'usia'            => 'nullable|integer|min:1|max:120',
             'asal'            => 'nullable|string|max:120',
-            'jenis'           => 'required|in:game,quiz',
+            'jenis'           => 'required|in:game,quiz,benar_salah',
             'skor'            => 'required|integer|min:0|max:1000',
             'benar'           => 'required|integer|min:0|max:100',
             'total_soal'      => 'required|integer|min:1|max:100',

@@ -108,14 +108,15 @@ function clearHist(){
 }
 function updateStartBest(){
   const el=$('startBest');if(!el)return;
-  const g=getBest('game'),q=getBest('quiz');
-  el.innerHTML=(g||q)?'🏅 Skor terbaik — Game: <b>'+g+'</b> · Quiz: <b>'+q+'</b>':'';
+  const g=getBest('game'),q=getBest('quiz'),bs=getBest('bs');
+  el.innerHTML=(g||q||bs)?'🏅 Skor terbaik — Game: <b>'+g+'</b> · Quiz: <b>'+q+'</b> · B/S: <b>'+bs+'</b>':'';
   const hp=$('histPanel');if(!hp)return;
   const hist=getHistAll();
   if(!hist.length){hp.innerHTML='';return;}
   hp.innerHTML='<div class="hist-title"><span>🕘 Riwayat Main Terakhir</span><button type="button" class="hist-clear" onclick="clearHist()" title="Hapus riwayat">🗑️ Hapus</button></div>'+hist.map(h=>{
     const ds=new Date(h.d).toLocaleDateString('id-ID',{day:'numeric',month:'short'});
-    return '<div class="hist-row"><span class="ht">'+(h.t==='Game'?'🎮 Game':'🧠 Quiz')+'</span><span class="hs">'+h.s+(h.t==='Game'?' poin':'')+'</span><span class="hd">'+ds+'</span></div>';
+    const label=h.t==='Game'?'🎮 Game':(h.t==='Benar/Salah'?'⚖️ Benar/Salah':'🧠 Quiz');
+    return '<div class="hist-row"><span class="ht">'+label+'</span><span class="hs">'+h.s+(h.t==='Game'?' poin':'')+'</span><span class="hd">'+ds+'</span></div>';
   }).join('');
 }
 
@@ -336,6 +337,114 @@ function finishQuiz(){
   else{pose='plant';$('goMsg').textContent='Benar '+qCorrect+' dari '+qSet.length+'. Yuk pelajari lagi lewat menu Pilah & Edukasi! 🌱';sfxLose();}
   showGoMascot(pose);
   $('goBest').innerHTML=(isNewBest&&pct>0?'<span class="nb">✨ Rekor baru!</span> ':'')+'Nilai terbaik: <b>'+getBest('quiz')+'</b>';
+}
+
+/* ===== BENAR ATAU SALAH ===== */
+/* Pemain menilai sebuah pernyataan soal sampah: Benar atau Salah.
+   b:true = pernyataan itu memang benar. Konten disimpan di sini (tak perlu DB). */
+const BS_ALL=[
+  {p:'Sampah organik seperti sisa sayur & kulit buah bisa diolah jadi kompos.',b:true,
+   ex:'Betul — sampah organik cepat terurai dan kaya nutrisi, cocok jadi kompos, POC, atau pakan maggot.'},
+  {p:'Membakar sampah plastik di pekarangan aman dan tidak berbahaya.',b:false,
+   ex:'Salah — asap pembakaran plastik mengandung zat beracun yang berbahaya bagi kesehatan dan udara.'},
+  {p:'Botol plastik butuh ratusan tahun untuk terurai di alam.',b:true,
+   ex:'Betul — satu botol plastik bisa bertahan ± 450 tahun sebelum benar-benar hancur.'},
+  {p:'Baterai bekas boleh dibuang bersama sampah dapur biasa.',b:false,
+   ex:'Salah — baterai termasuk sampah B3, harus dikumpulkan terpisah dan diserahkan ke fasilitas khusus.'},
+  {p:'Maggot (larva BSF) bisa diberi makan dari sisa makanan organik.',b:true,
+   ex:'Betul — maggot memakan sampah organik dan tumbuh jadi pakan ternak bergizi.'},
+  {p:'Membuang sampah ke saluran irigasi membuat airnya lebih bersih.',b:false,
+   ex:'Salah — sampah justru menyumbat aliran air dan berisiko memicu banjir.'},
+  {p:'Kaleng aluminium bisa didaur ulang berkali-kali tanpa kehilangan kualitas.',b:true,
+   ex:'Betul — logam aluminium sangat bernilai karena bisa didaur ulang berulang kali.'},
+  {p:'Sampah kaca akan terurai sempurna hanya dalam beberapa bulan.',b:false,
+   ex:'Salah — kaca hampir tidak pernah terurai, tapi bisa dipakai ulang selamanya.'},
+  {p:'Prinsip 3R adalah Reduce, Reuse, Recycle.',b:true,
+   ex:'Betul — Reduce (kurangi), Reuse (pakai ulang), Recycle (daur ulang).'},
+  {p:'Minyak jelantah sebaiknya dibuang langsung ke wastafel atau got.',b:false,
+   ex:'Salah — jelantah mencemari air dan menyumbat saluran. Tampung di botol lalu setor/jual.'},
+  {p:'Menabung sampah anorganik di Bank Sampah bisa jadi tabungan bernilai uang.',b:true,
+   ex:'Betul — sampah ditimbang, dicatat, lalu nilainya masuk ke buku tabunganmu.'},
+  {p:'Pampers/popok sekali pakai diterima di Bank Sampah Pajaten.',b:false,
+   ex:'Salah — popok sekali pakai tidak diterima; tangani terpisah sebagai residu.'},
+  {p:'Memilah sampah dari rumah mempercepat proses penimbangan di Bank Sampah.',b:true,
+   ex:'Betul — sampah yang sudah terpilah dan bersih lebih cepat ditimbang dan bernilai lebih tinggi.'},
+  {p:'Agar praktis, semua jenis sampah sebaiknya dicampur jadi satu.',b:false,
+   ex:'Salah — mencampur sampah menurunkan nilai jual dan menyulitkan pengolahan. Pilah dari awal.'},
+  {p:'Eceng gondok dari irigasi bisa dimanfaatkan jadi pakan ternak setelah dicacah.',b:true,
+   ex:'Betul — eceng gondok dicacah lalu dicampur keong sawah menjadi pakan ternak murah.'},
+  {p:'Styrofoam mudah terurai sehingga aman menumpuk di lingkungan.',b:false,
+   ex:'Salah — styrofoam sangat sulit hancur (500+ tahun). Kurangi pemakaiannya.'},
+];
+let bsSet=[],bsIdx=0,bsScore=0,bsCorrect=0,bsDetail=[];
+function startBenarSalah(){
+  responden=getResponden();if(!responden)return;
+  bsSet=shuffle(BS_ALL).slice(0,Math.min(gCount,BS_ALL.length));
+  bsIdx=0;bsScore=0;bsCorrect=0;bsDetail=[];
+  audio();
+  $('gameStart').classList.add('hidden');
+  $('gameArea').classList.add('hidden');
+  $('quizArea').classList.add('hidden');
+  $('gameOver').classList.add('hidden');
+  $('bsArea').classList.remove('hidden');
+  $('bsReact').classList.remove('show');
+  $('bsTotal').textContent=bsSet.length;
+  showBS();
+}
+function showBS(){
+  const s=bsSet[bsIdx];
+  $('bsStatement').textContent=s.p;
+  $('bsNum').textContent=bsIdx+1;
+  $('bsScore').textContent=bsScore;
+  $('bsProg').style.width=(bsIdx/bsSet.length*100)+'%';
+  $('bsFeedback').textContent='';$('bsFeedback').className='game-feedback';
+  $('bsReact').classList.remove('show','correct','wrong');
+  $('bsOptions').querySelectorAll('.bin-btn').forEach(b=>{b.disabled=false;b.classList.remove('right','wrong')});
+}
+function pickBS(jawab,btn){
+  const s=bsSet[bsIdx];
+  $('bsOptions').querySelectorAll('.bin-btn').forEach(b=>b.disabled=true);
+  const benar=(jawab===s.b);
+  bsDetail.push({soal:s.p,jawab:jawab?'Benar':'Salah',benar});
+  if(benar){
+    btn.classList.add('right');bsCorrect++;bsScore+=Math.round(100/bsSet.length);
+    sfxCorrect();buzz(30);confetti(['✨','⭐','🎉']);
+    react($('bsReact'),'thumb','correct');
+    $('bsFeedback').innerHTML='✅ Tepat! <span style="font-weight:500">'+escapeHtml(s.ex)+'</span>';
+    $('bsFeedback').className='game-feedback ok';
+  }else{
+    btn.classList.add('wrong');
+    sfxWrong();buzz([40,30,40]);
+    react($('bsReact'),'plant','wrong');
+    $('bsFeedback').innerHTML='❌ Kurang tepat. <span style="font-weight:500">'+escapeHtml(s.ex)+'</span>';
+    $('bsFeedback').className='game-feedback no';
+  }
+  $('bsScore').textContent=bsScore;
+  setTimeout(()=>{
+    bsIdx++;
+    if(bsIdx>=bsSet.length)finishBS();
+    else showBS();
+  },2200);
+}
+function finishBS(){
+  $('bsProg').style.width='100%';
+  $('bsArea').classList.add('hidden');
+  $('gameOver').classList.remove('hidden');
+  const pct=Math.round(bsCorrect/bsSet.length*100);
+  $('goScore').textContent=pct+' / 100';
+  const isNewBest=setBest('bs',pct),badges=[];
+  pushHist('Benar/Salah',pct);
+  submitResult('benar_salah',pct,bsCorrect,bsSet.length,bsDetail);
+  if(pct===100)badges.push('🌟 Nilai Sempurna');
+  else if(pct>=75)badges.push('⚖️ Jeli Fakta');
+  if(isNewBest&&pct>0)badges.push('🏆 Rekor Baru');
+  renderBadges(badges);
+  let pose;
+  if(pct===100){pose='cheer';$('goMsg').textContent='Sempurna! '+bsCorrect+' dari '+bsSet.length+' benar. Kamu jago membedakan fakta! 🎉';sfxWin();confetti();}
+  else if(pct>=60){pose='thumb';$('goMsg').textContent='Bagus! '+bsCorrect+' dari '+bsSet.length+' benar. Sedikit lagi sempurna!';sfxWin();}
+  else{pose='plant';$('goMsg').textContent='Benar '+bsCorrect+' dari '+bsSet.length+'. Yuk pelajari lagi lewat menu Pilah & Edukasi! 🌱';sfxLose();}
+  showGoMascot(pose);
+  $('goBest').innerHTML=(isNewBest&&pct>0?'<span class="nb">✨ Rekor baru!</span> ':'')+'Nilai terbaik: <b>'+getBest('bs')+'</b>';
 }
 
 /* ===== INIT halaman game ===== */
