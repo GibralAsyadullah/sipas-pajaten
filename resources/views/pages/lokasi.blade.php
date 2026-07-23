@@ -171,7 +171,7 @@
   </g>
   <g transform="translate(404 116)">
     <rect x="-80" y="-2" width="160" height="26" rx="9" fill="#fff" stroke="#E7DECB"/>
-    <text x="0" y="14" text-anchor="middle" fill="#7A4A10" font-family="Plus Jakarta Sans,sans-serif" font-weight="700" font-size="10">Pengepul · angkut tiap Kamis</text>
+    <text x="0" y="14" text-anchor="middle" fill="#7A4A10" font-family="Plus Jakarta Sans,sans-serif" font-weight="700" font-size="10">Pengepul rongsok · Dusun 3</text>
   </g>
 
   <!-- kompas -->

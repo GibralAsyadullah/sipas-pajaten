@@ -81,7 +81,7 @@
     </details>
     <details class="acc-item">
       <summary><span class="acc-num">6</span><b>💵 Cairkan tabungan</b><span class="acc-chev">⌄</span></summary>
-      <p>Setelah tabungan mencapai target minimal, nilainya bisa <b>dicairkan menjadi uang atau sembako</b>. Sampah lalu disalurkan desa ke pengepul besar.</p>
+      <p>Setelah tabungan mencapai target minimal, nilainya bisa <b>dicairkan menjadi uang atau sembako</b>. Sampah lalu disalurkan desa langsung ke pusat.</p>
     </details>
   </div>
 

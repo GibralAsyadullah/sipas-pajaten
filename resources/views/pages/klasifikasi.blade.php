@@ -89,7 +89,7 @@
     <div class="alurbs-step"><span class="as-num">1</span><span class="as-ic">🏠</span><b>Pilah di Rumah</b><span>Pisahkan botol plastik &amp; gelas/cup kemasan. Sampah organik diolah jadi kompos &amp; pakan maggot.</span></div>
     <div class="alurbs-step"><span class="as-num">2</span><span class="as-ic">🤝</span><b>Setor ke RT / Kadus</b><span>Sampah dikoordinasikan lewat RT &amp; Kepala Dusun — tidak perlu bawa sendiri ke desa.</span></div>
     <div class="alurbs-step"><span class="as-num">3</span><span class="as-ic">⚖️</span><b>Timbang &amp; Catat</b><span>Di titik kumpul desa, sampah ditimbang lalu dicatat di buku fisik dan sistem digital.</span></div>
-    <div class="alurbs-step"><span class="as-num">4</span><span class="as-ic">🚛</span><b>Diangkut Pengepul</b><span>Setiap hari <b>Kamis</b>, pengepul mengangkut sampah yang terkumpul di desa.</span></div>
+    <div class="alurbs-step"><span class="as-num">4</span><span class="as-ic">🚛</span><b>Diangkut ke Pusat</b><span>Sampah dari desa langsung dikirim ke pusat karena harganya lebih tinggi. Syaratnya <b>harus bersih</b> saat dipilah — saat penimbangan pun akan dibersihkan &amp; dipilah ulang.</span></div>
     <div class="alurbs-step"><span class="as-num">5</span><span class="as-ic">💰</span><b>Tabungan Cair</b><span>Capai target setoran <b>5 kg per dusun</b>, tabungan sampahmu bisa dicairkan.</span></div>
   </div>
   <div class="alur-note">
